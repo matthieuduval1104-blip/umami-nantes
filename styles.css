@@ -120,27 +120,7 @@ em   { font-style: italic; }
     height: auto;
 }
 
-/* Illustrations bocaux / bouteilles */
-.illus {
-    position: absolute;
-    pointer-events: none;
-    height: auto;
-}
-/* Hero */
-.illus--h1 { bottom: 3rem;   right: 3.5rem;  width: 45px;  transform: rotate(8deg);   z-index: 1; }
-.illus--h2 { bottom: 4.5rem; right: 9rem;    width: 100px; transform: rotate(-13deg); z-index: 1; }
-/* Festival */
-.illus--f1 { bottom: 3.5rem; right: 2rem;    width: 88px;  transform: rotate(-7deg); }
-.illus--f2 { bottom: 3rem;   left: 2.5rem;   width: 65px;  transform: rotate(12deg); }
-/* Programme */
-.illus--p1 { bottom: 3rem;   right: 4rem;    width: 80px;  transform: rotate(-4deg); }
-.illus--p2 { bottom: 7rem;   right: 10.5rem; width: 105px; transform: rotate(6deg); }
-/* Infos */
-.illus--i1 { bottom: 3.5rem; right: 2rem;    width: 82px;  transform: rotate(-8deg); }
-.illus--i2 { bottom: 3rem;   left: 2rem;     width: 85px;  transform: rotate(5deg); }
-
 @media (max-width: 768px) {
-    .illus { display: none; }
 }
 .deco--bl       { bottom: var(--s6); left: var(--s8); }
 .deco--br       { bottom: var(--s6); right: var(--s8); width: 160px; }
