@@ -6,11 +6,13 @@
     'use strict';
 
     /* ---- Références DOM ---- */
-    var trigger  = document.getElementById('menu-trigger');
-    var overlay  = document.getElementById('menu-overlay');
-    var btnClose = document.getElementById('menu-close');
-    var links    = document.querySelectorAll('.menu-nav__link');
-    var screens  = document.querySelectorAll('.screen');
+    var trigger     = document.getElementById('menu-trigger');
+    var overlay     = document.getElementById('menu-overlay');
+    var btnClose    = document.getElementById('menu-close');
+    var links       = document.querySelectorAll('.menu-nav__link');
+    var screens     = document.querySelectorAll('.screen');
+    var scrollHint  = document.getElementById('scroll-hint');
+    var currentScreen = screens[0];
 
     /* ---- Menu : ouvrir ---- */
     function openMenu() {
@@ -43,17 +45,16 @@
         if (e.target === overlay) closeMenu();
     });
 
-    /* ---- Scroll hints — scroll vers la section suivante ---- */
-    document.querySelectorAll('.scroll-hint').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            var section = btn.closest('.screen');
-            var next = section && section.nextElementSibling;
+    /* ---- Scroll hint — scroll vers la section suivante ---- */
+    if (scrollHint) {
+        scrollHint.addEventListener('click', function () {
+            var next = currentScreen.nextElementSibling;
             while (next && !next.classList.contains('screen')) {
                 next = next.nextElementSibling;
             }
             if (next) next.scrollIntoView({ behavior: 'smooth' });
         });
-    });
+    }
 
     /* ---- Navigation snap ---- */
     links.forEach(function (link) {
@@ -65,12 +66,18 @@
         });
     });
 
-    /* ---- Couleur adaptative du trigger ---- */
+    /* ---- Couleur adaptative du trigger + scroll hint ---- */
     var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.intersectionRatio >= 0.5) {
+                currentScreen = entry.target;
                 var isDark = entry.target.classList.contains('screen--black');
+                var isLast = entry.target.id === 'infos';
                 trigger.classList.toggle('menu-trigger--light', isDark);
+                if (scrollHint) {
+                    scrollHint.classList.toggle('is-hidden', isLast);
+                    scrollHint.classList.toggle('scroll-hint--light', isDark);
+                }
             }
         });
     }, { threshold: 0.5 });

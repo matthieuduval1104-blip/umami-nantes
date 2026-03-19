@@ -364,12 +364,12 @@ em   { font-style: italic; }
     color: var(--cream);
 }
 
-/* Indicateur de scroll — bas droite, même style que le burger */
+/* Indicateur de scroll — fixe, au dessus de tout */
 .scroll-hint {
-    position: absolute;
+    position: fixed;
     bottom: var(--s8);
-    right: 18%;
-    z-index: 10;
+    right: var(--s8);
+    z-index: 200;
     background: none;
     border: none;
     cursor: pointer;
@@ -381,6 +381,10 @@ em   { font-style: italic; }
     transition: opacity var(--ease);
 }
 .scroll-hint:hover { opacity: 0.7; }
+.scroll-hint.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
 
 .scroll-hint__text {
     font-size: var(--t-sm);
