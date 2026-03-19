@@ -3,254 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[PLACEHOLDER: Titre] — UMAMI Nantes</title>
-    <meta name="description" content="[PLACEHOLDER: Description courte pour Google, ~150 caractères]">
-    <!-- Open Graph (réseaux sociaux) -->
-    <meta property="og:title" content="[PLACEHOLDER: Titre]">
-    <meta property="og:description" content="[PLACEHOLDER: Description courte]">
-    <meta property="og:image" content="assets/images/hero.jpg">
-    <meta property="og:url" content="https://umami-nantes.fr">
-    <!-- Google Fonts — remplacer par la font Antoine/Ghita si besoin -->
+    <title>UMAMI#5 — Festival de la fermentation à Nantes</title>
+    <meta name="description" content="UMAMI#5 — Marché vivant de la fermentation. 18 & 19 avril 2026 à l'Agronaute, Nantes.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- ========================================
-         NAVIGATION (mobile burger + desktop)
-    ======================================== -->
-    <nav class="nav" role="navigation" aria-label="Navigation principale">
-        <div class="nav__container">
-            <!-- [PLACEHOLDER: Remplacer le texte par le vrai logo SVG/img] -->
-            <a href="#hero" class="nav__logo" aria-label="UMAMI — Retour accueil">
-                UMAMI
-            </a>
-            <button class="nav__burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav__menu" id="nav-menu" role="list">
-                <li><a href="#about" class="nav__link">Le festival</a></li>
-                <li><a href="#infos" class="nav__link">Infos pratiques</a></li>
-                <li><a href="#tarifs" class="nav__link">Tarifs</a></li>
-                <li>
-                    <!-- [PLACEHOLDER: Remplacer # par l'URL billetterie réelle] -->
-                    <a href="#" class="nav__cta" target="_blank" rel="noopener noreferrer">
-                        Acheter les tickets
-                    </a>
-                </li>
-            </ul>
+    <!-- TRIGGER MENU -->
+    <button class="menu-trigger" id="menu-trigger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-overlay">
+        <span class="menu-trigger__text">Menu</span>
+        <span class="menu-trigger__arrow" aria-hidden="true">↓</span>
+    </button>
+
+    <!-- MENU OVERLAY -->
+    <nav class="menu-overlay" id="menu-overlay" aria-hidden="true" role="dialog" aria-label="Navigation">
+        <button class="menu-close" id="menu-close" aria-label="Fermer le menu">✕&nbsp;Fermer</button>
+        <ul class="menu-nav" role="list">
+            <li><a href="#hero"      class="menu-nav__link" data-target="hero">      <span class="menu-nav__num">01</span>Accueil</a></li>
+            <li><a href="#about"     class="menu-nav__link" data-target="about">     <span class="menu-nav__num">02</span>Le festival</a></li>
+            <li><a href="#programme" class="menu-nav__link" data-target="programme"> <span class="menu-nav__num">03</span>Programme</a></li>
+            <li><a href="#infos"     class="menu-nav__link" data-target="infos">     <span class="menu-nav__num">04</span>Infos pratiques</a></li>
+        </ul>
+        <div class="menu-footer">
+            <a href="#" class="menu-footer__link" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="#" class="btn btn--cream menu-footer__cta" target="_blank" rel="noopener noreferrer">Billetterie</a>
         </div>
     </nav>
 
-    <!-- ========================================
-         HERO — Bandeau principal
-    ======================================== -->
-    <header class="hero" id="hero">
-        <!-- [PLACEHOLDER: Remplacer hero.jpg par la photo principale HD] -->
-        <div class="hero__bg" role="img" aria-label="[PLACEHOLDER: Description de la photo hero]"></div>
-        <div class="hero__overlay"></div>
-        <div class="hero__content">
-            <!-- [PLACEHOLDER: Remplacer par le vrai logo image si disponible] -->
-            <div class="hero__logo" aria-label="Logo UMAMI">
-                UMAMI
-            </div>
-            <!-- [PLACEHOLDER: Titre principal, ex: "UMAMI 2026"] -->
-            <h1 class="hero__title">[PLACEHOLDER: Titre principal]</h1>
-            <!-- [PLACEHOLDER: Tagline, ex: "Festival food & culture à Nantes"] -->
-            <p class="hero__tagline">[PLACEHOLDER: Tagline de l'événement]</p>
-            <!-- [PLACEHOLDER: Dates courtes, ex: "13 & 14 juin 2026"] -->
-            <p class="hero__date">[PLACEHOLDER: Dates courtes]</p>
-            <!-- [PLACEHOLDER: Remplacer # par l'URL billetterie réelle] -->
-            <a href="#" class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
-                Acheter les tickets
-            </a>
-        </div>
-    </header>
+    <!-- SNAP WRAPPER -->
+    <div class="snap-wrapper" id="snap-wrapper">
 
-    <main>
-
-        <!-- ========================================
-             ABOUT — Qu'est-ce que UMAMI
-        ======================================== -->
-        <section class="about section" id="about">
-            <div class="container">
-                <div class="about__content">
-                    <div class="about__text">
-                        <span class="label">Le festival</span>
-                        <!-- [PLACEHOLDER: Titre section, ex: "La gastronomie, la culture, ensemble"] -->
-                        <h2 class="section__title">[PLACEHOLDER: Titre section About]</h2>
-                        <!-- [PLACEHOLDER: Description UMAMI, 3 à 5 phrases. Ex:
-                             "UMAMI est le festival food & culture de Nantes. Un événement unique
-                             où gastronomie, musique et rencontres se mêlent le temps d'un week-end.
-                             Pour les curieux, les gourmands, et tous ceux qui veulent vivre la ville
-                             autrement."] -->
-                        <p class="about__description">[PLACEHOLDER: Description principale UMAMI — 3 à 5 phrases]</p>
-                        <!-- [PLACEHOLDER: Story "Pourquoi UMAMI ?", 2 à 3 phrases] -->
-                        <p class="about__story">[PLACEHOLDER: Pourquoi UMAMI ? — Story courte]</p>
-                    </div>
-                    <div class="about__images">
-                        <!-- [PLACEHOLDER: Remplacer src par une vraie photo] -->
-                        <img
-                            src="assets/images/photo2.jpg"
-                            alt="[PLACEHOLDER: Description de la photo]"
-                            class="about__img about__img--main"
-                            width="600"
-                            height="400"
-                            loading="lazy"
-                        >
-                        <!-- [PLACEHOLDER: Remplacer src par une vraie photo] -->
-                        <img
-                            src="assets/images/photo3.jpg"
-                            alt="[PLACEHOLDER: Description de la photo]"
-                            class="about__img about__img--secondary"
-                            width="300"
-                            height="300"
-                            loading="lazy"
-                        >
-                    </div>
+        <!-- ===== 1. HERO ===== -->
+        <section class="screen" id="hero">
+            <img src="assets/logo.jpg" alt="" class="hero-bg" aria-hidden="true">
+            <div class="hero-overlay" aria-hidden="true"></div>
+            <!-- Contenu décalé à droite, au niveau du burger -->
+            <div class="hero-content">
+                <h1 class="hero-title">Marché vivant<br>de la fermentation</h1>
+                <div class="hero-meta">
+                    <span>18 &amp; 19 avril 2026</span>
+                    <span class="hero-meta__dot" aria-hidden="true">·</span>
+                    <span>L'Agronaute, Nantes</span>
                 </div>
+                <a href="#" class="btn btn--cream" target="_blank" rel="noopener noreferrer">Acheter les tickets</a>
             </div>
         </section>
 
-        <!-- ========================================
-             INFOS PRATIQUES
-        ======================================== -->
-        <section class="infos section section--alt" id="infos">
-            <div class="container">
-                <span class="label">Infos pratiques</span>
-                <!-- [PLACEHOLDER: Titre section, ex: "Tout ce qu'il faut savoir"] -->
-                <h2 class="section__title">[PLACEHOLDER: Titre section Infos]</h2>
-                <div class="infos__grid">
+        <!-- ===== 2. LE FESTIVAL ===== -->
+        <section class="screen" id="about">
+            <div class="split-layout">
 
-                    <div class="info-card">
-                        <div class="info-card__icon" aria-hidden="true">📅</div>
-                        <h3 class="info-card__title">Dates</h3>
-                        <!-- [PLACEHOLDER: ex: "Samedi 13 et dimanche 14 juin 2026"] -->
-                        <p class="info-card__content">[PLACEHOLDER: Dates complètes]</p>
-                    </div>
-
-                    <div class="info-card">
-                        <div class="info-card__icon" aria-hidden="true">⏰</div>
-                        <h3 class="info-card__title">Horaires</h3>
-                        <!-- [PLACEHOLDER: ex: "10h – 22h (samedi)\n10h – 20h (dimanche)"] -->
-                        <p class="info-card__content">[PLACEHOLDER: Horaires d'ouverture et fermeture]</p>
-                    </div>
-
-                    <div class="info-card">
-                        <div class="info-card__icon" aria-hidden="true">📍</div>
-                        <h3 class="info-card__title">Lieu</h3>
-                        <!-- [PLACEHOLDER: ex: "L'Agronaute\n1 place des Tables, Île de Nantes\n44200 Nantes"] -->
-                        <p class="info-card__content">[PLACEHOLDER: Nom du lieu + adresse complète]</p>
-                        <!-- [PLACEHOLDER: Remplacer # par lien Google Maps du lieu] -->
-                        <a href="#" class="info-card__link" target="_blank" rel="noopener noreferrer">
-                            Voir sur Google Maps →
-                        </a>
-                    </div>
-
-                    <div class="info-card">
-                        <div class="info-card__icon" aria-hidden="true">🚌</div>
-                        <h3 class="info-card__title">Accès</h3>
-                        <!-- [PLACEHOLDER: Infos transport. Ex: "Tramway ligne 1, arrêt Chantiers Navals.
-                             Bus C6, arrêt Prairie au Duc. Parking Hangar à Bananes à 200m."] -->
-                        <p class="info-card__content">[PLACEHOLDER: Infos transport / parking / accès PMR]</p>
-                    </div>
-
+                <!-- Gauche — rose -->
+                <div class="split-left split-left--pink">
+                    <!-- Déco logo (arches + points) couleur noire sur fond rose -->
+                    <svg class="deco deco--bl" viewBox="0 0 240 70" fill="none" aria-hidden="true">
+                        <path d="M0,8 Q40,62 80,8 Q120,62 160,8 Q200,62 240,8" stroke="#111111" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        <circle cx="80"  cy="8"  r="9" fill="#F5E4C0"/>
+                        <circle cx="160" cy="8"  r="9" fill="#F5E4C0"/>
+                    </svg>
+                    <span class="tag tag--dark">Le festival</span>
+                    <h2 class="big-title">Un espace<br>pour goûter<br>autrement.</h2>
                 </div>
+
+                <!-- Droite — crème -->
+                <div class="split-right split-right--cream">
+                    <p class="about-lead">Umami, c'est un espace pour apprendre, goûter, expérimenter et rencontrer celles et ceux qui fermentent au quotidien.</p>
+                    <p class="about-body">Pendant deux jours, producteur·ices, cuisinier·ères et artisan·es viennent partager leurs pratiques à travers des dégustations, des ateliers et des démonstrations. Une invitation à ralentir, à goûter autrement et à découvrir la fermentation sous toutes ses formes.</p>
+                    <p class="about-body">Né à Nantes il y a 5 ans, UMAMI s'est imposé comme le rendez-vous incontournable des amoureux·ses de fermentation. Chaque édition rassemble producteur·ices, artisan·es et curieux·ses autour d'une même conviction : la fermentation est vivante, et elle mérite qu'on s'y attarde.</p>
+                    <div class="about-bonus">
+                        Avec votre entrée, vous repartez avec un verre siglé UMAMI.
+                    </div>
+                    <a href="#" class="btn btn--dark" target="_blank" rel="noopener noreferrer">Acheter les tickets</a>
+                </div>
+
+            </div>
+            <div class="page-bar" aria-hidden="true"></div>
+        </section>
+
+        <!-- ===== 3. PROGRAMME ===== -->
+        <section class="screen screen--black" id="programme">
+            <!-- Déco logo en haut à droite -->
+            <svg class="deco deco--tr" viewBox="0 0 200 70" fill="none" aria-hidden="true">
+                <path d="M0,8 Q33,62 66,8 Q100,62 133,8 Q166,62 200,8" stroke="#F5E4C0" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <circle cx="0"   cy="8" r="9" fill="#F4A7BF"/>
+                <circle cx="66"  cy="8" r="9" fill="#F4A7BF"/>
+                <circle cx="133" cy="8" r="9" fill="#F4A7BF"/>
+                <circle cx="200" cy="8" r="9" fill="#F4A7BF"/>
+            </svg>
+
+            <div class="prog-layout">
+
+                <!-- En-tête + frise -->
+                <div class="prog-top">
+                    <div class="prog-top__text">
+                        <span class="tag tag--pink">Programme</span>
+                        <h2 class="big-title big-title--light">Deux jours,<br>plein de choses.</h2>
+                    </div>
+                    <!-- Frise ADN logo — arches épaisses -->
+                    <svg class="prog-frieze" viewBox="0 0 600 70" fill="none" aria-hidden="true" preserveAspectRatio="none">
+                        <path d="M0,8 Q50,62 100,8 Q150,62 200,8 Q250,62 300,8 Q350,62 400,8 Q450,62 500,8 Q550,62 600,8"
+                              stroke="#F4A7BF" stroke-width="7" fill="none" stroke-linecap="round"/>
+                        <circle cx="100" cy="8"  r="10" fill="#F5E4C0"/>
+                        <circle cx="200" cy="8"  r="10" fill="#F5E4C0"/>
+                        <circle cx="300" cy="8"  r="10" fill="#F5E4C0"/>
+                        <circle cx="400" cy="8"  r="10" fill="#F5E4C0"/>
+                        <circle cx="500" cy="8"  r="10" fill="#F5E4C0"/>
+                    </svg>
+                </div>
+
+                <!-- Liste éditoriale -->
+                <div class="prog-list">
+                    <div class="prog-row">
+                        <span class="prog-row__num">01</span>
+                        <span class="prog-row__title">Marché de producteurs</span>
+                        <span class="prog-row__desc">20+ stands — kimchi, miso, sauces piquantes, légumes fermentés, boissons vivantes. Rencontrez ceux qui fabriquent, goûtez, repartez les bras chargés.</span>
+                    </div>
+                    <div class="prog-row">
+                        <span class="prog-row__num">02</span>
+                        <span class="prog-row__title">Mini-conférences</span>
+                        <span class="prog-row__desc">Des démonstrations et interventions de fermenteur·euses passionné·es. Pour comprendre ce qui se passe dans vos bocaux et découvrir de nouveaux horizons.</span>
+                    </div>
+                    <div class="prog-row">
+                        <span class="prog-row__num">03</span>
+                        <span class="prog-row__title">Ateliers pratiques</span>
+                        <span class="prog-row__desc">Légumes fermentés, gingerbeer, miso, sauces piquantes. Vous repartez avec vos propres créations et les gestes pour recommencer à la maison.</span>
+                    </div>
+                    <div class="prog-row">
+                        <span class="prog-row__num">04</span>
+                        <span class="prog-row__title">Programme kids</span>
+                        <span class="prog-row__desc">Parcours sensoriel chez les producteur·ices, ateliers créatifs, menu adapté aux petites papilles. Un vrai programme pour les 6/7 ans et plus.</span>
+                    </div>
+                    <div class="prog-row prog-row--accent">
+                        <span class="prog-row__num">05</span>
+                        <span class="prog-row__title">Banquet fermenté</span>
+                        <span class="prog-row__desc">Samedi soir — 3ème édition. Un trio de cheffes fermenteuses aux manettes pour un dîner hors du commun. Places limitées, billetterie séparée.</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- ========================================
-             TARIFS + CTA BILLETTERIE
-        ======================================== -->
-        <section class="tarifs section" id="tarifs">
-            <div class="container">
-                <span class="label">Billetterie</span>
-                <!-- [PLACEHOLDER: Titre section, ex: "Rejoins l'aventure"] -->
-                <h2 class="section__title">[PLACEHOLDER: Titre section Tarifs]</h2>
-                <!-- [PLACEHOLDER: Accroche, ex: "Les places sont limitées. Réserve la tienne dès maintenant."] -->
-                <p class="tarifs__intro">[PLACEHOLDER: Phrase d'accroche billetterie]</p>
-                <div class="tarifs__grid">
+        <!-- ===== 4. INFOS PRATIQUES ===== -->
+        <section class="screen" id="infos">
+            <div class="split-layout">
 
-                    <!-- [PLACEHOLDER: Adapter ou dupliquer cette carte selon le nombre de tarifs] -->
-                    <div class="tarif-card">
-                        <!-- [PLACEHOLDER: Nom du tarif, ex: "Entrée standard"] -->
-                        <h3 class="tarif-card__name">[PLACEHOLDER: Nom du tarif]</h3>
-                        <!-- [PLACEHOLDER: Prix, ex: "12€"] -->
-                        <div class="tarif-card__price">[PLACEHOLDER: Prix]</div>
-                        <!-- [PLACEHOLDER: Détails inclus. Ex: "Accès festival\nConsommation offerte"] -->
-                        <p class="tarif-card__details">[PLACEHOLDER: Ce qui est inclus]</p>
-                        <!-- [PLACEHOLDER: Remplacer # par l'URL billetterie] -->
-                        <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-                            Réserver
-                        </a>
-                    </div>
-
-                    <!-- Carte tarif 2 — supprimer si pas de second tarif -->
-                    <div class="tarif-card tarif-card--featured">
-                        <!-- [PLACEHOLDER: ex: "Tarif réduit"] -->
-                        <h3 class="tarif-card__name">[PLACEHOLDER: Nom du tarif 2]</h3>
-                        <!-- [PLACEHOLDER: ex: "8€"] -->
-                        <div class="tarif-card__price">[PLACEHOLDER: Prix 2]</div>
-                        <!-- [PLACEHOLDER: ex: "Étudiants, demandeurs d'emploi\nsur présentation justificatif"] -->
-                        <p class="tarif-card__details">[PLACEHOLDER: Conditions / inclus]</p>
-                        <!-- [PLACEHOLDER: Remplacer # par l'URL billetterie] -->
-                        <a href="#" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">
-                            Réserver
-                        </a>
-                    </div>
-
+                <!-- Gauche — crème, grand titre -->
+                <div class="split-left split-left--cream">
+                    <!-- Déco logo -->
+                    <svg class="deco deco--tr-small" viewBox="0 0 160 50" fill="none" aria-hidden="true">
+                        <path d="M0,6 Q26,44 53,6 Q80,44 106,6 Q133,44 160,6" stroke="#F4A7BF" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <circle cx="53"  cy="6" r="7" fill="#111111"/>
+                        <circle cx="106" cy="6" r="7" fill="#111111"/>
+                    </svg>
+                    <span class="tag">Infos pratiques</span>
+                    <h2 class="big-title">Venez<br>comme vous<br>êtes, partez<br>contents.</h2>
                 </div>
+
+                <!-- Droite — rose, infos + carte -->
+                <div class="split-right split-right--pink">
+                    <div class="info-row">
+                        <span class="info-row__label">Dates</span>
+                        <span class="info-row__value">Samedi 18 &amp; dimanche 19 avril 2026</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row__label">Horaires</span>
+                        <span class="info-row__value">11h – 19h chaque jour</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row__label">Lieu</span>
+                        <span class="info-row__value">L'Agronaute — 2 rue du Sénégal, 44200 Nantes</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row__label">Accès</span>
+                        <div class="info-row__access">
+                            <div class="access-lines">
+                                <p>Tramway ligne 1 — arrêt Chantiers Navals (5 min à pied)</p>
+                                <p>Bus C6 — arrêt Prairie au Duc (1 min)</p>
+                                <p>Vélo — station Bicloo à 50 m</p>
+                                <p>Voiture — parking Hangar à Bananes, 200 m</p>
+                            </div>
+                            <div id="map" class="map-container" aria-label="Carte — L'Agronaute, Nantes"></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-    </main>
+    </div>
 
-    <!-- ========================================
-         FOOTER
-    ======================================== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__top">
-                <div class="footer__brand">
-                    <!-- [PLACEHOLDER: Logo ou nom] -->
-                    <span class="footer__logo">UMAMI</span>
-                    <!-- [PLACEHOLDER: Tagline courte] -->
-                    <p class="footer__tagline">[PLACEHOLDER: Tagline courte]</p>
-                </div>
-                <div class="footer__links">
-                    <!-- [PLACEHOLDER: Remplacer # par lien billetterie] -->
-                    <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-                        Acheter les tickets
-                    </a>
-                    <!-- [PLACEHOLDER: Remplacer # par https://instagram.com/HANDLE_INSTAGRAM] -->
-                    <a href="#" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram UMAMI">
-                        <!-- Icône Instagram SVG inline -->
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
-                        </svg>
-                        <!-- [PLACEHOLDER: ex: "@umami_nantes"] -->
-                        [PLACEHOLDER: @handle_instagram]
-                    </a>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <!-- [PLACEHOLDER: ex: "contact@umami-nantes.fr"] -->
-                <a href="mailto:[PLACEHOLDER: email contact]" class="footer__email">
-                    [PLACEHOLDER: email contact]
-                </a>
-                <p class="footer__copy">
-                    © 2026 UMAMI — Nantes. Tous droits réservés.
-                </p>
-            </div>
-        </div>
-    </footer>
-
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script src="script.js"></script>
 </body>
 </html>
