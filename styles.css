@@ -369,7 +369,7 @@ em   { font-style: italic; }
     position: absolute;
     bottom: var(--s8);
     right: 18%;
-    z-index: 2;
+    z-index: 10;
     background: none;
     border: none;
     cursor: pointer;
@@ -425,7 +425,6 @@ em   { font-style: italic; }
     position: absolute;
     inset: 0;
     display: flex;
-    z-index: 0;
 }
 
 /* Colonne gauche — contenu aligné sous le burger, left calé sur burger */
@@ -500,7 +499,6 @@ em   { font-style: italic; }
     flex-direction: column;
     padding: 5.5rem var(--s8) var(--s10);
     gap: var(--s6);
-    z-index: 0;
 }
 
 /* En-tête : tag+titre à gauche, frise à droite */
