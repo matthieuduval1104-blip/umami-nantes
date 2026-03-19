@@ -121,6 +121,8 @@ em   { font-style: italic; }
 }
 .deco--bl       { bottom: var(--s6); left: var(--s8); }
 .deco--br       { bottom: var(--s6); right: var(--s8); width: 160px; }
+/* Déco menu : plus grande que la version page */
+.menu-overlay .deco { width: 240px; }
 .deco--tr       { top: var(--s6); right: var(--s8); width: 180px; }
 .deco--tr-small { top: var(--s6); right: var(--s8); width: 130px; }
 
@@ -382,13 +384,13 @@ em   { font-style: italic; }
     display: flex;
 }
 
-/* Colonne gauche — contenu aligné sous le burger */
+/* Colonne gauche — contenu aligné sous le burger, left calé sur burger */
 .split-left {
     flex: 0 0 42%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 5.5rem var(--s12) var(--s12);
+    padding: 5.5rem var(--s12) var(--s12) var(--s8);
     gap: var(--s6);
     position: relative;
 }
