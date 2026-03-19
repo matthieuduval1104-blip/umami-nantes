@@ -116,10 +116,12 @@ em   { font-style: italic; }
     position: absolute;
     pointer-events: none;
     z-index: 1;
+    width: 200px;
+    height: auto;
 }
 .deco--bl       { bottom: var(--s6); left: var(--s8); }
-.deco--tr       { top: var(--s6); right: var(--s8); }
-.deco--tr-small { top: var(--s6); right: var(--s8); }
+.deco--tr       { top: var(--s6); right: var(--s8); width: 180px; }
+.deco--tr-small { top: var(--s6); right: var(--s8); width: 140px; }
 
 /* ============================================================
    BOUTONS
@@ -147,9 +149,9 @@ em   { font-style: italic; }
     border-color: var(--black);
 }
 .btn--dark:hover {
-    background: var(--cream-bg);
+    background: var(--pink);
     color: var(--black);
-    border-color: var(--cream-bg);
+    border-color: var(--pink);
     transform: translateY(-2px);
 }
 
@@ -444,8 +446,8 @@ em   { font-style: italic; }
     inset: 0;
     display: flex;
     flex-direction: column;
-    padding: var(--s10) var(--s12);
-    gap: var(--s8);
+    padding: 5.5rem var(--s12) var(--s10);
+    gap: var(--s6);
 }
 
 /* En-tête : tag+titre à gauche, frise à droite */
@@ -464,12 +466,14 @@ em   { font-style: italic; }
     flex-shrink: 0;
 }
 
-/* Frise SVG — logo DNA arches */
+/* Frise SVG — logo DNA arches (hauteur fixe pour éviter l'étirement) */
 .prog-frieze {
     flex: 1;
     height: 70px;
+    min-height: 70px;
+    max-height: 70px;
     min-width: 0;
-    align-self: center;
+    align-self: flex-end;
 }
 
 /* Liste éditoriale */
@@ -501,31 +505,33 @@ em   { font-style: italic; }
     flex-shrink: 0;
 }
 
-/* Titre crème — largeur fixe */
+/* Titre crème — pas de retour à la ligne */
 .prog-row__title {
     font-size: var(--t-xl);
     font-weight: 800;
     color: var(--cream);
-    width: 13rem;
     flex-shrink: 0;
+    white-space: nowrap;
     line-height: 1.3;
 }
 
-/* Description — crème atténuée */
+/* Description — 1 seule ligne */
 .prog-row__desc {
-    font-size: var(--t-base);
+    font-size: var(--t-lg);
     line-height: 1.65;
     color: rgba(245,228,192,0.5);
     flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Banquet — ligne accentuée */
+/* Banquet — ligne accentuée (pas de border-top pour éviter le double séparateur) */
 .prog-row--accent {
-    border-top: 1px solid rgba(244,167,191,0.3);
-    border-bottom: 1px solid rgba(244,167,191,0.3);
-    margin-top: var(--s2);
+    border-bottom: 1px solid rgba(244,167,191,0.25);
 }
-.prog-row--accent .prog-row__num   { color: var(--cream); }
+.prog-row--accent .prog-row__num   { color: var(--pink); }
 .prog-row--accent .prog-row__title { color: var(--pink); }
 .prog-row--accent .prog-row__desc  { color: rgba(245,228,192,0.65); }
 
@@ -580,7 +586,7 @@ em   { font-style: italic; }
 /* Carte Leaflet */
 .map-container {
     width: 100%;
-    height: 190px;
+    height: 240px;
     border-radius: var(--r-md);
     overflow: hidden;
     border: 2px solid rgba(17,17,17,0.1);
