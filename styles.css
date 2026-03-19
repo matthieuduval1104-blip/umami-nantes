@@ -599,46 +599,94 @@ em   { font-style: italic; }
    RESPONSIVE — Tablette (≤ 1024px)
    ============================================================ */
 @media (max-width: 1024px) {
-    .prog-top { flex-direction: column; align-items: flex-start; gap: var(--s4); }
-    .prog-frieze { width: 100%; }
-    .prog-row__title { width: 10rem; }
+    .prog-row__desc { white-space: normal; }
 }
 
 /* ============================================================
    RESPONSIVE — Mobile (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
-    .menu-trigger { top: var(--s6); left: var(--s6); }
 
+    /* Burger */
+    .menu-trigger { top: var(--s5); left: var(--s5); }
+
+    /* Titres : réduits pour tenir sur mobile */
+    .hero-title,
+    .big-title { font-size: clamp(2rem, 8vw, 3rem); }
+
+    /* Hero */
     .hero-content {
-        top: 5.5rem;
-        left: var(--s6);
-        right: var(--s6);
+        top: 4.5rem;
+        left: var(--s5);
+        right: var(--s5);
         gap: var(--s4);
     }
+    .hero-meta { font-size: var(--t-sm); gap: var(--s3); }
 
-    .split-layout  { flex-direction: column; }
-    .split-left    { flex: 0 0 auto; min-height: 38vh; padding: 5.5rem var(--s6) var(--s6); justify-content: flex-start; }
-    .split-right   { flex: 1; padding: var(--s8) var(--s6); }
+    /* Split layout : empilé verticalement */
+    .split-layout { flex-direction: column; }
 
-    .prog-layout   { padding: var(--s8) var(--s6); gap: var(--s6); }
-    .prog-top      { flex-direction: column; align-items: flex-start; gap: var(--s3); }
-    .prog-frieze   { width: 100%; }
-    .prog-row      { flex-direction: column; gap: var(--s2); padding: var(--s4) 0; }
-    .prog-row__title { width: auto; }
+    .split-left {
+        flex: 0 0 auto;
+        height: 40vh;
+        padding: 4.5rem var(--s5) var(--s5) var(--s5);
+        overflow: hidden;
+    }
+
+    .split-right {
+        flex: 1;
+        min-height: 0;
+        padding: var(--s6) var(--s5);
+        overflow-y: auto;
+    }
+
+    /* Festival : réduire les textes longs */
+    .about-lead { font-size: var(--t-lg); }
+    .about-body { font-size: var(--t-base); line-height: 1.65; }
+
+    /* Programme */
+    .prog-layout {
+        padding: 4.5rem var(--s5) var(--s6);
+        gap: var(--s4);
+    }
+    .prog-row {
+        flex-direction: column;
+        gap: var(--s2);
+        padding: var(--s3) 0;
+    }
+    .prog-row__title { white-space: normal; font-size: var(--t-lg); }
+    .prog-row__desc {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        font-size: var(--t-sm);
+    }
     .prog-row__num { width: auto; }
 
-    .menu-overlay  { padding: var(--s12) var(--s8); }
-    .menu-footer   { right: var(--s8); }
+    /* Infos */
+    .info-row__value { font-size: var(--t-base); }
+    .map-container { height: 160px; }
 
-    .map-container { height: 150px; }
+    /* Menu overlay */
+    .menu-overlay { padding: var(--s10) var(--s6); }
+    .menu-footer { right: var(--s6); bottom: var(--s6); }
+    .menu-nav__link { font-size: clamp(var(--t-2xl), 7vw, var(--t-4xl)); }
+    .menu-overlay .deco { width: 160px; }
+
+    /* Boutons */
+    .btn { min-height: 48px; }
 }
 
 /* ============================================================
    RESPONSIVE — Petit mobile (≤ 480px)
    ============================================================ */
 @media (max-width: 480px) {
-    .hero-content { left: var(--s14); }
-    .hero-title { font-size: var(--t-3xl); }
+    .hero-title,
+    .big-title { font-size: clamp(1.75rem, 9vw, 2.5rem); }
+
+    .split-left { height: 38vh; }
+
+    .prog-layout { padding: 4rem var(--s4) var(--s5); }
+
     .btn { width: 100%; justify-content: center; }
 }
