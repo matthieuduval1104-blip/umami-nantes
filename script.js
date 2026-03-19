@@ -70,7 +70,7 @@
         var mapEl = document.getElementById('map');
         if (mapEl) {
             var map = L.map('map', {
-                center: [47.2090, -1.5609],
+                center: [47.200578632683765, -1.5643567563961212],
                 zoom: 15,
                 zoomControl: false,
                 scrollWheelZoom: false,
@@ -92,7 +92,7 @@
                 popupAnchor: [0, -36]
             });
 
-            L.marker([47.2090, -1.5609], { icon: pinkIcon })
+            L.marker([47.200578632683765, -1.5643567563961212], { icon: pinkIcon })
                 .addTo(map)
                 .bindPopup("L'Agronaute<br>2 rue du Sénégal, Nantes");
         }
