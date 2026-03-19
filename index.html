@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[PLACEHOLDER: Titre] — UMAMI Nantes</title>
+    <meta name="description" content="[PLACEHOLDER: Description courte pour Google, ~150 caractères]">
+    <!-- Open Graph (réseaux sociaux) -->
+    <meta property="og:title" content="[PLACEHOLDER: Titre]">
+    <meta property="og:description" content="[PLACEHOLDER: Description courte]">
+    <meta property="og:image" content="assets/images/hero.jpg">
+    <meta property="og:url" content="https://umami-nantes.fr">
+    <!-- Google Fonts — remplacer par la font Antoine/Ghita si besoin -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ========================================
+         NAVIGATION (mobile burger + desktop)
+    ======================================== -->
+    <nav class="nav" role="navigation" aria-label="Navigation principale">
+        <div class="nav__container">
+            <!-- [PLACEHOLDER: Remplacer le texte par le vrai logo SVG/img] -->
+            <a href="#hero" class="nav__logo" aria-label="UMAMI — Retour accueil">
+                UMAMI
+            </a>
+            <button class="nav__burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav__menu" id="nav-menu" role="list">
+                <li><a href="#about" class="nav__link">Le festival</a></li>
+                <li><a href="#infos" class="nav__link">Infos pratiques</a></li>
+                <li><a href="#tarifs" class="nav__link">Tarifs</a></li>
+                <li>
+                    <!-- [PLACEHOLDER: Remplacer # par l'URL billetterie réelle] -->
+                    <a href="#" class="nav__cta" target="_blank" rel="noopener noreferrer">
+                        Acheter les tickets
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         HERO — Bandeau principal
+    ======================================== -->
+    <header class="hero" id="hero">
+        <!-- [PLACEHOLDER: Remplacer hero.jpg par la photo principale HD] -->
+        <div class="hero__bg" role="img" aria-label="[PLACEHOLDER: Description de la photo hero]"></div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <!-- [PLACEHOLDER: Remplacer par le vrai logo image si disponible] -->
+            <div class="hero__logo" aria-label="Logo UMAMI">
+                UMAMI
+            </div>
+            <!-- [PLACEHOLDER: Titre principal, ex: "UMAMI 2026"] -->
+            <h1 class="hero__title">[PLACEHOLDER: Titre principal]</h1>
+            <!-- [PLACEHOLDER: Tagline, ex: "Festival food & culture à Nantes"] -->
+            <p class="hero__tagline">[PLACEHOLDER: Tagline de l'événement]</p>
+            <!-- [PLACEHOLDER: Dates courtes, ex: "13 & 14 juin 2026"] -->
+            <p class="hero__date">[PLACEHOLDER: Dates courtes]</p>
+            <!-- [PLACEHOLDER: Remplacer # par l'URL billetterie réelle] -->
+            <a href="#" class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
+                Acheter les tickets
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ========================================
+             ABOUT — Qu'est-ce que UMAMI
+        ======================================== -->
+        <section class="about section" id="about">
+            <div class="container">
+                <div class="about__content">
+                    <div class="about__text">
+                        <span class="label">Le festival</span>
+                        <!-- [PLACEHOLDER: Titre section, ex: "La gastronomie, la culture, ensemble"] -->
+                        <h2 class="section__title">[PLACEHOLDER: Titre section About]</h2>
+                        <!-- [PLACEHOLDER: Description UMAMI, 3 à 5 phrases. Ex:
+                             "UMAMI est le festival food & culture de Nantes. Un événement unique
+                             où gastronomie, musique et rencontres se mêlent le temps d'un week-end.
+                             Pour les curieux, les gourmands, et tous ceux qui veulent vivre la ville
+                             autrement."] -->
+                        <p class="about__description">[PLACEHOLDER: Description principale UMAMI — 3 à 5 phrases]</p>
+                        <!-- [PLACEHOLDER: Story "Pourquoi UMAMI ?", 2 à 3 phrases] -->
+                        <p class="about__story">[PLACEHOLDER: Pourquoi UMAMI ? — Story courte]</p>
+                    </div>
+                    <div class="about__images">
+                        <!-- [PLACEHOLDER: Remplacer src par une vraie photo] -->
+                        <img
+                            src="assets/images/photo2.jpg"
+                            alt="[PLACEHOLDER: Description de la photo]"
+                            class="about__img about__img--main"
+                            width="600"
+                            height="400"
+                            loading="lazy"
+                        >
+                        <!-- [PLACEHOLDER: Remplacer src par une vraie photo] -->
+                        <img
+                            src="assets/images/photo3.jpg"
+                            alt="[PLACEHOLDER: Description de la photo]"
+                            class="about__img about__img--secondary"
+                            width="300"
+                            height="300"
+                            loading="lazy"
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             INFOS PRATIQUES
+        ======================================== -->
+        <section class="infos section section--alt" id="infos">
+            <div class="container">
+                <span class="label">Infos pratiques</span>
+                <!-- [PLACEHOLDER: Titre section, ex: "Tout ce qu'il faut savoir"] -->
+                <h2 class="section__title">[PLACEHOLDER: Titre section Infos]</h2>
+                <div class="infos__grid">
+
+                    <div class="info-card">
+                        <div class="info-card__icon" aria-hidden="true">📅</div>
+                        <h3 class="info-card__title">Dates</h3>
+                        <!-- [PLACEHOLDER: ex: "Samedi 13 et dimanche 14 juin 2026"] -->
+                        <p class="info-card__content">[PLACEHOLDER: Dates complètes]</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card__icon" aria-hidden="true">⏰</div>
+                        <h3 class="info-card__title">Horaires</h3>
+                        <!-- [PLACEHOLDER: ex: "10h – 22h (samedi)\n10h – 20h (dimanche)"] -->
+                        <p class="info-card__content">[PLACEHOLDER: Horaires d'ouverture et fermeture]</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card__icon" aria-hidden="true">📍</div>
+                        <h3 class="info-card__title">Lieu</h3>
+                        <!-- [PLACEHOLDER: ex: "L'Agronaute\n1 place des Tables, Île de Nantes\n44200 Nantes"] -->
+                        <p class="info-card__content">[PLACEHOLDER: Nom du lieu + adresse complète]</p>
+                        <!-- [PLACEHOLDER: Remplacer # par lien Google Maps du lieu] -->
+                        <a href="#" class="info-card__link" target="_blank" rel="noopener noreferrer">
+                            Voir sur Google Maps →
+                        </a>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card__icon" aria-hidden="true">🚌</div>
+                        <h3 class="info-card__title">Accès</h3>
+                        <!-- [PLACEHOLDER: Infos transport. Ex: "Tramway ligne 1, arrêt Chantiers Navals.
+                             Bus C6, arrêt Prairie au Duc. Parking Hangar à Bananes à 200m."] -->
+                        <p class="info-card__content">[PLACEHOLDER: Infos transport / parking / accès PMR]</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             TARIFS + CTA BILLETTERIE
+        ======================================== -->
+        <section class="tarifs section" id="tarifs">
+            <div class="container">
+                <span class="label">Billetterie</span>
+                <!-- [PLACEHOLDER: Titre section, ex: "Rejoins l'aventure"] -->
+                <h2 class="section__title">[PLACEHOLDER: Titre section Tarifs]</h2>
+                <!-- [PLACEHOLDER: Accroche, ex: "Les places sont limitées. Réserve la tienne dès maintenant."] -->
+                <p class="tarifs__intro">[PLACEHOLDER: Phrase d'accroche billetterie]</p>
+                <div class="tarifs__grid">
+
+                    <!-- [PLACEHOLDER: Adapter ou dupliquer cette carte selon le nombre de tarifs] -->
+                    <div class="tarif-card">
+                        <!-- [PLACEHOLDER: Nom du tarif, ex: "Entrée standard"] -->
+                        <h3 class="tarif-card__name">[PLACEHOLDER: Nom du tarif]</h3>
+                        <!-- [PLACEHOLDER: Prix, ex: "12€"] -->
+                        <div class="tarif-card__price">[PLACEHOLDER: Prix]</div>
+                        <!-- [PLACEHOLDER: Détails inclus. Ex: "Accès festival\nConsommation offerte"] -->
+                        <p class="tarif-card__details">[PLACEHOLDER: Ce qui est inclus]</p>
+                        <!-- [PLACEHOLDER: Remplacer # par l'URL billetterie] -->
+                        <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                            Réserver
+                        </a>
+                    </div>
+
+                    <!-- Carte tarif 2 — supprimer si pas de second tarif -->
+                    <div class="tarif-card tarif-card--featured">
+                        <!-- [PLACEHOLDER: ex: "Tarif réduit"] -->
+                        <h3 class="tarif-card__name">[PLACEHOLDER: Nom du tarif 2]</h3>
+                        <!-- [PLACEHOLDER: ex: "8€"] -->
+                        <div class="tarif-card__price">[PLACEHOLDER: Prix 2]</div>
+                        <!-- [PLACEHOLDER: ex: "Étudiants, demandeurs d'emploi\nsur présentation justificatif"] -->
+                        <p class="tarif-card__details">[PLACEHOLDER: Conditions / inclus]</p>
+                        <!-- [PLACEHOLDER: Remplacer # par l'URL billetterie] -->
+                        <a href="#" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">
+                            Réserver
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <!-- [PLACEHOLDER: Logo ou nom] -->
+                    <span class="footer__logo">UMAMI</span>
+                    <!-- [PLACEHOLDER: Tagline courte] -->
+                    <p class="footer__tagline">[PLACEHOLDER: Tagline courte]</p>
+                </div>
+                <div class="footer__links">
+                    <!-- [PLACEHOLDER: Remplacer # par lien billetterie] -->
+                    <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                        Acheter les tickets
+                    </a>
+                    <!-- [PLACEHOLDER: Remplacer # par https://instagram.com/HANDLE_INSTAGRAM] -->
+                    <a href="#" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram UMAMI">
+                        <!-- Icône Instagram SVG inline -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                        </svg>
+                        <!-- [PLACEHOLDER: ex: "@umami_nantes"] -->
+                        [PLACEHOLDER: @handle_instagram]
+                    </a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <!-- [PLACEHOLDER: ex: "contact@umami-nantes.fr"] -->
+                <a href="mailto:[PLACEHOLDER: email contact]" class="footer__email">
+                    [PLACEHOLDER: email contact]
+                </a>
+                <p class="footer__copy">
+                    © 2026 UMAMI — Nantes. Tous droits réservés.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

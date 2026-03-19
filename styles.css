@@ -1,0 +1,729 @@
+/* ============================================================
+   UMAMI — Site vitrine
+   styles.css v0.1
+   ============================================================
+   POUR PERSONNALISER : modifier les variables CSS ci-dessous
+   avec la charte graphique d'Antoine/Ghita.
+   Rechercher [PLACEHOLDER] pour les points à adapter.
+   ============================================================ */
+
+/* ============================================================
+   1. VARIABLES — À remplacer avec la charte Antoine/Ghita
+   ============================================================ */
+:root {
+    /* [PLACEHOLDER: Remplacer par les couleurs exactes de la charte] */
+    --color-primary:   #4A7C59;   /* Sage green — couleur principale */
+    --color-primary-dark: #3a6347;
+    --color-accent:    #D4A574;   /* Terracotta doux */
+    --color-text:      #2C2C2C;   /* Gris foncé — texte principal */
+    --color-text-light: #6B6B6B;  /* Gris moyen — texte secondaire */
+    --color-bg:        #FAFAF8;   /* Blanc cassé — fond principal */
+    --color-bg-alt:    #F0EDE8;   /* Beige clair — fond sections alternées */
+    --color-border:    #E5E0D8;   /* Beige foncé — bordures */
+    --color-white:     #FFFFFF;
+
+    /* [PLACEHOLDER: Remplacer par la font de la charte — Google Fonts ou custom] */
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Tailles de texte */
+    --text-xs:   0.75rem;   /* 12px */
+    --text-sm:   0.875rem;  /* 14px */
+    --text-base: 1rem;      /* 16px */
+    --text-lg:   1.125rem;  /* 18px */
+    --text-xl:   1.25rem;   /* 20px */
+    --text-2xl:  1.5rem;    /* 24px */
+    --text-3xl:  1.875rem;  /* 30px */
+    --text-4xl:  2.25rem;   /* 36px */
+    --text-5xl:  3rem;      /* 48px */
+
+    /* Espacements */
+    --space-2:   0.5rem;
+    --space-4:   1rem;
+    --space-6:   1.5rem;
+    --space-8:   2rem;
+    --space-12:  3rem;
+    --space-16:  4rem;
+    --space-20:  5rem;
+    --space-24:  6rem;
+
+    /* Autres */
+    --radius-sm:  4px;
+    --radius-md:  8px;
+    --radius-lg:  16px;
+    --radius-full: 9999px;
+    --shadow-sm:  0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md:  0 4px 16px rgba(0,0,0,0.10);
+    --shadow-lg:  0 8px 32px rgba(0,0,0,0.12);
+    --transition: 0.2s ease;
+    --container-max: 1100px;
+    --nav-height: 68px;
+}
+
+/* ============================================================
+   2. RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height);
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ============================================================
+   3. UTILITAIRES
+   ============================================================ */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+.section {
+    padding: var(--space-20) 0;
+}
+
+.section--alt {
+    background-color: var(--color-bg-alt);
+}
+
+.section__title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--space-6);
+    color: var(--color-text);
+}
+
+.label {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+}
+
+/* ============================================================
+   4. BOUTONS
+   ============================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-main);
+    font-size: var(--text-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+    min-height: 48px; /* Touch-friendly */
+    border: 2px solid transparent;
+}
+
+.btn--primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.btn--primary:hover,
+.btn--primary:focus-visible {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn--secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn--secondary:hover,
+.btn--secondary:focus-visible {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn--large {
+    padding: 1rem 2rem;
+    font-size: var(--text-lg);
+}
+
+/* Focus visible accessible */
+:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   5. NAVIGATION
+   ============================================================ */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--nav-height);
+    background-color: rgba(250, 250, 248, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+    transition: box-shadow var(--transition);
+}
+
+.nav.scrolled {
+    box-shadow: var(--shadow-sm);
+}
+
+.nav__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+.nav__logo {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 0.05em;
+    /* [PLACEHOLDER: Si logo image → remplacer le texte par une balise <img>] */
+}
+
+.nav__menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.nav__link {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text);
+    transition: color var(--transition);
+}
+
+.nav__link:hover {
+    color: var(--color-primary);
+}
+
+.nav__cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.25rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    transition: all var(--transition);
+    min-height: 40px;
+}
+
+.nav__cta:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+/* Burger menu (mobile) */
+.nav__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+    min-height: 48px;
+    min-width: 48px;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav__burger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--color-text);
+    border-radius: 2px;
+    transition: all var(--transition);
+}
+
+/* ============================================================
+   6. HERO
+   ============================================================ */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding-top: var(--nav-height);
+}
+
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    /* [PLACEHOLDER: La photo hero s'affiche ici via background-image en JS ou inline]
+       Valeur par défaut : dégradé couleur principale */
+    background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        #2d5a3d 50%,
+        #1a3d28 100%
+    );
+    /* [PLACEHOLDER: Une fois photo reçue, remplacer par :
+       background-image: url('assets/images/hero.jpg');
+       background-size: cover;
+       background-position: center;
+    ] */
+    background-size: cover;
+    background-position: center;
+}
+
+.hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    color: var(--color-white);
+    padding: var(--space-8) var(--space-6);
+    max-width: 800px;
+}
+
+.hero__logo {
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--space-6);
+    /* [PLACEHOLDER: Si logo image → remplacer par <img src="assets/logo.svg" alt="UMAMI"> dans le HTML] */
+}
+
+.hero__title {
+    font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: var(--space-4);
+}
+
+.hero__tagline {
+    font-size: clamp(var(--text-lg), 2.5vw, var(--text-2xl));
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: var(--space-4);
+}
+
+.hero__date {
+    display: inline-block;
+    font-size: var(--text-base);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-8);
+}
+
+/* ============================================================
+   7. ABOUT
+   ============================================================ */
+.about__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+}
+
+.about__text .section__title {
+    margin-top: var(--space-4);
+}
+
+.about__description {
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    color: var(--color-text);
+    margin-bottom: var(--space-6);
+}
+
+.about__story {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--color-text-light);
+    padding-left: var(--space-4);
+    border-left: 3px solid var(--color-accent);
+}
+
+.about__images {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: var(--space-4);
+}
+
+.about__img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    /* [PLACEHOLDER: Les images s'afficheront ici une fois fournies] */
+    background-color: var(--color-bg-alt);
+    aspect-ratio: 4/3;
+}
+
+.about__img--main {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/9;
+}
+
+/* ============================================================
+   8. INFOS PRATIQUES
+   ============================================================ */
+.infos__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+}
+
+.info-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: box-shadow var(--transition);
+}
+
+.info-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.info-card__icon {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+    display: block;
+}
+
+.info-card__title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+}
+
+.info-card__content {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+    white-space: pre-line;
+}
+
+.info-card__link {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    transition: color var(--transition);
+}
+
+.info-card__link:hover {
+    color: var(--color-primary-dark);
+}
+
+/* ============================================================
+   9. TARIFS
+   ============================================================ */
+.tarifs__intro {
+    font-size: var(--text-lg);
+    color: var(--color-text-light);
+    margin-bottom: var(--space-8);
+    max-width: 600px;
+}
+
+.tarifs__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+    max-width: 680px;
+}
+
+.tarif-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    transition: box-shadow var(--transition);
+}
+
+.tarif-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.tarif-card--featured {
+    border-color: var(--color-primary);
+    position: relative;
+}
+
+.tarif-card__name {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.tarif-card__price {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+.tarif-card__details {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    flex: 1;
+    white-space: pre-line;
+}
+
+/* ============================================================
+   10. FOOTER
+   ============================================================ */
+.footer {
+    background-color: var(--color-text);
+    color: var(--color-white);
+    padding: var(--space-12) 0 var(--space-8);
+}
+
+.footer__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-8);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: var(--space-8);
+}
+
+.footer__logo {
+    display: block;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-white);
+    margin-bottom: var(--space-2);
+}
+
+.footer__tagline {
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.6);
+}
+
+.footer__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.footer__social {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.8);
+    transition: color var(--transition);
+    min-height: 48px;
+}
+
+.footer__social:hover {
+    color: var(--color-white);
+}
+
+.footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.footer__email {
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.6);
+    transition: color var(--transition);
+}
+
+.footer__email:hover {
+    color: var(--color-white);
+}
+
+.footer__copy {
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.4);
+}
+
+/* ============================================================
+   11. RESPONSIVE — Tablette (≤ 1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
+    .about__content {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+    }
+
+    .about__images {
+        max-width: 600px;
+    }
+}
+
+/* ============================================================
+   12. RESPONSIVE — Mobile (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+    :root {
+        --space-20: 3.5rem;
+        --space-16: 3rem;
+    }
+
+    /* Nav mobile */
+    .nav__burger {
+        display: flex;
+    }
+
+    .nav__menu {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+        padding: var(--space-4) var(--space-6) var(--space-6);
+        gap: var(--space-2);
+        box-shadow: var(--shadow-md);
+    }
+
+    .nav__menu.is-open {
+        display: flex;
+    }
+
+    .nav__link {
+        font-size: var(--text-base);
+        padding: var(--space-2) 0;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav__cta {
+        width: 100%;
+        justify-content: center;
+        margin-top: var(--space-2);
+    }
+
+    /* Sections */
+    .section__title {
+        font-size: var(--text-2xl);
+    }
+
+    /* Hero */
+    .hero__logo {
+        font-size: var(--text-4xl);
+    }
+
+    /* Infos */
+    .infos__grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Tarifs */
+    .tarifs__grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer__top {
+        flex-direction: column;
+    }
+
+    .footer__bottom {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+}
+
+/* ============================================================
+   13. RESPONSIVE — Petit mobile (≤ 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--space-4);
+    }
+
+    .hero__content {
+        padding: var(--space-6) var(--space-4);
+    }
+
+    .btn--large {
+        width: 100%;
+        justify-content: center;
+    }
+}
