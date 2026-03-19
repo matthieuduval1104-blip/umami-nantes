@@ -368,7 +368,7 @@ em   { font-style: italic; }
 .scroll-hint {
     position: absolute;
     bottom: var(--s8);
-    right: var(--s8);
+    right: 18%;
     z-index: 2;
     background: none;
     border: none;
@@ -398,6 +398,9 @@ em   { font-style: italic; }
     line-height: 1;
     animation: bounce 1.8s ease-in-out infinite;
 }
+
+.scroll-hint--light .scroll-hint__text,
+.scroll-hint--light .scroll-hint__arrow { color: var(--cream); }
 
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }

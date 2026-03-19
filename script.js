@@ -43,14 +43,17 @@
         if (e.target === overlay) closeMenu();
     });
 
-    /* ---- Scroll hint ---- */
-    var scrollHint = document.getElementById('scroll-hint');
-    if (scrollHint) {
-        scrollHint.addEventListener('click', function () {
-            var about = document.getElementById('about');
-            if (about) about.scrollIntoView({ behavior: 'smooth' });
+    /* ---- Scroll hints — scroll vers la section suivante ---- */
+    document.querySelectorAll('.scroll-hint').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var section = btn.closest('.screen');
+            var next = section && section.nextElementSibling;
+            while (next && !next.classList.contains('screen')) {
+                next = next.nextElementSibling;
+            }
+            if (next) next.scrollIntoView({ behavior: 'smooth' });
         });
-    }
+    });
 
     /* ---- Navigation snap ---- */
     links.forEach(function (link) {
