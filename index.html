@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UMAMI#5 — Fête de la fermentation à Nantes</title>
-    <meta name="description" content="UMAMI#5 — Fête de la fermentation. 18 & 19 avril 2026 à L'Agronaute, Nantes. Marché de producteurs, ateliers, conférences, banquet fermenté.">
+    <meta name="description" content="UMAMI#5 — Fête de la fermentation. 18 & 19 avril 2026 à L'Agronaute, Nantes. Marché, ateliers, conférences, banquet fermenté.">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -33,7 +33,7 @@
         <div class="menu-footer">
             <a href="https://www.instagram.com/umami_fermentation/" class="menu-footer__link" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://www.facebook.com/events/935576342183844/" class="menu-footer__link" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="https://shotgun.live/fr/festivals/umami-5-banquet-fermente" class="btn btn--cream menu-footer__cta" target="_blank" rel="noopener noreferrer">Billetterie</a>
+            <a href="#" class="btn btn--cream menu-footer__cta" target="_blank" rel="noopener noreferrer">Billetterie</a>
         </div>
     </nav>
 
@@ -48,19 +48,28 @@
 
         <!-- ===== 1. HERO ===== -->
         <section class="screen" id="hero">
-            <!-- Affiche Arnaud Aubry — fond rose + illustrations cartoon -->
-            <img src="assets/affiche.jpg" alt="Affiche UMAMI#5 — Fête de la fermentation, 18 & 19 avril 2026" class="hero-bg" id="hero-bg">
-            <div class="hero-overlay" aria-hidden="true"></div>
 
-            <div class="hero-content">
-                <h1 class="hero-title">Fête de<br>la fermentation.</h1>
-                <div class="hero-meta">
-                    <span>18 &amp; 19 avril 2026</span>
-                    <span class="hero-meta__dot" aria-hidden="true">·</span>
-                    <span>L'Agronaute, Nantes</span>
-                </div>
-                <a href="#" class="btn btn--cream" target="_blank" rel="noopener noreferrer">Acheter les tickets</a>
+            <!-- Zone haute : logo UMAMI sur fond rose -->
+            <div class="hero-top">
+                <img src="assets/logo-umami.png" alt="UMAMI" class="hero-logo">
             </div>
+
+            <!-- Zone basse : typographie éditoriale sur fond noir -->
+            <div class="hero-bottom">
+                <div class="hero-date-block">
+                    <p class="hero-date-big">18 &amp; 19<br>AVRIL 2026</p>
+                    <p class="hero-location">L'Agronaute · Nantes</p>
+                </div>
+                <div class="hero-cta-block">
+                    <a href="#" class="btn btn--cream" target="_blank" rel="noopener noreferrer">Acheter les tickets</a>
+                </div>
+                <!-- Numéro d'édition filigrane -->
+                <span class="hero-edition" aria-hidden="true">05</span>
+            </div>
+
+            <!-- Illustration chevauchante -->
+            <img src="assets/images/bouteille_biere.png" class="hero-illus" aria-hidden="true" alt="">
+
         </section>
 
         <!-- ===== 2. LE FESTIVAL ===== -->
@@ -75,13 +84,16 @@
                         <circle cx="133" cy="26" r="18" stroke="#111111" stroke-width="9" fill="#F5E4C0"/>
                     </svg>
 
-                    <!-- Illustration clippée — bouteilles de l'affiche -->
-                    <div class="about-illus" aria-hidden="true">
-                        <img src="assets/affiche.jpg" alt="">
+                    <!-- Numéro d'édition filigrane — moment typo extrême -->
+                    <span class="about-num" aria-hidden="true">05</span>
+
+                    <div class="about-left-content">
+                        <span class="tag tag--dark">5e édition</span>
+                        <h2 class="big-title about-title">Un espace<br>pour goûter<br>autrement.</h2>
                     </div>
 
-                    <span class="tag tag--dark">5e édition</span>
-                    <h2 class="big-title">Un espace<br>pour goûter<br>autrement.</h2>
+                    <!-- Illustration bocal -->
+                    <img src="assets/images/bocal_pickle.png" class="about-illus-png" aria-hidden="true" alt="">
                 </div>
 
                 <!-- Droite — crème -->
@@ -118,41 +130,42 @@
                         <h2 class="big-title big-title--light">Deux jours,<br>plein de choses.</h2>
                     </div>
                     <div class="prog-tabs" role="tablist" aria-label="Choisir un jour">
-                        <button class="prog-tab is-active" role="tab" aria-selected="true"  data-view="list"   id="tab-list">Vue générale</button>
-                        <button class="prog-tab"            role="tab" aria-selected="false" data-view="sam"    id="tab-sam">Samedi 18</button>
-                        <button class="prog-tab"            role="tab" aria-selected="false" data-view="dim"    id="tab-dim">Dimanche 19</button>
+                        <button class="prog-tab is-active" role="tab" aria-selected="true"  data-view="list" id="tab-list">Vue générale</button>
+                        <button class="prog-tab"            role="tab" aria-selected="false" data-view="sam"  id="tab-sam">Samedi 18</button>
+                        <button class="prog-tab"            role="tab" aria-selected="false" data-view="dim"  id="tab-dim">Dimanche 19</button>
                     </div>
                 </div>
 
-                <!-- Vue générale — 5 grandes catégories -->
+                <!-- Vue générale — grille éditoriale 3 catégories + banquet -->
                 <div class="prog-list" id="prog-list" role="tabpanel" aria-labelledby="tab-list">
-                    <div class="prog-row">
-                        <span class="prog-row__num">01</span>
-                        <span class="prog-row__title">Marché de producteurs</span>
-                        <span class="prog-row__desc">20+ stands — kimchi, kéfir, miso, sauces piquantes, légumes fermentés, boissons vivantes, garum…</span>
+
+                    <div class="prog-card">
+                        <span class="prog-card__num" aria-hidden="true">01</span>
+                        <h3 class="prog-card__title">Marché de producteurs</h3>
+                        <p class="prog-card__desc">20+ stands · kimchi, kéfir, miso, sauces piquantes, légumes fermentés, boissons vivantes, garum…</p>
                     </div>
-                    <div class="prog-row">
-                        <span class="prog-row__num">02</span>
-                        <span class="prog-row__title">Conférences &amp; démonstrations</span>
-                        <span class="prog-row__desc">Koji &amp; miso, fromage, garum, bière artisanale — des fermenteur·euses passionné·es partagent leurs savoirs.</span>
+
+                    <div class="prog-card">
+                        <span class="prog-card__num" aria-hidden="true">02</span>
+                        <h3 class="prog-card__title">Conférences &amp; ateliers</h3>
+                        <p class="prog-card__desc">Koji, miso, garum, bière, fromage, kéfir, sauce piquante — savoirs partagés, mains dans la pâte.</p>
                     </div>
-                    <div class="prog-row">
-                        <span class="prog-row__num">03</span>
-                        <span class="prog-row__title">Ateliers pratiques</span>
-                        <span class="prog-row__desc">Légumes fermentés, ginger beer, miso, sauce piquante, kéfir — vous repartez avec vos propres créations.</span>
+
+                    <div class="prog-card">
+                        <span class="prog-card__num" aria-hidden="true">03</span>
+                        <h3 class="prog-card__title">Programme kids</h3>
+                        <p class="prog-card__desc">Argile vivante, musique avec des légumes, parcours sensoriel, fermentation créative · Dès 6 ans · Gratuit</p>
                     </div>
-                    <div class="prog-row">
-                        <span class="prog-row__num">04</span>
-                        <span class="prog-row__title">Programme kids</span>
-                        <span class="prog-row__desc">Parcours sensoriel, argile vivante, musique avec des légumes, fermentation créative — dès 6 ans, gratuit.</span>
+
+                    <div class="prog-card prog-card--banquet">
+                        <div class="prog-card__banquet-text">
+                            <span class="prog-card__banquet-eyebrow">★ Samedi soir · Places limitées</span>
+                            <h3 class="prog-card__title prog-card__title--pink">Banquet fermenté</h3>
+                            <p class="prog-card__desc">Adélie Delajot · Annie Mach · Gaëlle Valin — 3e édition d'un dîner qui fait date.</p>
+                        </div>
+                        <a href="https://shotgun.live/fr/festivals/umami-5-banquet-fermente" class="btn btn--pink" target="_blank" rel="noopener noreferrer">Réserver</a>
                     </div>
-                    <div class="prog-row prog-row--accent">
-                        <span class="prog-row__num">05</span>
-                        <span class="prog-row__title">Banquet fermenté</span>
-                        <span class="prog-row__desc">Samedi soir · Adélie Delajot, Annie Mach &amp; Gaëlle Valin · 3e édition · Places limitées →
-                            <a href="https://shotgun.live/fr/festivals/umami-5-banquet-fermente" target="_blank" rel="noopener noreferrer" class="prog-row__link">Réserver</a>
-                        </span>
-                    </div>
+
                 </div>
 
                 <!-- Frise Samedi 18 avril -->
@@ -292,6 +305,9 @@
 
                     <span class="tag">Infos pratiques</span>
                     <h2 class="big-title">Venez<br>comme vous<br>êtes, partez<br>contents.</h2>
+
+                    <!-- Illustration fromage -->
+                    <img src="assets/images/fromage.png" class="infos-illus-png" aria-hidden="true" alt="">
                 </div>
 
                 <!-- Droite — rose -->
@@ -329,7 +345,23 @@
             </div>
         </section>
 
-    </div>
+        <!-- ===== 5. FOOTER ===== -->
+        <footer class="site-footer" id="footer" aria-label="Pied de page">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <img src="assets/logo-umami.png" alt="UMAMI" class="footer-logo">
+                    <p class="footer-tagline">Fête de la fermentation · Nantes</p>
+                </div>
+                <nav class="footer-nav" aria-label="Liens du bas de page">
+                    <a href="https://www.instagram.com/umami_fermentation/" class="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.facebook.com/events/935576342183844/" class="footer-link" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="#" class="btn btn--cream footer-cta" target="_blank" rel="noopener noreferrer">Acheter les tickets</a>
+                </nav>
+            </div>
+            <p class="footer-copy">© 2026 UMAMI · Festival annuel de la fermentation à Nantes · Organisé par Antoine Devins &amp; Ghita</p>
+        </footer>
+
+    </div><!-- end snap-wrapper -->
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script src="script.js"></script>

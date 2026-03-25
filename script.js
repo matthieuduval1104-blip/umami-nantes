@@ -69,8 +69,8 @@
         entries.forEach(function (entry) {
             if (entry.intersectionRatio >= 0.5) {
                 currentScreen = entry.target;
-                var isDark = entry.target.classList.contains('screen--black');
-                var isLast = entry.target.id === 'infos';
+                var isDark = entry.target.classList.contains('screen--black') || entry.target.id === 'footer';
+                var isLast = entry.target.id === 'infos' || entry.target.id === 'footer';
                 trigger.classList.toggle('menu-trigger--light', isDark);
                 if (scrollHint) {
                     scrollHint.classList.toggle('is-hidden', isLast);
@@ -81,6 +81,10 @@
     }, { threshold: 0.5 });
 
     screens.forEach(function (s) { observer.observe(s); });
+
+    /* Observer le footer aussi */
+    var footer = document.getElementById('footer');
+    if (footer) observer.observe(footer);
 
     /* ---- Onglets Programme (Vue générale / Samedi / Dimanche) ---- */
     var tabs    = document.querySelectorAll('.prog-tab');

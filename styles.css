@@ -1,9 +1,9 @@
 /* ============================================================
-   UMAMI#5 — styles.css v1.0
+   UMAMI#5 — styles.css v1.1
    ============================================================ */
 
 /* ============================================================
-   FONTS — ABCMaxiRound (Arnaud Aubry / L'Agronaute)
+   FONTS — ABCMaxiRound (Kit com Arnaud Aubry)
    ============================================================ */
 @font-face {
     font-family: 'ABCMaxiRound';
@@ -164,7 +164,8 @@ em   { font-style: italic; }
     font-size: var(--t-base);
     font-weight: 700;
     cursor: pointer;
-    transition: background var(--ease), color var(--ease), border-color var(--ease), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+    transition: background var(--ease), color var(--ease), border-color var(--ease),
+                transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
     min-height: 52px;
     border: 2.5px solid transparent;
     white-space: nowrap;
@@ -354,52 +355,8 @@ em   { font-style: italic; }
 }
 
 /* ============================================================
-   HERO
+   SCROLL HINT
    ============================================================ */
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    z-index: 0;
-    transform-origin: center;
-    transition: transform 8s ease-out;
-}
-
-/* Dégradé léger en bas gauche pour lisibilité du texte */
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(135deg, rgba(17,17,17,0.28) 0%, transparent 50%),
-        linear-gradient(to bottom, transparent 40%, rgba(17,17,17,0.1) 100%);
-    z-index: 1;
-}
-
-.hero-content {
-    position: absolute;
-    top: 5.5rem;
-    left: var(--s8);
-    right: var(--s12);
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--s5);
-}
-
-.hero-title {
-    font-size: clamp(3rem, 5.5vw, 4.5rem);
-    font-weight: 700;
-    line-height: 1.06;
-    letter-spacing: -0.01em;
-    color: var(--cream);
-    text-shadow: 0 2px 20px rgba(17,17,17,0.3);
-}
-
-/* Indicateur de scroll */
 .scroll-hint {
     position: fixed;
     bottom: var(--s8);
@@ -446,15 +403,91 @@ em   { font-style: italic; }
     50%       { transform: translateY(5px); }
 }
 
-.hero-meta {
+/* ============================================================
+   HERO — Logo sur fond rose + bande noire typographique
+   ============================================================ */
+#hero { background: var(--pink); }
+
+/* Zone haute — logo centré sur fond rose */
+.hero-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 56%;
     display: flex;
     align-items: center;
-    gap: var(--s4);
-    font-size: var(--t-base);
-    font-weight: 700;
-    color: var(--black);
+    justify-content: center;
+    padding: 5.5rem var(--s8) var(--s6);
 }
-.hero-meta__dot { color: rgba(17,17,17,0.3); }
+
+.hero-logo {
+    max-width: min(52%, 480px);
+    height: auto;
+    mix-blend-mode: multiply;
+}
+
+/* Zone basse — typographie éditoriale sur fond noir */
+.hero-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 44%;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--s8);
+    gap: var(--s10);
+    overflow: hidden;
+}
+
+.hero-date-block { flex: 1; min-width: 0; }
+
+/* MOMENT TYPOGRAPHIQUE EXTRÊME — dates en très grand */
+.hero-date-big {
+    font-size: clamp(3rem, 7.5vw, 6.5rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+}
+
+.hero-location {
+    font-size: var(--t-base);
+    font-weight: 400;
+    color: rgba(245,228,192,0.45);
+    margin-top: var(--s3);
+    letter-spacing: 0.03em;
+}
+
+.hero-cta-block { flex-shrink: 0; }
+
+/* Numéro d'édition filigrane dans la bande noire */
+.hero-edition {
+    position: absolute;
+    bottom: -0.12em;
+    right: -0.04em;
+    font-size: clamp(22vw, 28vw, 38vw);
+    font-weight: 700;
+    color: var(--cream);
+    opacity: 0.045;
+    line-height: 0.85;
+    pointer-events: none;
+    letter-spacing: -0.06em;
+    z-index: 0;
+}
+
+/* Illustration chevauchante hero/bande */
+.hero-illus {
+    position: absolute;
+    right: clamp(var(--s8), 8vw, 12vw);
+    top: 50%;
+    transform: translateY(-55%) rotate(14deg);
+    width: clamp(100px, 13vw, 190px);
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(0 8px 24px rgba(17,17,17,0.2));
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero-illus:hover { transform: translateY(-55%) rotate(8deg) scale(1.06); }
 
 /* ============================================================
    LAYOUT SPLIT (Festival + Infos)
@@ -473,6 +506,7 @@ em   { font-style: italic; }
     padding: 5.5rem var(--s12) var(--s12) var(--s8);
     gap: var(--s6);
     position: relative;
+    overflow: hidden;
 }
 .split-left--cream { background: var(--cream-bg); }
 .split-left--pink  { background: var(--pink); }
@@ -498,8 +532,49 @@ em   { font-style: italic; }
 }
 
 /* ============================================================
-   FESTIVAL (About) + illustration déco
+   FESTIVAL (About) — typo audacieuse + illustration
    ============================================================ */
+/* Numéro d'édition filigrane — MOMENT TYPO EXTRÊME #2 */
+.about-num {
+    position: absolute;
+    bottom: -0.18em;
+    left: -0.08em;
+    font-size: clamp(14rem, 20vw, 20rem);
+    font-weight: 700;
+    color: rgba(17,17,17,0.07);
+    line-height: 0.85;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+    z-index: 0;
+}
+
+.about-left-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s6);
+    margin-top: auto;
+}
+
+.about-title {
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+}
+
+/* Illustration PNG bocal */
+.about-illus-png {
+    position: absolute;
+    bottom: var(--s10);
+    right: var(--s4);
+    width: clamp(80px, 10vw, 130px);
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(0 6px 16px rgba(17,17,17,0.15));
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.about-illus-png:hover { transform: scale(1.08) rotate(-4deg); }
+
 .about-lead {
     font-size: var(--t-2xl);
     font-weight: 700;
@@ -525,31 +600,8 @@ em   { font-style: italic; }
     background: rgba(17,17,17,0.04);
 }
 
-/* Zone illustration clippée — bouteilles affiche (bas droite section Festival) */
-.about-illus {
-    position: absolute;
-    bottom: var(--s8);
-    right: var(--s6);
-    width: 170px;
-    height: 185px;
-    overflow: hidden;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    border: 3px solid rgba(17,17,17,0.12);
-    z-index: 2;
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.about-illus:hover { transform: scale(1.06) rotate(-2deg); }
-.about-illus img {
-    position: relative;
-    width: 640px;
-    height: auto;
-    object-fit: none;
-    object-position: 0% 0%;
-    transform: translate(-5px, -5px);
-}
-
 /* ============================================================
-   PROGRAMME — Layout éditorial + frise
+   PROGRAMME — grille éditoriale + frise
    ============================================================ */
 .prog-layout {
     position: absolute;
@@ -575,7 +627,7 @@ em   { font-style: italic; }
     flex-shrink: 0;
 }
 
-/* Onglets Samedi / Dimanche */
+/* Onglets */
 .prog-tabs {
     display: flex;
     gap: var(--s3);
@@ -604,82 +656,99 @@ em   { font-style: italic; }
     color: var(--black);
 }
 
-/* Liste éditoriale */
+/* ---- Vue générale : grille éditoriale ---- */
 .prog-list {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    gap: 1px;
+    background: rgba(245,228,192,0.08);
+    border-radius: var(--r-sm);
+    overflow: hidden;
     transition: opacity 0.2s ease;
 }
 .prog-list.is-hidden { display: none; }
 
-.prog-row {
+.prog-card {
+    position: relative;
+    background: rgba(245,228,192,0.025);
+    padding: var(--s6) var(--s6) var(--s5);
     display: flex;
-    align-items: baseline;
-    gap: var(--s6);
-    padding: var(--s4) 0;
-    border-bottom: 1px solid rgba(245,228,192,0.1);
-    cursor: default;
-    transition: background 0.2s ease;
-    border-radius: var(--r-sm);
-    margin: 0 calc(-1 * var(--s3));
-    padding-left: var(--s3);
-    padding-right: var(--s3);
+    flex-direction: column;
+    gap: var(--s3);
+    overflow: hidden;
+    transition: background 0.22s ease;
 }
-.prog-row:last-child { border-bottom: none; }
-.prog-row:hover { background: rgba(245,228,192,0.04); }
+.prog-card:hover { background: rgba(245,228,192,0.06); }
 
-.prog-row__num {
-    font-size: var(--t-xs);
+/* Numéro en filigrane dans chaque carte */
+.prog-card__num {
+    position: absolute;
+    top: var(--s2);
+    right: var(--s3);
+    font-size: clamp(4rem, 5.5vw, 5.5rem);
     font-weight: 700;
-    color: var(--pink);
-    letter-spacing: 0.1em;
-    width: 2rem;
-    flex-shrink: 0;
+    color: rgba(244,167,191,0.1);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -0.05em;
 }
 
-.prog-row__title {
-    font-size: var(--t-xl);
+.prog-card__title {
+    font-size: clamp(1.15rem, 1.8vw, 1.55rem);
     font-weight: 700;
     color: var(--cream);
-    flex-shrink: 0;
-    white-space: nowrap;
-    line-height: 1.3;
+    line-height: 1.25;
+    position: relative;
+    z-index: 1;
 }
+.prog-card__title--pink { color: var(--pink); }
 
-.prog-row__desc {
-    font-size: var(--t-lg);
+.prog-card__desc {
+    font-size: var(--t-sm);
     font-weight: 400;
-    line-height: 1.65;
     color: rgba(245,228,192,0.5);
-    flex: 1;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+}
+
+/* Carte banquet — pleine largeur */
+.prog-card--banquet {
+    grid-column: 1 / -1;
+    background: rgba(244,167,191,0.07);
+    border-top: 1px solid rgba(244,167,191,0.22);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s8);
+    padding: var(--s4) var(--s6);
+    overflow: visible;
+}
+.prog-card--banquet:hover { background: rgba(244,167,191,0.12); }
+.prog-card--banquet .prog-card__num { display: none; }
+
+.prog-card__banquet-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s2);
     min-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
-.prog-row--accent {
-    border-bottom: 1px solid rgba(244,167,191,0.25);
+.prog-card__banquet-eyebrow {
+    font-size: var(--t-xs);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(244,167,191,0.55);
 }
-.prog-row--accent .prog-row__num   { color: var(--cream); }
-.prog-row--accent .prog-row__title { color: var(--pink); }
-.prog-row--accent .prog-row__desc  { color: rgba(244,167,191,0.7); }
-
-/* Lien inline dans une row programme */
-.prog-row__link {
-    color: var(--pink);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    transition: opacity var(--ease);
-}
-.prog-row__link:hover { opacity: 0.7; }
 
 /* ---- Frise horaire (Samedi / Dimanche) ---- */
 .prog-frise {
     flex: 1;
+    min-height: 0;
     overflow-y: auto;
     scrollbar-width: none;
     display: flex;
@@ -754,7 +823,6 @@ em   { font-style: italic; }
     font-style: italic;
 }
 
-/* Lien inline dans un event frise */
 .frise-link {
     color: inherit;
     text-decoration: underline;
@@ -763,7 +831,6 @@ em   { font-style: italic; }
 }
 .frise-link:hover { opacity: 0.7; }
 
-/* Légende */
 .frise-legend {
     display: flex;
     gap: var(--s5);
@@ -784,8 +851,8 @@ em   { font-style: italic; }
     border-radius: 50%;
     flex-shrink: 0;
 }
-.frise-legend__dot--paid { background: var(--pink); }
-.frise-legend__dot--free { background: rgba(245,228,192,0.5); }
+.frise-legend__dot--paid    { background: var(--pink); }
+.frise-legend__dot--free    { background: rgba(245,228,192,0.5); }
 .frise-legend__dot--special { background: var(--pink); border: 1.5px solid var(--cream); }
 
 /* ============================================================
@@ -836,7 +903,6 @@ em   { font-style: italic; }
     line-height: 1.5;
 }
 
-/* Carte Leaflet */
 .map-container {
     width: 100%;
     height: 220px;
@@ -847,12 +913,99 @@ em   { font-style: italic; }
 
 .leaflet-tile-pane { filter: saturate(0.4) brightness(1.05); }
 
+/* Illustration fromage */
+.infos-illus-png {
+    position: absolute;
+    bottom: var(--s8);
+    right: var(--s5);
+    width: clamp(70px, 9vw, 120px);
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(0 4px 12px rgba(17,17,17,0.12));
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.infos-illus-png:hover { transform: scale(1.08) rotate(3deg); }
+
+/* ============================================================
+   FOOTER — 5e snap point
+   ============================================================ */
+.site-footer {
+    scroll-snap-align: start;
+    background: var(--black);
+    padding: var(--s12) var(--s8) var(--s8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s6);
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s8);
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s3);
+}
+
+.footer-logo {
+    width: clamp(100px, 14vw, 160px);
+    height: auto;
+    mix-blend-mode: screen;
+    opacity: 0.8;
+}
+
+.footer-tagline {
+    font-size: var(--t-sm);
+    font-weight: 400;
+    color: rgba(245,228,192,0.35);
+    letter-spacing: 0.04em;
+}
+
+.footer-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--s6);
+}
+
+.footer-link {
+    font-size: var(--t-sm);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,228,192,0.35);
+    transition: color var(--ease);
+}
+.footer-link:hover { color: var(--pink); }
+
+.footer-cta {
+    padding: 0.6rem 1.4rem;
+    min-height: 40px;
+    font-size: var(--t-sm);
+}
+
+.footer-copy {
+    font-size: var(--t-xs);
+    font-weight: 400;
+    color: rgba(245,228,192,0.2);
+    letter-spacing: 0.04em;
+    padding-top: var(--s4);
+    border-top: 1px solid rgba(245,228,192,0.06);
+}
+
 /* ============================================================
    RESPONSIVE — Tablette (≤ 1024px)
    ============================================================ */
 @media (max-width: 1024px) {
-    .prog-row__desc { white-space: normal; }
-    .about-illus { width: 130px; height: 140px; }
+    .about-title { font-size: clamp(2rem, 3.5vw, 3.2rem); }
+    .about-illus-png { width: 100px; }
+    .infos-illus-png { width: 85px; }
+    .prog-card__title { font-size: clamp(1rem, 1.6vw, 1.35rem); }
+    .hero-illus { width: clamp(90px, 12vw, 160px); }
 }
 
 /* ============================================================
@@ -862,81 +1015,84 @@ em   { font-style: italic; }
 
     .menu-trigger { top: var(--s5); left: var(--s5); }
 
-    .hero-title,
     .big-title { font-size: clamp(2rem, 8vw, 3rem); }
 
-    .hero-content {
-        top: 4.5rem;
-        left: var(--s5);
-        right: var(--s5);
+    /* Hero mobile : logo au-dessus, dates en dessous */
+    .hero-top {
+        height: 52%;
+        padding-top: 4.5rem;
+    }
+    .hero-logo { max-width: 70%; }
+
+    .hero-bottom {
+        height: 48%;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: var(--s5);
         gap: var(--s4);
     }
-    .hero-meta { font-size: var(--t-sm); gap: var(--s3); }
+    .hero-date-big { font-size: clamp(2.2rem, 9vw, 4rem); }
+    .hero-edition { font-size: 50vw; opacity: 0.04; }
+    .hero-illus { display: none; }
 
+    /* Festival */
     .split-layout { flex-direction: column; }
-
     .split-left {
         flex: 0 0 auto;
         height: 40vh;
         padding: 4.5rem var(--s5) var(--s5) var(--s5);
         overflow: hidden;
     }
-
     .split-right {
         flex: 1;
         min-height: 0;
         padding: var(--s6) var(--s5);
         overflow-y: auto;
     }
-
+    .about-num { font-size: clamp(8rem, 30vw, 14rem); }
     .about-lead { font-size: var(--t-lg); }
     .about-body { font-size: var(--t-base); line-height: 1.65; }
-    .about-illus { display: none; }
+    .about-illus-png { width: 80px; right: var(--s3); bottom: var(--s5); }
+    .infos-illus-png { display: none; }
 
-    .prog-layout {
-        padding: 4.5rem var(--s5) var(--s6);
-        gap: var(--s4);
+    /* Programme */
+    .prog-layout { padding: 4.5rem var(--s5) var(--s6); gap: var(--s4); }
+    .prog-list {
+        grid-template-columns: 1fr;
+        grid-template-rows: unset;
     }
-    .prog-row {
-        flex-direction: column;
-        gap: var(--s2);
-        padding: var(--s3) var(--s3);
-    }
-    .prog-row__title { white-space: normal; font-size: var(--t-lg); }
-    .prog-row__desc {
-        white-space: normal;
-        overflow: visible;
-        text-overflow: clip;
-        font-size: var(--t-sm);
-    }
-    .prog-row__num { width: auto; }
+    .prog-card--banquet { flex-direction: column; align-items: flex-start; gap: var(--s3); }
     .prog-tabs { gap: var(--s2); }
     .prog-tab { font-size: 0.75rem; padding: 0.35rem 0.8rem; }
 
+    /* Infos */
     .info-row__value { font-size: var(--t-base); }
     .map-container { height: 160px; }
 
+    /* Menu */
     .menu-overlay { padding: var(--s10) var(--s6); }
     .menu-footer { right: var(--s6); bottom: var(--s6); }
     .menu-nav__link { font-size: clamp(var(--t-2xl), 7vw, var(--t-4xl)); }
     .menu-overlay .deco { width: 160px; }
 
     .btn { min-height: 48px; }
+
+    /* Footer */
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--s5); }
+    .footer-nav { flex-wrap: wrap; gap: var(--s4); }
 }
 
 /* ============================================================
    RESPONSIVE — Petit mobile (≤ 480px)
    ============================================================ */
 @media (max-width: 480px) {
-    .hero-title,
     .big-title { font-size: clamp(1.75rem, 9vw, 2.5rem); }
-
     .split-left { height: 38vh; }
-
     .prog-layout { padding: 4rem var(--s4) var(--s5); }
-
     .btn { width: 100%; justify-content: center; }
-
     .frise-events { flex-direction: column; }
     .frise-event { font-size: calc(var(--t-xs) - 0.03rem); }
+    .hero-cta-block { width: 100%; }
+    .hero-cta-block .btn { width: 100%; }
 }
