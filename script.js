@@ -1,5 +1,5 @@
 /* ============================================================
-   UMAMI#5 — script.js v0.5
+   UMAMI#5 — script.js v1.0
    ============================================================ */
 
 (function () {
@@ -35,17 +35,15 @@
     trigger.addEventListener('click', openMenu);
     btnClose.addEventListener('click', closeMenu);
 
-    /* Escape */
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeMenu();
     });
 
-    /* Clic sur le fond de l'overlay */
     overlay.addEventListener('click', function (e) {
         if (e.target === overlay) closeMenu();
     });
 
-    /* ---- Scroll hint — scroll vers la section suivante ---- */
+    /* ---- Scroll hint ---- */
     if (scrollHint) {
         scrollHint.addEventListener('click', function () {
             var next = currentScreen.nextElementSibling;
@@ -84,6 +82,49 @@
 
     screens.forEach(function (s) { observer.observe(s); });
 
+    /* ---- Onglets Programme (Vue générale / Samedi / Dimanche) ---- */
+    var tabs    = document.querySelectorAll('.prog-tab');
+    var panels  = {
+        list: document.getElementById('prog-list'),
+        sam:  document.getElementById('prog-sam'),
+        dim:  document.getElementById('prog-dim')
+    };
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            var view = this.getAttribute('data-view');
+
+            /* Désactiver tous les onglets + cacher tous les panels */
+            tabs.forEach(function (t) {
+                t.classList.remove('is-active');
+                t.setAttribute('aria-selected', 'false');
+            });
+            Object.keys(panels).forEach(function (k) {
+                if (panels[k]) panels[k].classList.add('is-hidden');
+            });
+
+            /* Activer l'onglet cliqué + afficher son panel */
+            this.classList.add('is-active');
+            this.setAttribute('aria-selected', 'true');
+            if (panels[view]) panels[view].classList.remove('is-hidden');
+        });
+    });
+
+    /* ---- Micro-animation hero : léger zoom au chargement ---- */
+    var heroBg = document.getElementById('hero-bg');
+    if (heroBg) {
+        heroBg.addEventListener('load', function () {
+            heroBg.style.transform = 'scale(1.04)';
+            setTimeout(function () {
+                heroBg.style.transform = 'scale(1)';
+            }, 100);
+        });
+        /* Si déjà en cache */
+        if (heroBg.complete) {
+            setTimeout(function () { heroBg.style.transform = 'scale(1)'; }, 100);
+        }
+    }
+
     /* ---- Carte Leaflet (Infos pratiques) ---- */
     if (typeof L !== 'undefined') {
         var mapEl = document.getElementById('map');
@@ -97,12 +138,10 @@
                 attributionControl: false
             });
 
-            /* Tuiles OpenStreetMap */
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 18
             }).addTo(map);
 
-            /* Marker rose personnalisé */
             var pinkIcon = L.divIcon({
                 html: '<svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 0C6.268 0 0 6.268 0 14c0 9.333 14 22 14 22s14-12.667 14-22C28 6.268 21.732 0 14 0z" fill="#F4A7BF" stroke="#111111" stroke-width="1.5"/><circle cx="14" cy="14" r="5" fill="white"/></svg>',
                 className: '',
