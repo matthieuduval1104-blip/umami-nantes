@@ -64,6 +64,15 @@
         });
     });
 
+    /* ---- Scroll CTAs (liens hors menu avec data-target) ---- */
+    document.querySelectorAll('a[data-target]:not(.menu-nav__link)').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+            e.preventDefault();
+            var target = document.getElementById(this.getAttribute('data-target'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
     /* ---- Couleur adaptative du trigger + scroll hint ---- */
     var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
@@ -85,6 +94,100 @@
     /* Observer le footer aussi */
     var footer = document.getElementById('footer');
     if (footer) observer.observe(footer);
+
+    /* ---- Modales ---- */
+    function closeModal(modal) {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-is-open');
+    }
+
+    document.querySelectorAll('[data-modal-open]').forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+            var id = this.getAttribute('data-modal-open');
+            var modal = document.getElementById(id);
+            if (!modal) return;
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-is-open');
+            var closeBtn = modal.querySelector('.modal__close');
+            if (closeBtn) closeBtn.focus();
+        });
+    });
+
+    document.querySelectorAll('.modal').forEach(function (modal) {
+        var closeBtn = modal.querySelector('.modal__close');
+        if (closeBtn) closeBtn.addEventListener('click', function () { closeModal(modal); });
+        modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(modal); });
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            var open = document.querySelector('.modal.is-open');
+            if (open) closeModal(open);
+        }
+    });
+
+    /* ---- Livret Ateliers ---- */
+    var livretModal   = document.getElementById('modal-ateliers');
+    var livretSpreads = livretModal ? livretModal.querySelectorAll('.livret__spread') : [];
+    var livretIdx     = 0;
+    var livretTotal   = livretSpreads.length;
+
+    function livretGoTo(idx) {
+        livretSpreads[livretIdx].classList.remove('is-active');
+        livretIdx = (idx + livretTotal) % livretTotal;
+        livretSpreads[livretIdx].classList.add('is-active');
+        var el = document.getElementById('livret-current');
+        if (el) el.textContent = livretIdx + 1;
+        var prev = livretModal.querySelector('.livret__nav--prev');
+        var next = livretModal.querySelector('.livret__nav--next');
+        if (prev) prev.disabled = livretIdx === 0;
+        if (next) next.disabled = livretIdx === livretTotal - 1;
+    }
+
+    if (livretModal && livretTotal > 0) {
+        var el = document.getElementById('livret-total');
+        if (el) el.textContent = livretTotal;
+        livretModal.querySelector('.livret__nav--prev').addEventListener('click', function () { livretGoTo(livretIdx - 1); });
+        livretModal.querySelector('.livret__nav--next').addEventListener('click', function () { livretGoTo(livretIdx + 1); });
+        /* Reset au fermeture */
+        livretModal.querySelector('.livret__close').addEventListener('click', function () {
+            closeModal(livretModal);
+            setTimeout(function () { livretGoTo(0); }, 300);
+        });
+        livretModal.addEventListener('click', function (e) {
+            if (e.target === livretModal) {
+                closeModal(livretModal);
+                setTimeout(function () { livretGoTo(0); }, 300);
+            }
+        });
+        /* Init état des flèches */
+        livretGoTo(0);
+    }
+
+    /* ---- Timeline accordion (créneaux horaires Sam/Dim) ---- */
+    document.querySelectorAll('.prog-frise').forEach(function (frise) {
+        var btns   = frise.querySelectorAll('.timeline-btn');
+        var panels = frise.querySelectorAll('.timeline-panel');
+
+        btns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var target = this.getAttribute('data-slot');
+
+                btns.forEach(function (b) {
+                    b.classList.remove('is-active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                panels.forEach(function (p) { p.classList.remove('is-active'); });
+
+                this.classList.add('is-active');
+                this.setAttribute('aria-selected', 'true');
+                var panel = frise.querySelector('#' + target);
+                if (panel) panel.classList.add('is-active');
+            });
+        });
+    });
 
     /* ---- Onglets Programme (Vue générale / Samedi / Dimanche) ---- */
     var tabs    = document.querySelectorAll('.prog-tab');
@@ -158,6 +261,28 @@
                 .addTo(map)
                 .bindPopup("L'Agronaute<br>2 rue du Sénégal, Nantes");
         }
+    }
+
+    /* ---- Typewriter — titre hero lettre par lettre ---- */
+    var titleLines = document.querySelectorAll('.hero-title__line');
+    if (titleLines.length) {
+        var charDelay = 0.07;   /* secondes entre chaque lettre */
+        var lineGap   = 0.15;   /* pause supplémentaire entre les 2 lignes */
+        var t = 0.1;            /* délai de départ */
+
+        titleLines.forEach(function (line) {
+            var text = line.textContent;
+            line.textContent = '';
+            for (var i = 0; i < text.length; i++) {
+                var span = document.createElement('span');
+                span.className = 'hero-title__char';
+                span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
+                span.style.animationDelay = t.toFixed(2) + 's';
+                line.appendChild(span);
+                t += charDelay;
+            }
+            t += lineGap;
+        });
     }
 
 })();

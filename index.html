@@ -19,21 +19,31 @@
     <!-- MENU OVERLAY -->
     <nav class="menu-overlay" id="menu-overlay" aria-hidden="true" role="dialog" aria-label="Navigation">
         <button class="menu-close" id="menu-close" aria-label="Fermer le menu">✕&nbsp;Fermer</button>
-        <svg class="deco deco--tr" viewBox="0 0 155 125" fill="none" aria-hidden="true">
-            <path d="M10,120 L10,56 Q10,10 56,10 Q102,10 102,56 L102,120"
-                  stroke="#F4A7BF" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="133" cy="100" r="18" stroke="#F4A7BF" stroke-width="9" fill="#F5E4C0"/>
-        </svg>
+
+        <!-- Illustrations éparpillées dans le menu -->
+        <img src="assets/images/kimchi_vert.png"   class="menu-illus menu-illus--1" aria-hidden="true" alt="">
+        <img src="assets/images/fromage.png"       class="menu-illus menu-illus--2" aria-hidden="true" alt="">
+        <img src="assets/images/vin_naturel.png"   class="menu-illus menu-illus--3" aria-hidden="true" alt="">
+        <img src="assets/images/miso_soupe.png"    class="menu-illus menu-illus--4" aria-hidden="true" alt="">
+        <img src="assets/images/pickles_rose.png"  class="menu-illus menu-illus--5" aria-hidden="true" alt="">
+        <img src="assets/images/pain.png"          class="menu-illus menu-illus--6" aria-hidden="true" alt="">
+
         <ul class="menu-nav" role="list">
             <li><a href="#hero"      class="menu-nav__link" data-target="hero">      <span class="menu-nav__num">01</span>Accueil</a></li>
             <li><a href="#about"     class="menu-nav__link" data-target="about">     <span class="menu-nav__num">02</span>Le festival</a></li>
             <li><a href="#programme" class="menu-nav__link" data-target="programme"> <span class="menu-nav__num">03</span>Programme</a></li>
-            <li><a href="#infos"     class="menu-nav__link" data-target="infos">     <span class="menu-nav__num">04</span>Infos pratiques</a></li>
+            <li><a href="#banquet"   class="menu-nav__link" data-target="banquet">   <span class="menu-nav__num">04</span>Banquet</a></li>
+            <li><a href="#infos"     class="menu-nav__link" data-target="infos">     <span class="menu-nav__num">05</span>Infos pratiques</a></li>
         </ul>
+        <div class="menu-copy">
+            <p>© 2026 UMAMI · Festival annuel de la fermentation à Nantes</p>
+            <p>Organisateur.ices : Antoine Devins (<a href="https://www.instagram.com/lagronaute/" class="menu-copy__link" target="_blank" rel="noopener noreferrer">Agronaute</a>), Esther Alcover, Ghita Taghi (<a href="https://www.instagram.com/ateliers.hara/" class="menu-copy__link" target="_blank" rel="noopener noreferrer">Ateliers Hara</a>)</p>
+        </div>
         <div class="menu-footer">
             <a href="https://www.instagram.com/umami_fermentation/" class="menu-footer__link" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://www.facebook.com/events/935576342183844/" class="menu-footer__link" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="#" class="btn btn--cream menu-footer__cta" target="_blank" rel="noopener noreferrer">Billetterie</a>
+            <a href="#" class="btn btn--cream menu-footer__cta" target="_blank" rel="noopener noreferrer">Billetterie Ateliers</a>
+            <a href="#" class="btn btn--cream menu-footer__cta" target="_blank" rel="noopener noreferrer">Billetterie Banquet</a>
         </div>
     </nav>
 
@@ -49,246 +59,210 @@
         <!-- ===== 1. HERO ===== -->
         <section class="screen" id="hero">
 
-            <!-- Zone haute : logo UMAMI sur fond rose -->
-            <div class="hero-top">
-                <img src="assets/logo-umami.png" alt="UMAMI" class="hero-logo">
+            <!-- Wording top-left -->
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-title__line">Fête de</span>
+                    <span class="hero-title__line">la fermentation.</span>
+                </h1>
+                <div class="hero-meta">
+                    <span>18 &amp; 19 avril 2026</span>
+                    <span class="hero-meta__dot" aria-hidden="true">·</span>
+                    <span>L'Agronaute, Nantes</span>
+                </div>
+                <div class="hero-ctas">
+                    <a href="#" class="btn btn--cream" target="_blank" rel="noopener noreferrer">Billetterie Ateliers</a>
+                    <a href="#" class="btn btn--pink" target="_blank" rel="noopener noreferrer">Billetterie Banquet</a>
+                </div>
             </div>
 
-            <!-- Zone basse : typographie éditoriale sur fond noir -->
-            <div class="hero-bottom">
-                <div class="hero-date-block">
-                    <p class="hero-date-big">18 &amp; 19<br>AVRIL 2026</p>
-                    <p class="hero-location">L'Agronaute · Nantes</p>
-                </div>
-                <div class="hero-cta-block">
-                    <a href="#" class="btn btn--cream" target="_blank" rel="noopener noreferrer">Acheter les tickets</a>
-                </div>
-                <!-- Numéro d'édition filigrane -->
-                <span class="hero-edition" aria-hidden="true">05</span>
-            </div>
+            <!-- Illustrations — fichiers indépendants Com Arnaud, fond transparent -->
+            <img src="assets/images/vin_naturel.png"   class="hero-illus hero-illus--1" aria-hidden="true" alt="">
+            <img src="assets/images/kombucha_rose.png" class="hero-illus hero-illus--2" aria-hidden="true" alt="">
 
-            <!-- Illustration chevauchante -->
-            <img src="assets/images/bouteille_biere.png" class="hero-illus" aria-hidden="true" alt="">
+            <!-- Logo grand en bas, légèrement rogné -->
+            <img src="assets/logo-umami.png" alt="UMAMI" class="hero-logo">
 
         </section>
 
         <!-- ===== 2. LE FESTIVAL ===== -->
-        <section class="screen" id="about">
-            <div class="split-layout">
+        <section class="screen screen--black" id="about">
 
-                <!-- Gauche — rose -->
-                <div class="split-left split-left--pink">
-                    <svg class="deco deco--bl" viewBox="0 0 155 125" fill="none" aria-hidden="true">
-                        <path d="M10,8 L10,72 Q10,114 56,114 Q102,114 102,72 L102,8"
-                              stroke="#111111" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="133" cy="26" r="18" stroke="#111111" stroke-width="9" fill="#F5E4C0"/>
-                    </svg>
+            <!-- Tag ferré haut gauche — uniforme avec les autres sections -->
+            <span class="tag tag--pink about-tag">5e édition</span>
 
-                    <!-- Numéro d'édition filigrane — moment typo extrême -->
-                    <span class="about-num" aria-hidden="true">05</span>
+            <!-- Illustrations — fond noir, entièrement visibles -->
+            <img src="assets/images/kimchi_rouge.png" class="about-illus-l" aria-hidden="true" alt="">
+            <img src="assets/images/pain.png"         class="about-illus-r" aria-hidden="true" alt="">
+            <img src="assets/images/miso_soupe.png"   class="about-illus-c" aria-hidden="true" alt="">
 
-                    <div class="about-left-content">
-                        <span class="tag tag--dark">5e édition</span>
-                        <h2 class="big-title about-title">Un espace<br>pour goûter<br>autrement.</h2>
+            <div class="about-layout">
+                <div class="about-grid">
+                    <h2 class="about-title">Déguster<br>le vivant.</h2>
+                    <div class="about-bubble">
+                        <p class="about-lead">Deux jours pour goûter, apprendre et rencontrer celles et ceux qui fermentent au quotidien.</p>
+                        <p class="about-body">Une trentaine de stands au marché de producteur·ices : pain, fromage, kimchi, miso, légumes fermentés, kombucha, vins natures, bières… Des ateliers pour apprendre à fermenter soi-même (ginger beer, miso, sauce piquante, kéfir…). Des mini-conférences et démonstrations proposées par des fermenteur·euses passionné·es.</p>
+                        <p class="about-body">Le samedi soir, place au banquet fermenté avec Adélie Delajot, Annie Mach et Gaëlle Valin.</p>
+                        <p class="about-body">Et cette année, nouveauté : un vrai programme kids dès 5 ans.</p>
+                        <div class="about-bonus">Entrée à 6 € · verre siglé UMAMI inclus.</div>
+                        <a href="#programme" class="btn btn--dark" data-target="programme">Voir le programme</a>
                     </div>
-
-                    <!-- Illustration bocal -->
-                    <img src="assets/images/bocal_pickle.png" class="about-illus-png" aria-hidden="true" alt="">
                 </div>
-
-                <!-- Droite — crème -->
-                <div class="split-right split-right--cream">
-                    <p class="about-lead">Umami, c'est un espace pour apprendre, goûter, expérimenter et rencontrer celles et ceux qui fermentent au quotidien.</p>
-                    <p class="about-body">Pendant deux jours, producteur·ices, cuisinier·ères et artisan·es viennent partager leurs pratiques à travers des dégustations, des ateliers et des démonstrations. Une invitation à ralentir, à goûter autrement et à découvrir la fermentation sous toutes ses formes.</p>
-                    <p class="about-body">Né à Nantes, UMAMI s'est imposé comme le rendez-vous incontournable des amoureux·ses de fermentation. Chaque édition rassemble producteur·ices, artisan·es et curieux·ses autour d'une même conviction : la fermentation est vivante, et elle mérite qu'on s'y attarde.</p>
-                    <div class="about-bonus">
-                        🥂 Avec votre entrée, vous repartez avec un verre siglé UMAMI.
-                    </div>
-                    <a href="#" class="btn btn--dark" target="_blank" rel="noopener noreferrer">Acheter les tickets</a>
-                </div>
-
             </div>
+
             <div class="page-bar" aria-hidden="true"></div>
         </section>
 
         <!-- ===== 3. PROGRAMME ===== -->
-        <section class="screen screen--black" id="programme">
+        <section class="screen" id="programme">
 
-            <!-- Déco SVG DNA -->
-            <svg class="deco deco--tr" viewBox="0 0 155 125" fill="none" aria-hidden="true">
-                <path d="M10,120 L10,56 Q10,10 56,10 Q102,10 102,56 L102,120"
-                      stroke="#F5E4C0" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="133" cy="100" r="18" stroke="#F4A7BF" stroke-width="9" fill="none"/>
-            </svg>
+            <div class="prog-pdf-wrap">
+                <a href="#" class="prog-pdf" aria-label="Télécharger le programme complet en PDF">
+                    <span class="prog-pdf__text">Programme complet</span>
+                    <span class="prog-pdf__arrow">↓</span>
+                </a>
+                <img src="assets/images/mangue.png" class="prog-pdf__illus" alt="" aria-hidden="true">
+            </div>
 
-            <div class="prog-layout">
+            <!-- Illustrations cartoon -->
+            <img src="assets/images/kombucha_rose.png" class="prog2-illus prog2-illus--1" alt="" aria-hidden="true">
+            <img src="assets/images/kimchi_vert.png"   class="prog2-illus prog2-illus--2" alt="" aria-hidden="true">
 
-                <!-- En-tête + onglets -->
-                <div class="prog-top">
-                    <div class="prog-top__text">
-                        <span class="tag tag--pink">Programme</span>
-                        <h2 class="big-title big-title--light">Deux jours,<br>plein de choses.</h2>
-                    </div>
-                    <div class="prog-tabs" role="tablist" aria-label="Choisir un jour">
-                        <button class="prog-tab is-active" role="tab" aria-selected="true"  data-view="list" id="tab-list">Vue générale</button>
-                        <button class="prog-tab"            role="tab" aria-selected="false" data-view="sam"  id="tab-sam">Samedi 18</button>
-                        <button class="prog-tab"            role="tab" aria-selected="false" data-view="dim"  id="tab-dim">Dimanche 19</button>
-                    </div>
+            <div class="prog2-layout">
+
+                <div class="prog2-header">
+                    <span class="tag tag--pink">Programme</span>
+                    <h2 class="big-title">Deux jours,<br>plein de choses.</h2>
                 </div>
 
-                <!-- Vue générale — grille éditoriale 3 catégories + banquet -->
-                <div class="prog-list" id="prog-list" role="tabpanel" aria-labelledby="tab-list">
+                <div class="prog2-grid">
 
-                    <div class="prog-card">
-                        <span class="prog-card__num" aria-hidden="true">01</span>
-                        <h3 class="prog-card__title">Marché de producteurs</h3>
-                        <p class="prog-card__desc">20+ stands · kimchi, kéfir, miso, sauces piquantes, légumes fermentés, boissons vivantes, garum…</p>
-                    </div>
-
-                    <div class="prog-card">
-                        <span class="prog-card__num" aria-hidden="true">02</span>
-                        <h3 class="prog-card__title">Conférences &amp; ateliers</h3>
-                        <p class="prog-card__desc">Koji, miso, garum, bière, fromage, kéfir, sauce piquante — savoirs partagés, mains dans la pâte.</p>
-                    </div>
-
-                    <div class="prog-card">
-                        <span class="prog-card__num" aria-hidden="true">03</span>
-                        <h3 class="prog-card__title">Programme kids</h3>
-                        <p class="prog-card__desc">Argile vivante, musique avec des légumes, parcours sensoriel, fermentation créative · Dès 6 ans · Gratuit</p>
-                    </div>
-
-                    <div class="prog-card prog-card--banquet">
-                        <div class="prog-card__banquet-text">
-                            <span class="prog-card__banquet-eyebrow">★ Samedi soir · Places limitées</span>
-                            <h3 class="prog-card__title prog-card__title--pink">Banquet fermenté</h3>
-                            <p class="prog-card__desc">Adélie Delajot · Annie Mach · Gaëlle Valin — 3e édition d'un dîner qui fait date.</p>
+                    <!-- 01 Marché de producteur·ices -->
+                    <div class="prog2-bloc">
+                        <span class="prog2-bloc__num" aria-hidden="true">01</span>
+                        <div class="prog2-bloc__photo"><img src="assets/images/photo_marche.jpg" alt="Marché de producteur·ices UMAMI"></div>
+                        <div class="prog2-bloc__body">
+                            <h3 class="prog2-bloc__title">Marché de producteur·ices</h3>
+                            <p class="prog2-bloc__desc">Le marché de producteur·ices revient avec une trentaine de stands : pain, fromage, miso, kimchi, légumes fermentés et boissons.</p>
+                            <button class="btn btn--dark prog2-bloc__cta" data-modal-open="modal-marche">Voir les exposant·es</button>
                         </div>
-                        <a href="https://shotgun.live/fr/festivals/umami-5-banquet-fermente" class="btn btn--pink" target="_blank" rel="noopener noreferrer">Réserver</a>
+                    </div>
+
+                    <!-- 02 Ateliers -->
+                    <div class="prog2-bloc">
+                        <span class="prog2-bloc__num" aria-hidden="true">02</span>
+                        <div class="prog2-bloc__photo"><img src="assets/images/photo_ateliers.jpg" alt="Ateliers UMAMI"></div>
+                        <div class="prog2-bloc__body">
+                            <h3 class="prog2-bloc__title">Ateliers</h3>
+                            <p class="prog2-bloc__desc">Que serait UMAMI, la fête de la fermentation, sans ses ateliers autour de l'alimentation vivante et des boissons pétillantes ?</p>
+                            <div class="prog2-bloc__ctas">
+                                <button class="btn btn--dark" data-modal-open="modal-ateliers">En savoir +</button>
+                                <a href="https://shotgun.live/festivals/les-ateliers-umami-2026-18-19-avril" class="btn btn--cream" target="_blank" rel="noopener noreferrer">Billetterie</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 03 Rencontres -->
+                    <div class="prog2-bloc">
+                        <span class="prog2-bloc__num" aria-hidden="true">03</span>
+                        <div class="prog2-bloc__photo"><img src="assets/images/photo_rencontres.jpg" alt="Rencontres UMAMI"></div>
+                        <div class="prog2-bloc__body">
+                            <h3 class="prog2-bloc__title">Rencontres</h3>
+                            <p class="prog2-bloc__desc">Le vivant une fabuleuse source d'inspiration et de réflexion. Venez écouter et échanger avec des fermenteur.euses passionné.e.s.</p>
+                            <button class="btn btn--dark prog2-bloc__cta" data-modal-open="modal-rencontres">Voir les rencontres</button>
+                        </div>
+                    </div>
+
+                    <!-- 04 Prog Kids -->
+                    <div class="prog2-bloc prog2-bloc--kids">
+                        <span class="prog2-bloc__num" aria-hidden="true">04</span>
+                        <div class="prog2-bloc__photo"><img src="assets/images/photo_kids.jpg" alt="Prog Kids UMAMI"></div>
+                        <div class="prog2-bloc__body">
+                            <h3 class="prog2-bloc__title">Programme Kids</h3>
+                            <p class="prog2-bloc__desc">Cerise sur le gâteau et nouveauté pour les plus petits, nous vous avons préparé une programmation spéciale pour nos petits bouts de choux. Dès 5 ans.</p>
+                            <div class="prog2-bloc__ctas">
+                                <button class="btn btn--dark" data-modal-open="modal-kids">En savoir +</button>
+                                <a href="#" class="btn btn--cream" target="_blank" rel="noopener noreferrer">Billetterie</a>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
+            </div>
+        </section>
 
-                <!-- Frise Samedi 18 avril -->
-                <div class="prog-frise is-hidden" id="prog-sam" role="tabpanel" aria-labelledby="tab-sam">
-                    <div class="frise-legend">
-                        <div class="frise-legend__item"><span class="frise-legend__dot frise-legend__dot--paid"></span>Payant</div>
-                        <div class="frise-legend__item"><span class="frise-legend__dot frise-legend__dot--free"></span>Gratuit</div>
-                        <div class="frise-legend__item"><span class="frise-legend__dot frise-legend__dot--special"></span>Banquet</div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">11h–12h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--free">🛒 Marché de producteurs (toute la journée)</span>
-                            <span class="frise-event frise-event--paid">Légumes fermentés · Anne Devins</span>
-                            <span class="frise-event frise-event--free">Brassin public de bière · Nantes Beer Club &amp; Buveuses de Bières</span>
-                            <span class="frise-event frise-event--kids">Atelier Argile matière vivante · Fair.e</span>
-                        </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">12h–13h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--free">Restauration &amp; bar fermenté · menu enfant disponible</span>
-                        </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">14h–15h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--paid">Koji &amp; Miso · Swann Robin (Enzymes Fermentation)</span>
-                            <span class="frise-event frise-event--free">Causerie : Fermentation et Fair.e — Matière &amp; Matériaux · Paul Fermentation</span>
-                            <span class="frise-event frise-event--kids">Attention fermentation — les goûts dans tous les sens ! · École Comestible</span>
-                            <span class="frise-event frise-event--kids">Joue de la musique avec des légumes · Can Touch This (gratuit)</span>
-                        </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">15h–16h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--free">Démonstration fromage · Paul Fermentation (1h)</span>
-                        </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">16h–17h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--free">Histoire du miso · Alexandre Duarte (30 min)</span>
-                            <span class="frise-event frise-event--kids">Découverte de produits fermentés · École Comestible (gratuit)</span>
-                        </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">17h–18h30</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--free">Fermenter, porter, se transformer · Malika Nguon (30 min)</span>
-                            <span class="frise-event frise-event--free">Dédicaces · La fermentation au quotidien de Malika Nguon</span>
-                        </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">19h–19h30</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--free">🎭 Spectacle TUTU (25 min, gratuit)</span>
-                        </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">20h–22h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--special">🍽 Banquet fermenté · Adélie Delajot, Annie Mach &amp; Gaëlle Valin · <a href="https://shotgun.live/fr/festivals/umami-5-banquet-fermente" target="_blank" rel="noopener noreferrer" class="frise-link">Réserver</a></span>
-                        </div>
-                    </div>
+        <!-- ===== 4. BANQUET ===== -->
+        <section class="screen screen--black" id="banquet">
+
+            <!-- Illustrations — haut de page, côté droit (zone libre au-dessus des cheffes) -->
+            <img src="assets/images/wasabi.png"      class="banquet-illus banquet-illus--1" alt="" aria-hidden="true">
+            <img src="assets/images/vin_naturel.png" class="banquet-illus banquet-illus--2" alt="" aria-hidden="true">
+            <img src="assets/images/fromage.png"     class="banquet-illus banquet-illus--3" alt="" aria-hidden="true">
+
+            <div class="banquet-wrap">
+
+                <!-- Bande 1 : tag + titre -->
+                <div class="banquet-header">
+                    <span class="tag tag--pink">Banquet fermenté</span>
+                    <h2 class="banquet-title">Un banquet<br>à 6 mains.</h2>
                 </div>
 
-                <!-- Frise Dimanche 19 avril -->
-                <div class="prog-frise is-hidden" id="prog-dim" role="tabpanel" aria-labelledby="tab-dim">
-                    <div class="frise-legend">
-                        <div class="frise-legend__item"><span class="frise-legend__dot frise-legend__dot--paid"></span>Payant</div>
-                        <div class="frise-legend__item"><span class="frise-legend__dot frise-legend__dot--free"></span>Gratuit</div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">11h–12h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--free">🛒 Marché de producteurs (toute la journée)</span>
-                            <span class="frise-event frise-event--free">Brassin public de bière · Nantes Beer Club &amp; Buveuses de Bières</span>
-                            <span class="frise-event frise-event--kids">Atelier Argile matière vivante · Fair.e</span>
+                <!-- Bande 2 : les 3 cheffes côte à côte -->
+                <div class="banquet-cheffes">
+                    <button class="banquet-cheffe" data-modal-open="modal-adelie">
+                        <div class="banquet-cheffe__avatar">
+                            <img src="assets/images/portrait_adelie.png" alt="Adélie Delajot">
+                        </div>
+                        <div class="banquet-cheffe__body">
+                            <span class="banquet-cheffe__name">Adélie Delajot</span>
+                            <span class="banquet-cheffe__resto">Le Cellier, Nantes</span>
+                        </div>
+                    </button>
+                    <button class="banquet-cheffe" data-modal-open="modal-annie">
+                        <div class="banquet-cheffe__avatar">
+                            <img src="assets/images/portrait_annie.png" alt="Annie Mach">
+                        </div>
+                        <div class="banquet-cheffe__body">
+                            <span class="banquet-cheffe__name">Annie Mach</span>
+                            <span class="banquet-cheffe__resto">Cheffe itinérante</span>
+                        </div>
+                    </button>
+                    <button class="banquet-cheffe" data-modal-open="modal-gaelle">
+                        <div class="banquet-cheffe__avatar">
+                            <img src="assets/images/portrait_gaelle.png" alt="Gaëlle Valin">
+                        </div>
+                        <div class="banquet-cheffe__body">
+                            <span class="banquet-cheffe__name">Gaëlle Valin</span>
+                            <span class="banquet-cheffe__resto">Sur le pont, Saint-Aignan</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Bande 3 : strip rose — texte riche + infos + CTAs -->
+                <div class="banquet-strip">
+                    <div class="banquet-strip__texts">
+                        <p class="banquet-strip__lead">Une table au cœur du vivant.</p>
+                        <p class="banquet-strip__text">Le samedi soir, quand le marché ferme ses portes, le festival change de registre avec une grande table commune et une soirée pensée de bout en bout.</p>
+                        <p class="banquet-strip__text">Trois cheffes réunies autour de la fermentation pour composer un menu végétarien entrée-plat-dessert — kimchi, miso, garum, kéfir — où chaque assiette célèbre le vivant, sublimée par leur talent collectif.</p>
+                        <div class="banquet-strip__pair">
+                            <p class="banquet-strip__text">Chaque cheffe signe un plat en solo puis s'unissent pour un dessert surprise créé à six mains.</p>
+                            <p class="banquet-strip__text">Accord mets &amp; boissons fermentées inclus, avec ou sans alcool.</p>
                         </div>
                     </div>
-                    <div class="frise-row">
-                        <span class="frise-time">12h–13h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--paid">Sauce piquante fermentée · Ateliers Hara – Ghita Taghi</span>
+                    <div class="banquet-strip__right">
+                        <div class="banquet-strip__detail">
+                            <span class="banquet-strip__price">55 €</span>
+                            <span class="banquet-strip__meta">Samedi 18 avril · Places ultra limitées · Sur réservation</span>
                         </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">14h–15h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--paid">Kéfir parent-enfant · Carole Alcover</span>
-                            <span class="frise-event frise-event--kids">Joue de la musique avec des légumes · Can Touch This (gratuit)</span>
-                            <span class="frise-event frise-event--kids">La fermentation c'est tout un art ! · Maison Moche (gratuit)</span>
-                        </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">15h–16h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--free">Présentation · Marie, ferment de la terre (15 min)</span>
-                        </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">16h–17h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--paid">Ginger beer · Esther Alcover</span>
-                            <span class="frise-event frise-event--free">Conférence gesticulée autour du Garum · Thierry Bouvet (1h)</span>
-                        </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">17h–18h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--free">Dégustation &amp; échanges autour de la bière · Thibault (Brasserie Umami)</span>
-                        </div>
-                    </div>
-                    <div class="frise-row">
-                        <span class="frise-time">18h–19h</span>
-                        <div class="frise-events">
-                            <span class="frise-event frise-event--free">Faire vivant : fermentation, biodiversité, bien-être &amp; santé</span>
+                        <div class="banquet-strip__ctas">
+                            <a href="https://shotgun.live/fr/festivals/umami-5-banquet-fermente" class="btn btn--dark" target="_blank" rel="noopener noreferrer">Réserver</a>
+                            <button class="btn btn--cream" data-modal-open="modal-menu-banquet">Voir le menu</button>
                         </div>
                     </div>
                 </div>
 
             </div>
+            <div class="page-bar" aria-hidden="true"></div>
         </section>
 
         <!-- ===== 4. INFOS PRATIQUES ===== -->
@@ -297,21 +271,20 @@
 
                 <!-- Gauche — crème -->
                 <div class="split-left split-left--cream">
-                    <svg class="deco deco--bl" viewBox="0 0 155 125" fill="none" aria-hidden="true">
-                        <path d="M10,8 L10,72 Q10,114 56,114 Q102,114 102,72 L102,8"
-                              stroke="#F4A7BF" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="133" cy="26" r="18" stroke="#111111" stroke-width="9" fill="#F5E4C0"/>
-                    </svg>
-
                     <span class="tag">Infos pratiques</span>
-                    <h2 class="big-title">Venez<br>comme vous<br>êtes, partez<br>contents.</h2>
+                    <h2 class="big-title">Ici,<br>ça fermente.</h2>
 
-                    <!-- Illustration fromage -->
-                    <img src="assets/images/fromage.png" class="infos-illus-png" aria-hidden="true" alt="">
+                    <img src="assets/images/mangue.png"        class="infos-illus-png infos-illus-png--6" aria-hidden="true" alt="">
+                    <img src="assets/images/fromage.png"      class="infos-illus-png infos-illus-png--1" aria-hidden="true" alt="">
+                    <img src="assets/images/pickles_rose.png" class="infos-illus-png infos-illus-png--2" aria-hidden="true" alt="">
+                    <img src="assets/images/wasabi.png"       class="infos-illus-png infos-illus-png--3" aria-hidden="true" alt="">
+                    <img src="assets/images/kimchi_vert.png"  class="infos-illus-png infos-illus-png--4" aria-hidden="true" alt="">
+                    <img src="assets/images/miso_soupe.png"   class="infos-illus-png infos-illus-png--5" aria-hidden="true" alt="">
                 </div>
 
                 <!-- Droite — rose -->
                 <div class="split-right split-right--pink">
+                    <img src="assets/images/kombucha_rose.png" class="infos-illus-r" aria-hidden="true" alt="">
                     <div class="info-row">
                         <span class="info-row__label">Dates</span>
                         <span class="info-row__value">Samedi 18 &amp; dimanche 19 avril 2026</span>
@@ -326,18 +299,20 @@
                     </div>
                     <div class="info-row">
                         <span class="info-row__label">Lieu</span>
-                        <span class="info-row__value">L'Agronaute — 2 rue du Sénégal, 44200 Nantes</span>
+                        <a href="https://maps.google.com/?q=L'Agronaute,+2+rue+du+Sénégal,+44200+Nantes" class="info-row__value info-row__value--link" target="_blank" rel="noopener noreferrer">L'Agronaute — <span class="info-address">2 rue du Sénégal, 44200 Nantes ↗</span></a>
                     </div>
                     <div class="info-row">
                         <span class="info-row__label">Accès</span>
                         <div class="info-row__access">
                             <div class="access-lines">
-                                <p>Tramway ligne 1 — arrêt Chantiers Navals (5 min à pied)</p>
-                                <p>Bus C6 — arrêt Prairie au Duc (1 min)</p>
-                                <p>Vélo — station Bicloo à 50 m</p>
+                                <p>Tramway ligne 1 — arrêt Chantiers Navals (15 min à pied)</p>
+                                <p>Bus 5 — arrêt Prairie au Duc (5 min)</p>
+                                <p>Vélo — station Naolib à 500 m</p>
                                 <p>Voiture — parking Hangar à Bananes, 200 m</p>
                             </div>
-                            <div id="map" class="map-container" aria-label="Carte — L'Agronaute, Nantes"></div>
+                            <a href="https://maps.google.com/?q=L'Agronaute,+2+rue+du+Sénégal,+44200+Nantes" target="_blank" rel="noopener noreferrer" class="map-link" aria-label="Ouvrir dans Google Maps">
+                                <div id="map" class="map-container"></div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -355,13 +330,248 @@
                 <nav class="footer-nav" aria-label="Liens du bas de page">
                     <a href="https://www.instagram.com/umami_fermentation/" class="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
                     <a href="https://www.facebook.com/events/935576342183844/" class="footer-link" target="_blank" rel="noopener noreferrer">Facebook</a>
-                    <a href="#" class="btn btn--cream footer-cta" target="_blank" rel="noopener noreferrer">Acheter les tickets</a>
+                    <a href="#" class="btn btn--pink footer-cta" target="_blank" rel="noopener noreferrer">Billetterie Ateliers</a>
+                    <a href="https://shotgun.live/fr/festivals/umami-5-banquet-fermente" class="btn btn--pink footer-cta" target="_blank" rel="noopener noreferrer">Billetterie Banquet</a>
                 </nav>
             </div>
-            <p class="footer-copy">© 2026 UMAMI · Festival annuel de la fermentation à Nantes · Organisé par Antoine Devins &amp; Ghita</p>
+            <div class="footer-copy">
+                <div class="footer-copy__left">
+                    <p>© 2026 UMAMI · Festival annuel de la fermentation à Nantes</p>
+                    <p>Organisateur.ices : Antoine Devins (<a href="https://www.instagram.com/lagronaute/" class="footer-credit-link" target="_blank" rel="noopener noreferrer">Agronaute</a>), Esther Alcover, Ghita Taghi (<a href="https://www.instagram.com/ateliers.hara/" class="footer-credit-link" target="_blank" rel="noopener noreferrer">Ateliers Hara</a>)</p>
+                </div>
+                <p>Site fermenté par <a href="https://www.linkedin.com/in/matthieu-duval-pm/" class="footer-credit-link" target="_blank" rel="noopener noreferrer">Matthieu Duval</a></p>
+            </div>
         </footer>
 
     </div><!-- end snap-wrapper -->
+
+    <!-- ===== MODALES ===== -->
+    <!-- MODAL MARCHÉ -->
+    <div class="modal modal--marche" id="modal-marche" aria-hidden="true" role="dialog" aria-label="Les exposant·es">
+        <div class="marche__panel">
+            <div class="marche__header">
+                <div class="marche__header-left">
+                    <div class="marche__title-row">
+                        <h2 class="marche__title">Les exposant·es</h2>
+                        <div class="marche__illus">
+                            <img src="assets/images/vin_naturel.png" alt="">
+                            <img src="assets/images/fromage.png" alt="">
+                            <img src="assets/images/kimchi_vert.png" alt="">
+                            <img src="assets/images/miso_soupe.png" alt="">
+                            <img src="assets/images/kombucha_rose.png" alt="">
+                            <img src="assets/images/pickles_rose.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <button class="modal__close marche__close" aria-label="Fermer">✕</button>
+            </div>
+            <div class="marche__list">
+                <div class="marche__row"><span class="marche__cat">Pain</span><span class="marche__names">Boulangerie Restecp</span></div>
+                <div class="marche__row"><span class="marche__cat">Chocolat</span><span class="marche__names">Lady Merveilles</span></div>
+                <div class="marche__row"><span class="marche__cat">Café</span><span class="marche__names">Café Machin</span></div>
+                <div class="marche__row"><span class="marche__cat">Objets</span><span class="marche__names">BocUp</span></div>
+                <div class="marche__row"><span class="marche__cat">Fromages</span><span class="marche__names">Ferme de la Rousselière <span class="marche__sep">|</span> Fromagerie de la Germillotte</span></div>
+                <div class="marche__row"><span class="marche__cat">Miso</span><span class="marche__names">MY Fermentation <span class="marche__sep">|</span> Savour</span></div>
+                <div class="marche__row"><span class="marche__cat">Céramique &amp; Art</span><span class="marche__names">Fair.e Argile <span class="marche__sep">|</span> Hôtel Léon <span class="marche__sep">|</span> L'École Comestible</span></div>
+                <div class="marche__row"><span class="marche__cat">Spiritueux</span><span class="marche__names">Distillerie Disent-elles <span class="marche__sep">|</span> Pure Sake is Good</span></div>
+                <div class="marche__row"><span class="marche__cat">Vins nature</span><span class="marche__names">Les Coquilles <span class="marche__sep">|</span> La Tour Brune <span class="marche__sep">|</span> GAEC des Gatz</span></div>
+                <div class="marche__row"><span class="marche__cat">Bières</span><span class="marche__names">Brasserie Soma <span class="marche__sep">|</span> UMAMI × La Soupape <span class="marche__sep">|</span> La Marée Brasse <span class="marche__sep">|</span> Fat Wombat</span></div>
+                <div class="marche__row"><span class="marche__cat">Boissons SA</span><span class="marche__names">Atelier Romé <span class="marche__sep">|</span> La Cabane Kombucha <span class="marche__sep">|</span> Archipel <span class="marche__sep">|</span> Faire Vivant</span></div>
+                <div class="marche__row"><span class="marche__cat">Légumes fermentés</span><span class="marche__names">Les Légumes d'Hortense <span class="marche__sep">|</span> Les Ferments de la Terre <span class="marche__sep">|</span> La Ferme de l'île Batailleuse <span class="marche__sep">|</span> Lézard Jovial <span class="marche__sep">|</span> Les Fermentades Poitevines</span></div>
+            </div>
+        </div>
+    </div>
+    <!-- LIVRET ATELIERS -->
+    <div class="modal modal--livret" id="modal-ateliers" aria-hidden="true" role="dialog" aria-label="Livret des ateliers">
+        <button class="modal__close livret__close" aria-label="Fermer le livret">✕</button>
+
+        <button class="livret__nav livret__nav--prev" aria-label="Atelier précédent">&#8249;</button>
+
+        <div class="livret__book">
+            <div class="livret__spread is-active" data-spread="0">
+                <div class="livret__page"><img src="assets/images/ateliers/atelier-01.png" alt="Anne Devins — Légumes lactofermentés"></div>
+                <div class="livret__page"><img src="assets/images/ateliers/atelier-02.png" alt="Détail atelier légumes fermentés"></div>
+            </div>
+            <div class="livret__spread" data-spread="1">
+                <div class="livret__page"><img src="assets/images/ateliers/atelier-03.png" alt="Swann Robin — Koji &amp; miso"></div>
+                <div class="livret__page"><img src="assets/images/ateliers/atelier-04.png" alt="Détail atelier koji miso"></div>
+            </div>
+            <div class="livret__spread" data-spread="2">
+                <div class="livret__page"><img src="assets/images/ateliers/atelier-05.png" alt="Atelier 3 — portrait"></div>
+                <div class="livret__page"><img src="assets/images/ateliers/atelier-06.png" alt="Atelier 3 — détail"></div>
+            </div>
+            <div class="livret__spread" data-spread="3">
+                <div class="livret__page"><img src="assets/images/ateliers/atelier-07.png" alt="Atelier 4 — portrait"></div>
+                <div class="livret__page"><img src="assets/images/ateliers/atelier-08.png" alt="Atelier 4 — détail"></div>
+            </div>
+            <div class="livret__spread" data-spread="4">
+                <div class="livret__page"><img src="assets/images/ateliers/atelier-09.png" alt="Atelier 5 — portrait"></div>
+                <div class="livret__page"><img src="assets/images/ateliers/atelier-10.png" alt="Atelier 5 — détail"></div>
+            </div>
+
+            <!-- Page CTA billetterie -->
+            <div class="livret__spread livret__spread--single" data-spread="5">
+                <div class="livret__page livret__page--cta">
+                    <div class="cta-illus-row">
+                        <img src="assets/images/kombucha_rose.png" alt="" aria-hidden="true">
+                        <img src="assets/images/kimchi_vert.png"   alt="" aria-hidden="true">
+                        <img src="assets/images/mangue.png"        alt="" aria-hidden="true">
+                        <img src="assets/images/pain.png"          alt="" aria-hidden="true">
+                    </div>
+                    <div class="cta-body">
+                        <h2 class="cta-title">Prêt·e à mettre les mains<br>dans la saumure ?</h2>
+                        <a href="https://shotgun.live/festivals/les-ateliers-umami-2026-18-19-avril"
+                           class="btn btn--cream cta-btn"
+                           target="_blank" rel="noopener noreferrer">
+                            Billetterie
+                        </a>
+                        <p class="cta-note">Places limitées</p>
+                    </div>
+                    <div class="cta-illus-row">
+                        <img src="assets/images/wasabi.png"       alt="" aria-hidden="true">
+                        <img src="assets/images/fromage.png"      alt="" aria-hidden="true">
+                        <img src="assets/images/pickles_rose.png" alt="" aria-hidden="true">
+                        <img src="assets/images/kimchi_rouge.png" alt="" aria-hidden="true">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="livret__nav livret__nav--next" aria-label="Atelier suivant">&#8250;</button>
+
+        <div class="livret__counter">
+            <span id="livret-current">1</span>&thinsp;/&thinsp;<span id="livret-total">5</span>
+        </div>
+    </div>
+    <div class="modal modal--rencontres" id="modal-rencontres" aria-hidden="true" role="dialog" aria-label="Les rencontres">
+        <div class="marche__panel">
+            <div class="marche__header">
+                <div class="marche__header-left">
+                    <div class="marche__title-row">
+                        <h2 class="marche__title">Les rencontres</h2>
+                        <div class="marche__illus">
+                            <img src="assets/images/mangue.png" alt="">
+                            <img src="assets/images/pain.png" alt="">
+                            <img src="assets/images/wasabi.png" alt="">
+                            <img src="assets/images/kimchi_rouge.png" alt="">
+                            <img src="assets/images/pickles_rose.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <button class="modal__close marche__close" aria-label="Fermer">✕</button>
+            </div>
+            <div class="marche__list">
+                <div class="rencontres__day">Samedi 18 avril</div>
+                <div class="marche__row"><span class="marche__cat">11h–18h</span><span class="marche__names">Brassin public d'une bière – Nantes Beer Club &amp; Les Buveuses de Bières</span></div>
+                <div class="marche__row"><span class="marche__cat">14h–15h</span><span class="marche__names">Causerie "Matière et Matériaux" – Paul Fermentation</span></div>
+                <div class="marche__row"><span class="marche__cat">15h–16h</span><span class="marche__names">Histoire du Miso – Alexandre Duarte</span></div>
+                <div class="marche__row"><span class="marche__cat">16h–17h</span><span class="marche__names">Fermenter, porter : se transformer – Malika Nguon</span></div>
+                <div class="marche__row"><span class="marche__cat">17h–18h</span><span class="marche__names">Dédicaces – Malika Nguon</span></div>
+                <div class="marche__row"><span class="marche__cat">19h–19h30</span><span class="marche__names">Spectacle TUTU</span></div>
+                <div class="rencontres__day">Dimanche 19 avril</div>
+                <div class="marche__row"><span class="marche__cat">11h–18h</span><span class="marche__names">Brassin public d'une bière – Nantes Beer Club &amp; Les Buveuses de Bières</span></div>
+                <div class="marche__row"><span class="marche__cat">12h–13h</span><span class="marche__names">Faire vivant : fermentation, biodiversité, bien-être et santé</span></div>
+                <div class="marche__row marche__row--last"><span class="marche__cat">14h–15h</span><span class="marche__names">Présentation – Marie Ferment de la Terre</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-kids" aria-hidden="true" role="dialog" aria-label="Programme enfant">
+        <div class="modal__inner">
+            <button class="modal__close" aria-label="Fermer">✕&nbsp;Fermer</button>
+            <h2 class="modal__title">Programme enfant</h2>
+            <p class="modal__placeholder">Détail — contenu à venir</p>
+        </div>
+    </div>
+    <!-- MODAL ADÉLIE -->
+    <div class="modal modal--cheffe" id="modal-adelie" aria-hidden="true" role="dialog" aria-label="Adélie Delajot">
+        <div class="marche__panel cheffe__panel">
+            <div class="marche__header cheffe__header">
+                <div class="cheffe__header-left">
+                    <div class="cheffe__avatar-lg">
+                        <img src="assets/images/portrait_adelie.png" alt="Adélie Delajot">
+                    </div>
+                    <div class="cheffe__header-meta">
+                        <div class="marche__title-row">
+                            <h2 class="marche__title">Adélie Delajot</h2>
+                            <div class="marche__illus">
+                                <img src="assets/images/fromage.png" alt="">
+                                <img src="assets/images/pickles_rose.png" alt="">
+                            </div>
+                        </div>
+                        <span class="cheffe__header-resto">Le Cellier, Nantes</span>
+                    </div>
+                </div>
+                <button class="modal__close marche__close" aria-label="Fermer">✕</button>
+            </div>
+            <div class="cheffe__bio">
+                <p>Ancienne costumière, elle se reconvertit il y a 10 ans pour faire de la cuisine son métier. Avec son partenaire Olivier, elle ouvre en 2021 leur commerce : Le Cellier, rue Maréchal Joffre, avec l'envie de partager une cuisine généreuse, familiale et festive.</p>
+                <p>Inspirée par ses voyages, elle aime particulièrement la saison estivale, ses fruits, ses légumes et, bien sûr, la cuisine méditerranéenne. La fermentation s'est imposée à elle comme une évidence au fil des années.</p>
+                <p>Désormais, elle prend le temps de préparer ses choucroutes en janvier pour les déguster en décembre, ses tajines sont sublimés par des citrons confits de l'année précédente, et elle transforme fruits et légumes abîmés en koso, kimchi ou sauces fermentées. Une exploration infinie qui nourrit sa créativité et fait évoluer sa cuisine au quotidien !</p>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL ANNIE -->
+    <div class="modal modal--cheffe" id="modal-annie" aria-hidden="true" role="dialog" aria-label="Annie Mach">
+        <div class="marche__panel cheffe__panel">
+            <div class="marche__header cheffe__header">
+                <div class="cheffe__header-left">
+                    <div class="cheffe__avatar-lg">
+                        <img src="assets/images/portrait_annie.png" alt="Annie Mach">
+                    </div>
+                    <div class="cheffe__header-meta">
+                        <div class="marche__title-row">
+                            <h2 class="marche__title">Annie Mach</h2>
+                            <div class="marche__illus">
+                                <img src="assets/images/kimchi_vert.png" alt="">
+                                <img src="assets/images/miso_soupe.png" alt="">
+                            </div>
+                        </div>
+                        <span class="cheffe__header-resto">Cheffe itinérante</span>
+                    </div>
+                </div>
+                <button class="modal__close marche__close" aria-label="Fermer">✕</button>
+            </div>
+            <div class="cheffe__bio">
+                <p>Après plusieurs années passées dans la mode, Annie a choisi de changer de terrain de jeu pour mettre les mains dans la farine.<br>Direction la boulangerie, où elle découvre la magie du levain et tombe amoureuse des processus de fermentation. Une fois le cap du pain au levain franchi, elle pousse l'exploration un peu plus loin et s'immerge dans l'univers de la lactofermentation en rejoignant les cuisines de Limoune, cantine et épicerie dédiée aux fermentations.</p>
+                <p>Curieuse et créative, Annie s'amuse à revisiter les classiques pour composer une cuisine métissée, quelque part entre l'Asie, la Méditerranée et la France. Ses plats racontent des histoires : des souvenirs d'enfance, des récits glanés au fil des rencontres, et une envie constante de faire dialoguer les cultures dans l'assiette.</p>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL GAËLLE -->
+    <div class="modal modal--cheffe" id="modal-gaelle" aria-hidden="true" role="dialog" aria-label="Gaëlle Valin">
+        <div class="marche__panel cheffe__panel">
+            <div class="marche__header cheffe__header">
+                <div class="cheffe__header-left">
+                    <div class="cheffe__avatar-lg">
+                        <img src="assets/images/portrait_gaelle.png" alt="Gaëlle Valin">
+                    </div>
+                    <div class="cheffe__header-meta">
+                        <div class="marche__title-row">
+                            <h2 class="marche__title">Gaëlle Valin</h2>
+                            <div class="marche__illus">
+                                <img src="assets/images/wasabi.png" alt="">
+                                <img src="assets/images/vin_naturel.png" alt="">
+                            </div>
+                        </div>
+                        <span class="cheffe__header-resto">Sur le pont, Saint-Aignan</span>
+                    </div>
+                </div>
+                <button class="modal__close marche__close" aria-label="Fermer">✕</button>
+            </div>
+            <div class="cheffe__bio">
+                <p>Ancienne architecte d'intérieur et scénographe, c'est lors d'un périple à vélo le long de la Loire que Gaëlle change de cap. Inspirée par des vigneronnes passionnées, elle entame en 2023 une reconversion culinaire guidée par la transmission et les rencontres, de Paris à la Loire.</p>
+                <p>C'est dans l'univers du vin naturel qu'elle trouve sa boussole. Sa cuisine, sensible et ancrée, fait la part belle au végétal, à la cueillette et à l'art de la fermentation. Pour Gaëlle, cuisiner est un geste de dialogue : une manière de raconter un territoire et de tisser des liens durables entre les gens et les saveurs.</p>
+                <p>À partir d'avril, elle reprend pour la deuxième saison les rênes de la cuisine de Sur le Pont, un lieu de vie authentique et culturel sur les bords du Cher, à Saint-Aignan.</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-menu-banquet" aria-hidden="true" role="dialog" aria-label="Menu du banquet">
+        <div class="modal__inner">
+            <button class="modal__close" aria-label="Fermer">✕&nbsp;Fermer</button>
+            <h2 class="modal__title">Menu du banquet</h2>
+            <p class="modal__placeholder">Menu — contenu à venir</p>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script src="script.js"></script>
