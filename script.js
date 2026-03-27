@@ -174,7 +174,7 @@
             var nxt  = livretModal.querySelector('.livret__nav--next');
             if (prev) prev.disabled = livretIdx === 0;
             if (nxt)  nxt.disabled  = livretIdx === livretTotal - 1;
-        }, 420);
+        }, 600);
     }
 
     if (livretModal && livretTotal > 0) {

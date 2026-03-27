@@ -1845,7 +1845,7 @@ body.modal-is-open { overflow: hidden; }
     justify-content: center;
     gap: var(--s3);
     transform: translateX(110%);
-    transition: transform 0.42s cubic-bezier(0.42, 0, 0.18, 1);
+    transition: transform 0.6s cubic-bezier(0.42, 0, 0.18, 1);
     will-change: transform;
 }
 .livret__spread.is-active { transform: translateX(0); }
