@@ -2226,16 +2226,46 @@ body.modal-is-open { overflow: hidden; }
    ============================================================ */
 @media (max-width: 768px) {
 
+    /* ---- Général ---- */
     .menu-trigger { top: var(--s5); left: var(--s5); }
-
     .big-title { font-size: clamp(2rem, 8vw, 3rem); }
+    .btn { min-height: 48px; }
 
-    /* Hero mobile */
-    .hero-logo { width: 100vw; bottom: -6%; }
-    .hero-illus--1 { width: clamp(80px, 14vw, 130px); right: 4%; }
-    .hero-illus--2 { display: none; }
+    /* ---- 1. Masquer tous les visuels cartoon ---- */
+    .hero-illus,
+    .about-illus-l, .about-illus-r, .about-illus-c,
+    .prog2-illus,
+    .banquet-illus,
+    .infos-illus-png,
+    .menu-illus { display: none; }
 
-    /* Festival mobile */
+    /* ---- 2. Masquer scroll hint ---- */
+    .scroll-hint { display: none !important; }
+
+    /* ---- 8. Hero — centré, date + lieu empilés, logo visible ---- */
+    .hero-content {
+        left: var(--s5);
+        right: var(--s5);
+        top: 4.5rem;
+        text-align: center;
+        align-items: center;
+    }
+    .hero-meta {
+        flex-direction: column;
+        gap: 0.15rem;
+        align-items: center;
+    }
+    .hero-meta__dot { display: none; }
+    .hero-ctas { flex-direction: column; align-items: stretch; width: 100%; }
+    .hero-ctas .btn { width: 100%; justify-content: center; }
+    .hero-logo {
+        width: 58vw;
+        bottom: var(--s8);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* ---- Festival ---- */
     .about-tag { top: 4.5rem; }
     .about-layout { padding: 4.5rem var(--s5) var(--s8); justify-content: center; gap: var(--s4); }
     .about-grid { grid-template-columns: 1fr; gap: var(--s4); }
@@ -2243,64 +2273,8 @@ body.modal-is-open { overflow: hidden; }
     .about-bubble { padding: var(--s5) var(--s6); border-radius: 2rem 3rem 2.5rem 2rem / 2.5rem 2rem 3rem 2.5rem; }
     .about-lead { font-size: var(--t-base); }
     .about-body { font-size: var(--t-sm); line-height: 1.65; }
-    .about-illus-l { display: none; }
-    .about-illus-r { display: none; }
-    .about-illus-c { display: none; }
 
-    /* Timeline mobile */
-    .timeline-nav { gap: var(--s2); }
-    .timeline-btn { font-size: 0.75rem; padding: 0.25rem 0.7rem; }
-    .prog-illus { display: none; }
-
-    /* Infos */
-    .split-layout { flex-direction: column; }
-    .split-left {
-        flex: 0 0 auto;
-        height: 40vh;
-        padding: 4.5rem var(--s5) var(--s5) var(--s5);
-        overflow: hidden;
-    }
-    .split-right {
-        flex: 1;
-        min-height: 0;
-        padding: var(--s6) var(--s5);
-        overflow-y: auto;
-    }
-    .prog-kids-badge { display: none; }
-    .infos-illus-png { display: none; }
-
-    /* Programme */
-    .prog-layout { padding: 4.5rem var(--s5) var(--s6); gap: var(--s4); }
-    .prog-list {
-        grid-template-columns: 1fr;
-        grid-template-rows: unset;
-        gap: var(--s3);
-    }
-    .prog-card--banquet { flex-direction: column; align-items: flex-start; gap: var(--s3); }
-    .prog-tabs { gap: var(--s2); }
-    .prog-tab { font-size: 0.75rem; padding: 0.35rem 0.8rem; }
-
-    /* Infos */
-    .info-row__value { font-size: var(--t-base); }
-    .map-container { height: 160px; }
-
-    /* Menu */
-    .menu-overlay { padding: var(--s10) var(--s6); }
-    .menu-footer { right: var(--s6); bottom: var(--s6); }
-    .menu-nav__link { font-size: clamp(var(--t-2xl), 7vw, var(--t-4xl)); }
-    .menu-overlay .deco { width: 160px; }
-
-    .btn { min-height: 48px; }
-
-    /* Footer */
-    .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--s5); }
-    .footer-nav { flex-wrap: wrap; gap: var(--s4); }
-    .footer-copy { flex-direction: column; align-items: flex-start; gap: var(--s3); }
-
-    /* Menu copy */
-    .menu-copy { left: var(--s6); bottom: var(--s6); }
-
-    /* Programme (prog2) */
+    /* ---- 3. Programme — photos uniquement ---- */
     .prog2-layout {
         position: static;
         height: 100%;
@@ -2313,42 +2287,84 @@ body.modal-is-open { overflow: hidden; }
     .prog2-header { gap: var(--s3); }
     .prog2-grid { grid-template-columns: 1fr; grid-template-rows: unset; gap: var(--s3); }
     .prog2-bloc { flex-direction: column; }
-    .prog2-bloc__photo { flex: 0 0 180px; height: 180px; width: 100%; border-radius: var(--r-md) var(--r-md) 0 0; }
-    .prog2-bloc__photo img { border-radius: var(--r-md) var(--r-md) 0 0; }
-    .prog2-bloc__body { padding: var(--s4) var(--s5) var(--s5); }
-    .prog2-illus { display: none; }
+    .prog2-bloc__num { display: none; }
+    .prog2-bloc__body { display: none; }
+    .prog2-bloc__photo { flex: 0 0 220px; height: 220px; width: 100%; border-radius: var(--r-md); }
+    .prog2-bloc__photo img { border-radius: var(--r-md); }
     .prog-pdf-wrap { display: none; }
+    .prog-illus { display: none; }
 
-    /* Banquet mobile */
-    .banquet-wrap { grid-template-rows: auto auto auto; overflow-y: auto; }
-    .banquet-header { padding: 4.5rem var(--s5) var(--s4) var(--s5); }
+    /* ---- 4. Banquet — sans portraits, CTAs visibles ---- */
+    .banquet-wrap { display: flex; flex-direction: column; overflow-y: auto; }
+    .banquet-header { padding: 4.5rem var(--s5) var(--s4); }
     .banquet-title { font-size: clamp(2rem, 8vw, 3rem); }
-    .banquet-cheffes { grid-template-columns: 1fr 1fr 1fr; }
-    .banquet-cheffe { padding: var(--s4) var(--s3) var(--s3); gap: var(--s3); }
-    .banquet-cheffe__avatar { width: 72px; height: 72px; }
-    .banquet-cheffe__name { font-size: clamp(0.85rem, 3vw, 1.1rem); }
-    .banquet-cheffe__resto { font-size: 0.6rem; }
+    .banquet-cheffes { display: none; }
     .banquet-strip {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: var(--s5);
-        padding: var(--s6) var(--s5);
+        padding: var(--s6) var(--s5) var(--s8);
+        flex: 1;
     }
     .banquet-strip__lead { font-size: var(--t-lg); white-space: normal; }
-    .banquet-strip__right { flex-direction: row; align-items: center; justify-content: space-between; gap: var(--s4); }
-    .banquet-strip__ctas { width: auto; flex-direction: row; }
-    .banquet-strip__ctas .btn { width: auto; }
-    .banquet-illus { display: none; }
+    .banquet-strip__right { display: flex; flex-direction: column; gap: var(--s4); }
+    .banquet-strip__ctas { width: 100%; flex-direction: column; }
+    .banquet-strip__ctas .btn { width: 100%; box-sizing: border-box; justify-content: center; }
 
-    /* Modales cheffes */
-    .marche__panel.cheffe__panel {
-        width: calc(100vw - 2rem);
-        max-width: calc(100vw - 2rem);
+    /* ---- 5. Infos — sans colonne gauche ni carte ---- */
+    .split-layout { flex-direction: column; }
+    .split-left { display: none; }
+    .split-right {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        padding: 5rem var(--s5) var(--s8);
+        overflow-y: auto;
     }
+    .map-container { display: none; }
+    .info-row__value { font-size: var(--t-base); }
+    .prog-kids-badge { display: none; }
+
+    /* ---- 6. Footer — centré ---- */
+    .footer-inner { flex-direction: column; align-items: center; gap: var(--s5); text-align: center; }
+    .footer-brand { align-items: center; }
+    .footer-nav { flex-wrap: wrap; gap: var(--s4); justify-content: center; }
+    .footer-copy { flex-direction: column; align-items: center; gap: var(--s3); text-align: center; }
+    .footer-copy__left { align-items: center; }
+
+    /* ---- 7. Menu — RS + organisateurs visibles ---- */
+    .menu-overlay {
+        display: flex;
+        flex-direction: column;
+        padding: 5rem var(--s6) var(--s6);
+        overflow-y: auto;
+    }
+    .menu-nav { flex: 1; }
+    .menu-nav__link { font-size: clamp(var(--t-2xl), 7vw, var(--t-4xl)); }
+    .menu-copy {
+        position: static;
+        margin-top: var(--s6);
+        font-size: 0.72rem;
+    }
+    .menu-footer {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--s3);
+        margin-top: var(--s4);
+    }
+    .menu-footer__cta { flex: 1 1 auto; justify-content: center; }
+
+    /* ---- Timeline ---- */
+    .timeline-nav { gap: var(--s2); }
+    .timeline-btn { font-size: 0.75rem; padding: 0.25rem 0.7rem; }
+
+    /* ---- Modales cheffes ---- */
+    .marche__panel.cheffe__panel { width: calc(100vw - 2rem); max-width: calc(100vw - 2rem); }
     .cheffe__header { gap: var(--s4); }
     .cheffe__header-left { gap: var(--s4); }
     .cheffe__avatar-lg { width: 72px; height: 72px; }
-
-    /* Modales marché / rencontres */
     .marche__panel { max-width: calc(100vw - 2rem); padding: 1rem var(--s5) 1.2rem; }
     .marche__title { font-size: clamp(1.4rem, 5vw, 2rem); }
     .marche__illus { display: none; }
@@ -2359,17 +2375,8 @@ body.modal-is-open { overflow: hidden; }
    ============================================================ */
 @media (max-width: 480px) {
     .big-title { font-size: clamp(1.75rem, 9vw, 2.5rem); }
-    .split-left { height: 38vh; }
-    .prog-layout { padding: 4rem var(--s4) var(--s5); }
-    .btn { width: 100%; justify-content: center; }
+    .hero-logo { width: 70vw; }
     .frise-events { flex-direction: column; }
-    .hero-cta-block { width: 100%; }
-    .hero-cta-block .btn { width: 100%; }
-
-    /* Banquet petit mobile */
-    .banquet-strip__right { flex-direction: column; align-items: flex-start; }
-    .banquet-strip__ctas { flex-direction: column; width: 100%; }
-    .banquet-strip__ctas .btn { width: 100%; }
 
     /* Modales */
     .marche__panel.cheffe__panel { width: calc(100vw - 1rem); max-width: calc(100vw - 1rem); }
