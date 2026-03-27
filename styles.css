@@ -1837,13 +1837,21 @@ body.modal-is-open { overflow: hidden; }
     height: 82vh;
     gap: var(--s4);
 }
+@keyframes livretFadeIn {
+    from { opacity: 0; transform: translateX(12px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
 .livret__spread {
     display: none;
     align-items: stretch;
     gap: var(--s3);
     height: 100%;
 }
-.livret__spread.is-active { display: flex; }
+.livret__spread.is-active {
+    display: flex;
+    animation: livretFadeIn 0.22s ease forwards;
+}
 .livret__page {
     height: 100%;
     border-radius: var(--r-lg);
