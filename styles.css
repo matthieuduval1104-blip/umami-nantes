@@ -1567,14 +1567,6 @@ em   { font-style: italic; }
     opacity: 0.9;
 }
 
-.banquet-cheffe__resto {
-    font-size: var(--t-xs);
-    font-weight: 600;
-    color: rgba(244,167,191,0.6);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
 /* ============================================================
    MODALES
    ============================================================ */
