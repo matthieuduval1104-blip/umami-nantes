@@ -134,16 +134,47 @@
     var livretIdx     = 0;
     var livretTotal   = livretSpreads.length;
 
+    var livretBusy = false;
+
     function livretGoTo(idx) {
-        livretSpreads[livretIdx].classList.remove('is-active');
-        livretIdx = (idx + livretTotal) % livretTotal;
-        livretSpreads[livretIdx].classList.add('is-active');
-        var el = document.getElementById('livret-current');
-        if (el) el.textContent = livretIdx + 1;
-        var prev = livretModal.querySelector('.livret__nav--prev');
-        var next = livretModal.querySelector('.livret__nav--next');
-        if (prev) prev.disabled = livretIdx === 0;
-        if (next) next.disabled = livretIdx === livretTotal - 1;
+        if (livretBusy) return;
+        var newIdx = (idx + livretTotal) % livretTotal;
+        if (newIdx === livretIdx) return;
+        livretBusy = true;
+
+        var direction = newIdx > livretIdx ? 1 : -1;
+        var current   = livretSpreads[livretIdx];
+        var next      = livretSpreads[newIdx];
+
+        /* Positionner le prochain spread du bon côté sans transition */
+        next.style.transition = 'none';
+        next.classList.remove('is-active');
+        if (direction < 0) { next.classList.add('is-left'); }
+        else { next.classList.remove('is-left'); }
+        next.offsetHeight; /* force reflow */
+        next.style.transition = '';
+
+        /* Lancer les deux slides simultanément */
+        next.classList.add('is-active');
+        next.classList.remove('is-left');
+        if (direction > 0) {
+            current.classList.add('is-left');
+            current.classList.remove('is-active');
+        } else {
+            current.classList.remove('is-active', 'is-left');
+        }
+
+        livretIdx = newIdx;
+
+        setTimeout(function () {
+            livretBusy = false;
+            var el = document.getElementById('livret-current');
+            if (el) el.textContent = livretIdx + 1;
+            var prev = livretModal.querySelector('.livret__nav--prev');
+            var nxt  = livretModal.querySelector('.livret__nav--next');
+            if (prev) prev.disabled = livretIdx === 0;
+            if (nxt)  nxt.disabled  = livretIdx === livretTotal - 1;
+        }, 420);
     }
 
     if (livretModal && livretTotal > 0) {
@@ -152,18 +183,30 @@
         livretModal.querySelector('.livret__nav--prev').addEventListener('click', function () { livretGoTo(livretIdx - 1); });
         livretModal.querySelector('.livret__nav--next').addEventListener('click', function () { livretGoTo(livretIdx + 1); });
         /* Reset au fermeture */
+        function livretReset() {
+            livretBusy = false;
+            livretSpreads.forEach(function (s) { s.classList.remove('is-active', 'is-left'); s.style.transition = ''; });
+            livretIdx = 0;
+            livretSpreads[0].classList.add('is-active');
+            var prev = livretModal.querySelector('.livret__nav--prev');
+            var nxt  = livretModal.querySelector('.livret__nav--next');
+            if (prev) prev.disabled = true;
+            if (nxt)  nxt.disabled  = livretTotal <= 1;
+            var el = document.getElementById('livret-current');
+            if (el) el.textContent = 1;
+        }
         livretModal.querySelector('.livret__close').addEventListener('click', function () {
             closeModal(livretModal);
-            setTimeout(function () { livretGoTo(0); }, 300);
+            setTimeout(livretReset, 350);
         });
         livretModal.addEventListener('click', function (e) {
             if (e.target === livretModal) {
                 closeModal(livretModal);
-                setTimeout(function () { livretGoTo(0); }, 300);
+                setTimeout(livretReset, 350);
             }
         });
-        /* Init état des flèches */
-        livretGoTo(0);
+        /* Init */
+        livretReset();
     }
 
     /* ---- Timeline accordion (créneaux horaires Sam/Dim) ---- */
