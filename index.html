@@ -136,10 +136,10 @@
         <section class="screen" id="programme">
 
             <div class="prog-pdf-wrap">
-                <a href="#" class="prog-pdf" aria-label="Télécharger le programme complet en PDF">
+                <button class="prog-pdf" data-modal-open="modal-programme" data-umami-event="modal-programme" aria-label="Voir le programme complet">
                     <span class="prog-pdf__text">Programme complet</span>
                     <span class="prog-pdf__arrow">↓</span>
-                </a>
+                </button>
                 <img src="assets/images/mangue.png" class="prog-pdf__illus" alt="" aria-hidden="true" loading="lazy">
             </div>
 
@@ -195,7 +195,7 @@
                     <!-- 04 Prog Kids -->
                     <div class="prog2-bloc prog2-bloc--kids">
                         <span class="prog2-bloc__num" aria-hidden="true">04</span>
-                        <div class="prog2-bloc__photo"><img src="assets/images/photo_kids.jpg" alt="Prog Kids UMAMI" loading="lazy"></div>
+                        <div class="prog2-bloc__photo prog2-bloc__photo--badge"><img src="assets/images/prog_kids.png" alt="Prog Kids UMAMI" loading="lazy"></div>
                         <div class="prog2-bloc__body">
                             <h3 class="prog2-bloc__title">Programme Kids</h3>
                             <p class="prog2-bloc__desc">Cerise sur le gâteau et nouveauté pour les plus petits, nous vous avons préparé une programmation spéciale pour nos petits bouts de choux. Dès 5 ans.</p>
@@ -321,7 +321,7 @@
                     </div>
                     <div class="info-row">
                         <span class="info-row__label">Tarifs</span>
-                        <span class="info-row__value">6€ l'entrée · Gratuit pour les enfants</span>
+                        <span class="info-row__value">6€ l'entrée · verre siglé UMAMI inclus. · Gratuit pour les enfants</span>
                     </div>
                     <div class="info-row">
                         <span class="info-row__label">Lieu</span>
@@ -467,47 +467,48 @@
         <button class="livret__nav livret__nav--next" aria-label="Atelier suivant">&#8250;</button>
 
         <div class="livret__counter">
-            <span id="livret-current">1</span>&thinsp;/&thinsp;<span id="livret-total">5</span>
+            <span class="livret-current">1</span>&thinsp;/&thinsp;<span class="livret-total">5</span>
         </div>
     </div>
-    <div class="modal modal--rencontres" id="modal-rencontres" aria-hidden="true" role="dialog" aria-label="Les rencontres">
-        <div class="marche__panel">
-            <div class="marche__header">
-                <div class="marche__header-left">
-                    <div class="marche__title-row">
-                        <h2 class="marche__title">Les rencontres</h2>
-                        <div class="marche__illus">
-                            <img src="assets/images/mangue.png" alt="" loading="lazy">
-                            <img src="assets/images/pain.png" alt="" loading="lazy">
-                            <img src="assets/images/wasabi.png" alt="" loading="lazy">
-                            <img src="assets/images/kimchi_rouge.png" alt="" loading="lazy">
-                            <img src="assets/images/pickles_rose.png" alt="" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-                <button class="modal__close marche__close" aria-label="Fermer">✕</button>
+    <div class="modal modal--livret" id="modal-rencontres" aria-hidden="true" role="dialog" aria-label="Les rencontres">
+        <button class="modal__close livret__close" aria-label="Fermer les rencontres">✕</button>
+        <button class="livret__nav livret__nav--prev" aria-label="Page précédente">&#8249;</button>
+        <div class="livret__book">
+            <div class="livret__spread livret__spread--single is-active" data-spread="0">
+                <div class="livret__page"><img src="assets/images/3.png" alt="Rencontres — programme Sam &amp; Dim" loading="lazy"></div>
             </div>
-            <div class="marche__list">
-                <div class="rencontres__day">Samedi 18 avril</div>
-                <div class="marche__row"><span class="marche__cat">11h–18h</span><span class="marche__names">Brassin public d'une bière – Nantes Beer Club &amp; Les Buveuses de Bières</span></div>
-                <div class="marche__row"><span class="marche__cat">14h–15h</span><span class="marche__names">Causerie "Matière et Matériaux" – Paul Fermentation</span></div>
-                <div class="marche__row"><span class="marche__cat">15h–16h</span><span class="marche__names">Histoire du Miso – Alexandre Duarte</span></div>
-                <div class="marche__row"><span class="marche__cat">16h–17h</span><span class="marche__names">Fermenter, porter : se transformer – Malika Nguon</span></div>
-                <div class="marche__row"><span class="marche__cat">17h–18h</span><span class="marche__names">Dédicaces – Malika Nguon</span></div>
-                <div class="marche__row"><span class="marche__cat">19h–19h30</span><span class="marche__names">Spectacle TUTU</span></div>
-                <div class="rencontres__day">Dimanche 19 avril</div>
-                <div class="marche__row"><span class="marche__cat">11h–18h</span><span class="marche__names">Brassin public d'une bière – Nantes Beer Club &amp; Les Buveuses de Bières</span></div>
-                <div class="marche__row"><span class="marche__cat">12h–13h</span><span class="marche__names">Faire vivant : fermentation, biodiversité, bien-être et santé</span></div>
-                <div class="marche__row marche__row--last"><span class="marche__cat">14h–15h</span><span class="marche__names">Présentation – Marie Ferment de la Terre</span></div>
+            <div class="livret__spread livret__spread--single" data-spread="1">
+                <div class="livret__page"><img src="assets/images/14.png" alt="Rencontres — programme Dimanche 19 avril" loading="lazy"></div>
             </div>
         </div>
+        <button class="livret__nav livret__nav--next" aria-label="Page suivante">&#8250;</button>
+        <div class="livret__counter"><span class="livret-current">1</span>&thinsp;/&thinsp;<span class="livret-total">2</span></div>
     </div>
-    <div class="modal" id="modal-kids" aria-hidden="true" role="dialog" aria-label="Programme enfant">
-        <div class="modal__inner">
-            <button class="modal__close" aria-label="Fermer">✕&nbsp;Fermer</button>
-            <h2 class="modal__title">Programme enfant</h2>
-            <p class="modal__placeholder">Détail — contenu à venir</p>
+    <div class="modal modal--livret" id="modal-kids" aria-hidden="true" role="dialog" aria-label="Programme Kids">
+        <button class="modal__close livret__close" aria-label="Fermer le programme kids">✕</button>
+        <button class="livret__nav livret__nav--prev" aria-label="Page précédente" style="visibility:hidden"></button>
+        <div class="livret__book">
+            <div class="livret__spread livret__spread--single is-active" data-spread="0">
+                <div class="livret__page"><img src="assets/images/4.png" alt="Ateliers Enfants — programme" loading="lazy"></div>
+            </div>
         </div>
+        <button class="livret__nav livret__nav--next" aria-label="Page suivante" style="visibility:hidden"></button>
+        <div class="livret__counter" style="visibility:hidden"><span class="livret-current">1</span>&thinsp;/&thinsp;<span class="livret-total">1</span></div>
+    </div>
+    <!-- MODAL PROGRAMME COMPLET -->
+    <div class="modal modal--livret" id="modal-programme" aria-hidden="true" role="dialog" aria-label="Programme complet">
+        <button class="modal__close livret__close" aria-label="Fermer le programme">✕</button>
+        <button class="livret__nav livret__nav--prev" aria-label="Page précédente">&#8249;</button>
+        <div class="livret__book">
+            <div class="livret__spread livret__spread--single is-active" data-spread="0">
+                <div class="livret__page"><img src="assets/images/programme-01.png" alt="Programme complet — page 1" loading="lazy"></div>
+            </div>
+            <div class="livret__spread livret__spread--single" data-spread="1">
+                <div class="livret__page"><img src="assets/images/programme-02.png" alt="Programme complet — page 2" loading="lazy"></div>
+            </div>
+        </div>
+        <button class="livret__nav livret__nav--next" aria-label="Page suivante">&#8250;</button>
+        <div class="livret__counter"><span class="livret-current">1</span>&thinsp;/&thinsp;<span class="livret-total">2</span></div>
     </div>
     <!-- MODAL ADÉLIE -->
     <div class="modal modal--cheffe" id="modal-adelie" aria-hidden="true" role="dialog" aria-label="Adélie Delajot">

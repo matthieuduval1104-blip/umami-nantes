@@ -128,86 +128,81 @@
         }
     });
 
-    /* ---- Livret Ateliers ---- */
-    var livretModal   = document.getElementById('modal-ateliers');
-    var livretSpreads = livretModal ? livretModal.querySelectorAll('.livret__spread') : [];
-    var livretIdx     = 0;
-    var livretTotal   = livretSpreads.length;
+    /* ---- Livrets (Ateliers, Rencontres, Programme, Kids) — générique ---- */
+    function initLivret(modal) {
+        var spreads = modal.querySelectorAll('.livret__spread');
+        var total   = spreads.length;
+        if (!total) return;
 
-    var livretBusy = false;
+        var idx  = 0;
+        var busy = false;
 
-    function livretGoTo(idx) {
-        if (livretBusy) return;
-        var newIdx = (idx + livretTotal) % livretTotal;
-        if (newIdx === livretIdx) return;
-        livretBusy = true;
+        var elCurrent = modal.querySelector('.livret-current');
+        var elTotal   = modal.querySelector('.livret-total');
+        var prevBtn   = modal.querySelector('.livret__nav--prev');
+        var nextBtn   = modal.querySelector('.livret__nav--next');
 
-        var direction = newIdx > livretIdx ? 1 : -1;
-        var current   = livretSpreads[livretIdx];
-        var next      = livretSpreads[newIdx];
-
-        /* Positionner le prochain spread du bon côté sans transition */
-        next.style.transition = 'none';
-        next.classList.remove('is-active');
-        if (direction < 0) { next.classList.add('is-left'); }
-        else { next.classList.remove('is-left'); }
-        next.offsetHeight; /* force reflow */
-        next.style.transition = '';
-
-        /* Lancer les deux slides simultanément */
-        next.classList.add('is-active');
-        next.classList.remove('is-left');
-        if (direction > 0) {
-            current.classList.add('is-left');
-            current.classList.remove('is-active');
-        } else {
-            current.classList.remove('is-active', 'is-left');
+        function updateCounter() {
+            if (elCurrent) elCurrent.textContent = idx + 1;
+        }
+        function updateNav() {
+            if (prevBtn) prevBtn.disabled = idx === 0;
+            if (nextBtn) nextBtn.disabled = idx === total - 1;
         }
 
-        livretIdx = newIdx;
+        function goTo(newIdx) {
+            if (busy) return;
+            newIdx = (newIdx + total) % total;
+            if (newIdx === idx) return;
+            busy = true;
 
-        setTimeout(function () {
-            livretBusy = false;
-            var el = document.getElementById('livret-current');
-            if (el) el.textContent = livretIdx + 1;
-            var prev = livretModal.querySelector('.livret__nav--prev');
-            var nxt  = livretModal.querySelector('.livret__nav--next');
-            if (prev) prev.disabled = livretIdx === 0;
-            if (nxt)  nxt.disabled  = livretIdx === livretTotal - 1;
-        }, 600);
-    }
+            var direction = newIdx > idx ? 1 : -1;
+            var current   = spreads[idx];
+            var next      = spreads[newIdx];
 
-    if (livretModal && livretTotal > 0) {
-        var el = document.getElementById('livret-total');
-        if (el) el.textContent = livretTotal;
-        livretModal.querySelector('.livret__nav--prev').addEventListener('click', function () { livretGoTo(livretIdx - 1); });
-        livretModal.querySelector('.livret__nav--next').addEventListener('click', function () { livretGoTo(livretIdx + 1); });
-        /* Reset au fermeture */
-        function livretReset() {
-            livretBusy = false;
-            livretSpreads.forEach(function (s) { s.classList.remove('is-active', 'is-left'); s.style.transition = ''; });
-            livretIdx = 0;
-            livretSpreads[0].classList.add('is-active');
-            var prev = livretModal.querySelector('.livret__nav--prev');
-            var nxt  = livretModal.querySelector('.livret__nav--next');
-            if (prev) prev.disabled = true;
-            if (nxt)  nxt.disabled  = livretTotal <= 1;
-            var el = document.getElementById('livret-current');
-            if (el) el.textContent = 1;
-        }
-        livretModal.querySelector('.livret__close').addEventListener('click', function () {
-            closeModal(livretModal);
-            setTimeout(livretReset, 350);
-        });
-        livretModal.addEventListener('click', function (e) {
-            if (e.target === livretModal) {
-                closeModal(livretModal);
-                setTimeout(livretReset, 350);
+            next.style.transition = 'none';
+            next.classList.remove('is-active');
+            if (direction < 0) { next.classList.add('is-left'); }
+            else { next.classList.remove('is-left'); }
+            next.offsetHeight;
+            next.style.transition = '';
+
+            next.classList.add('is-active');
+            next.classList.remove('is-left');
+            if (direction > 0) {
+                current.classList.add('is-left');
+                current.classList.remove('is-active');
+            } else {
+                current.classList.remove('is-active', 'is-left');
             }
+
+            idx = newIdx;
+            setTimeout(function () { busy = false; updateCounter(); updateNav(); }, 600);
+        }
+
+        function reset() {
+            busy = false;
+            spreads.forEach(function (s) { s.classList.remove('is-active', 'is-left'); s.style.transition = ''; });
+            idx = 0;
+            spreads[0].classList.add('is-active');
+            updateCounter();
+            updateNav();
+        }
+
+        if (elTotal) elTotal.textContent = total;
+        if (prevBtn) prevBtn.addEventListener('click', function () { goTo(idx - 1); });
+        if (nextBtn) nextBtn.addEventListener('click', function () { goTo(idx + 1); });
+
+        var closeBtn = modal.querySelector('.livret__close');
+        if (closeBtn) closeBtn.addEventListener('click', function () { closeModal(modal); setTimeout(reset, 350); });
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) { closeModal(modal); setTimeout(reset, 350); }
         });
-        /* Init */
-        livretReset();
+
+        reset();
     }
+
+    document.querySelectorAll('.modal--livret').forEach(initLivret);
 
     /* ---- Timeline accordion (créneaux horaires Sam/Dim) ---- */
     document.querySelectorAll('.prog-frise').forEach(function (frise) {

@@ -1190,6 +1190,10 @@ em   { font-style: italic; }
     text-decoration: none;
     font-family: var(--font);
     transition: opacity var(--ease);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 .prog-pdf:hover { opacity: 0.7; }
 .prog-pdf__text {
@@ -1270,6 +1274,11 @@ em   { font-style: italic; }
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+.prog2-bloc__photo--badge img {
+    object-fit: contain;
+    padding: 1rem;
+    background: var(--cream-bg);
 }
 .prog2-bloc__photo--placeholder::after {
     content: 'Photo';
