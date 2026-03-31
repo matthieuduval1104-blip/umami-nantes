@@ -2444,22 +2444,37 @@ body.modal-is-open { overflow: hidden; }
 
 /* ============================================================
    RESPONSIVE — Viewport court (≤ 860px, hors mobile)
-   Cible : MacBook 13" Retina — logo hero qui chevauche le contenu,
-   cheffes banquet coupées
+   Cible : MacBook 13"-14" Retina — toutes les sections
    ============================================================ */
 @media (max-height: 860px) and (min-width: 769px) {
 
-    /* ---- Hero : logo réduit + repoussé vers le bas ---- */
-    .hero-logo {
-        width: 76vw;
-        transform: translateX(-50%) translateY(35%);
-    }
-    .hero-content { top: 3.5rem; }
+    /* ---- Menu overlay : compact + scrollable ---- */
+    .menu-overlay { padding-top: 5rem; overflow-y: auto; justify-content: flex-start; }
+    .menu-nav__link { font-size: clamp(var(--t-2xl), 4.5vw, var(--t-4xl)); line-height: 1.2; }
 
-    /* ---- Banquet : header compressé + avatars réduits ---- */
-    .banquet-header { padding: 3.5rem var(--s8) var(--s4) var(--s8); }
+    /* ---- Hero : logo légèrement réduit + repoussé vers le bas ---- */
+    /* hero-content : on garde top: 5.5rem pour ne pas coller au Menu */
+    .hero-logo {
+        width: 88vw;
+        transform: translateX(-50%) translateY(32%);
+    }
+
+    /* ---- Festival : padding 8rem → 4rem haut, 28% → 12% bas ---- */
+    .about-layout { padding: 4rem var(--s8) 12% var(--s8); }
+
+    /* ---- Banquet : rows auto (pas de 1fr qui étire) + avatars réduits ---- */
+    /* banquet-header garde son padding original 5.5rem pour ne pas toucher Menu */
+    .banquet-wrap  { grid-template-rows: auto auto auto; }
     .banquet-cheffe { padding: var(--s4) var(--s4) var(--s3); gap: var(--s3); }
     .banquet-cheffe__avatar { width: 88px; height: 88px; }
+
+    /* ---- Infos : padding réduit + carte plus petite → supprime le scroll ---- */
+    .split-left  { padding: 3.5rem var(--s8) var(--s8) var(--s8); }
+    .split-right { padding: var(--s8) var(--s8); justify-content: flex-start; gap: var(--s4); }
+    .map-container { height: 170px; }
+
+    /* ---- Footer : padding top réduit ---- */
+    .site-footer { padding: var(--s8) var(--s8) var(--s6); }
 }
 
 /* ============================================================
