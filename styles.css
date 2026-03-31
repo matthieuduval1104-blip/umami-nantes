@@ -613,7 +613,6 @@ em   { font-style: italic; }
     width: 98vw;
     height: auto;
     z-index: 1;
-    mix-blend-mode: multiply;
 }
 
 /* Illustrations — regroupées au-dessus du "A" de UMAMI (~50% de la largeur) */
