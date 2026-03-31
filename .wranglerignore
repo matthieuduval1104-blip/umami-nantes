@@ -1,2 +1,4 @@
-.git/
+.git
+.git/**
 netlify.toml
+wrangler.toml
