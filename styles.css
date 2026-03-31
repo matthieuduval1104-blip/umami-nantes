@@ -2459,8 +2459,9 @@ body.modal-is-open { overflow: hidden; }
         transform: translateX(-50%) translateY(32%);
     }
 
-    /* ---- Festival : top 5.5rem (= aligne sur Menu) + centrage vertical du bloc ---- */
-    .about-layout { padding: 5.5rem var(--s8) var(--s8); justify-content: center; }
+    /* ---- Festival : top 8rem (= tag à 5.5rem + 40px gap identique au base CSS) ---- */
+    /* flex-start : titre calé sur le padding-top, bulle ne cache pas les illustrations du bas */
+    .about-layout { padding: 8rem var(--s8) var(--s5); justify-content: flex-start; }
 
     /* ---- Banquet : rows auto (pas de 1fr qui étire) + avatars réduits ---- */
     /* banquet-header garde son padding original 5.5rem → tag aligné avec Menu */
