@@ -824,340 +824,6 @@ em   { font-style: italic; }
     filter: drop-shadow(0 6px 20px rgba(0,0,0,0.5));
 }
 
-/* Carte kids — badge absolument positionné, déborde du haut */
-.prog-card--kids {
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding-top: var(--s5);
-    overflow: visible;
-}
-.prog-kids-badge {
-    position: absolute;
-    top: -8px;
-    left: var(--s5);
-    width: clamp(70px, 9vw, 115px);
-    height: auto;
-    transform: rotate(-4deg);
-    display: block;
-    filter: drop-shadow(0 3px 8px rgba(17,17,17,0.15));
-    z-index: -1;
-}
-
-/* ============================================================
-   PROGRAMME — fond crème, typographie noire, lisible et joyeux
-   ============================================================ */
-#programme { background: var(--cream-bg); }
-
-.prog-layout {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 5.5rem var(--s8) var(--s8);
-    gap: var(--s5);
-}
-
-.prog-top {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--s8);
-    flex-shrink: 0;
-}
-
-.prog-top__text {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s4);
-    flex-shrink: 0;
-}
-
-/* Onglets — dark sur fond clair */
-.prog-tabs {
-    display: flex;
-    gap: var(--s3);
-    flex-shrink: 0;
-    align-items: flex-end;
-}
-
-.prog-tab {
-    background: none;
-    border: 2px solid rgba(17,17,17,0.18);
-    color: rgba(17,17,17,0.45);
-    font-family: var(--font);
-    font-size: var(--t-sm);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.45rem 1.1rem;
-    border-radius: var(--r-full);
-    cursor: pointer;
-    transition: all var(--ease);
-}
-.prog-tab.is-active,
-.prog-tab:hover {
-    background: var(--pink);
-    border-color: var(--pink);
-    color: var(--black);
-}
-
-/* ---- Vue générale : 3 cartes blanches + banquet pleine largeur ---- */
-.prog-list {
-    flex: 1;
-    min-height: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr auto;
-    gap: var(--s4);
-    transition: opacity 0.2s ease;
-}
-.prog-list.is-hidden { display: none; }
-
-/* Carte blanche sur fond crème — contraste parfait */
-.prog-card {
-    position: relative;
-    background: var(--white);
-    border: 1.5px solid rgba(17,17,17,0.08);
-    border-radius: var(--r-lg);
-    padding: var(--s6) var(--s6) var(--s5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--s3);
-    overflow: hidden;
-    transition: box-shadow 0.22s ease, transform 0.22s ease;
-}
-.prog-card:hover {
-    box-shadow: 0 8px 28px rgba(17,17,17,0.1);
-    transform: translateY(-3px);
-}
-
-/* Numéro filigrane — visible mais discret sur blanc */
-.prog-card__num {
-    position: absolute;
-    top: var(--s2);
-    right: var(--s3);
-    font-size: clamp(4rem, 5.5vw, 5.5rem);
-    font-weight: 700;
-    color: rgba(244,167,191,0.18);
-    line-height: 1;
-    pointer-events: none;
-    letter-spacing: -0.05em;
-}
-
-.prog-card__title {
-    font-size: clamp(1.1rem, 1.7vw, 1.45rem);
-    font-weight: 700;
-    color: var(--black);
-    line-height: 1.25;
-    position: relative;
-    z-index: 1;
-}
-
-.prog-card__desc {
-    font-size: var(--t-base);
-    font-weight: 400;
-    color: rgba(17,17,17,0.6);
-    line-height: 1.65;
-    position: relative;
-    z-index: 1;
-    margin-top: auto;
-}
-
-/* Illustrations décoratives Programme — centrées haut de page */
-.prog-illus { position: absolute; pointer-events: none; z-index: 0; }
-.prog-illus--1 { top: 2%; left: 42%; width: clamp(70px, 8vw, 120px); transform: rotate(-8deg); }
-.prog-illus--2 { top: 0%; left: 53%; width: clamp(65px, 7vw, 110px); transform: rotate(13deg); }
-
-/* Carte banquet — pleine largeur, fond rose */
-.prog-card--banquet {
-    grid-column: 1 / -1;
-    background: var(--pink);
-    border-color: var(--pink);
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--s8);
-    padding: var(--s5) var(--s6);
-    overflow: visible;
-}
-.prog-card--banquet:hover {
-    background: var(--pink-deep);
-    border-color: var(--pink-deep);
-    box-shadow: 0 8px 28px rgba(232,121,158,0.35);
-    transform: translateY(-3px);
-}
-.prog-card--banquet .prog-card__num { display: none; }
-.prog-card--banquet .prog-card__title { color: var(--black); }
-.prog-card--banquet .prog-card__desc  { color: rgba(17,17,17,0.65); }
-
-.prog-card__banquet-text {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s2);
-    min-width: 0;
-}
-
-.prog-card__banquet-eyebrow {
-    font-size: var(--t-xs);
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(17,17,17,0.55);
-}
-
-/* ---- Frise horaire — timeline accordion horizontal ---- */
-.prog-frise {
-    flex: 1;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--s4);
-    overflow: hidden;
-}
-.prog-frise.is-hidden { display: none; }
-
-/* Nav créneaux horaires */
-.timeline-nav {
-    display: flex;
-    gap: var(--s2);
-    flex-wrap: wrap;
-    flex-shrink: 0;
-}
-.timeline-btn {
-    background: none;
-    border: 1.5px solid rgba(17,17,17,0.18);
-    border-radius: 2rem;
-    padding: 0.3rem 0.9rem;
-    font-family: var(--font);
-    font-size: var(--t-sm);
-    font-weight: 700;
-    color: rgba(17,17,17,0.5);
-    cursor: pointer;
-    transition: all var(--ease);
-    white-space: nowrap;
-}
-.timeline-btn.is-active,
-.timeline-btn:hover {
-    background: var(--black);
-    border-color: var(--black);
-    color: var(--cream);
-}
-
-/* Panels */
-.timeline-panels {
-    flex: 1;
-    min-height: 0;
-}
-.timeline-panel {
-    display: none;
-}
-.timeline-panel.is-active {
-    display: block;
-}
-
-/* Chaque bloc horaire = une cellule carte */
-.frise-row {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s2);
-    padding: var(--s3) var(--s4);
-    background: rgba(17,17,17,0.04);
-    border-radius: var(--r-md);
-    border-top: 2px solid var(--pink);
-    border-bottom: none;
-}
-
-/* Heure — visible, signature éditoriale */
-.frise-time {
-    font-size: clamp(1.2rem, 1.5vw, 1.6rem);
-    font-weight: 700;
-    color: var(--pink-deep);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-    margin-bottom: var(--s2);
-}
-
-.frise-events {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-
-/* Events — lignes compactes lisibles */
-.frise-event {
-    display: block;
-    font-size: var(--t-xs);
-    font-weight: 400;
-    line-height: 1.4;
-    color: rgba(17,17,17,0.7);
-    background: none;
-    border: none;
-    border-left: 2px solid rgba(17,17,17,0.15);
-    padding: 0.1rem 0 0.1rem var(--s3);
-    border-radius: 0;
-}
-
-.frise-event--paid {
-    border-left-color: var(--pink-deep);
-    font-weight: 700;
-    color: var(--black);
-}
-
-.frise-event--free {
-    border-left-color: rgba(17,17,17,0.18);
-    color: rgba(17,17,17,0.65);
-}
-
-.frise-event--special {
-    background: var(--black);
-    border-left: none;
-    color: var(--cream);
-    font-weight: 700;
-    padding: 0.25rem var(--s3);
-    border-radius: var(--r-sm);
-    margin-top: var(--s2);
-}
-
-.frise-event--kids {
-    border-left-color: rgba(244,167,191,0.5);
-    color: rgba(17,17,17,0.45);
-    font-style: italic;
-}
-
-.frise-link {
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    transition: opacity var(--ease);
-}
-.frise-link:hover { opacity: 0.7; }
-
-/* Légende — compact, discret */
-.frise-legend {
-    display: flex;
-    gap: var(--s5);
-    flex-shrink: 0;
-    padding-bottom: var(--s3);
-    border-bottom: 1px solid rgba(17,17,17,0.07);
-    margin-bottom: var(--s2);
-}
-.frise-legend__item {
-    display: flex;
-    align-items: center;
-    gap: var(--s2);
-    font-size: var(--t-xs);
-    font-weight: 400;
-    color: rgba(17,17,17,0.45);
-}
-.frise-legend__dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-.frise-legend__dot--paid    { background: var(--pink-deep); }
-.frise-legend__dot--free    { background: rgba(17,17,17,0.25); }
-.frise-legend__dot--special { background: var(--black); border: 1.5px solid var(--pink); }
 
 /* ============================================================
    PROGRAMME V2 — 4 blocs en grille 2×2
@@ -2245,8 +1911,6 @@ body.modal-is-open { overflow: hidden; }
     .about-illus-l { width: 90px; }
     .about-illus-r { width: 120px; }
     .infos-illus-png { width: 85px; }
-    .prog-card__title { font-size: clamp(1rem, 1.5vw, 1.3rem); }
-    .frise-time { font-size: 1.4rem; }
 }
 
 /* ============================================================
@@ -2380,7 +2044,6 @@ body.modal-is-open { overflow: hidden; }
     }
     .map-container { display: none; }
     .info-row__value { font-size: var(--t-base); }
-    .prog-kids-badge { display: none; }
 
     /* ---- 6. Footer — centré ---- */
     .footer-inner { flex-direction: column; align-items: center; gap: var(--s5); text-align: center; }
@@ -2423,10 +2086,6 @@ body.modal-is-open { overflow: hidden; }
     }
     .menu-footer__cta { width: 100%; justify-content: center; }
 
-    /* ---- Timeline ---- */
-    .timeline-nav { gap: var(--s2); }
-    .timeline-btn { font-size: 0.75rem; padding: 0.25rem 0.7rem; }
-
     /* ---- Modales cheffes ---- */
     .marche__panel.cheffe__panel { width: calc(100vw - 2rem); max-width: calc(100vw - 2rem); }
     .cheffe__header { gap: var(--s4); }
@@ -2443,7 +2102,6 @@ body.modal-is-open { overflow: hidden; }
 @media (max-width: 480px) {
     .big-title { font-size: clamp(1.75rem, 9vw, 2.5rem); }
     .hero-logo { width: 70vw; }
-    .frise-events { flex-direction: column; }
 
     /* Modales */
     .marche__panel.cheffe__panel { width: calc(100vw - 1rem); max-width: calc(100vw - 1rem); }
@@ -2470,6 +2128,9 @@ body.modal-is-open { overflow: hidden; }
     /* ---- Festival : top 8rem (= tag à 5.5rem + 40px gap identique au base CSS) ---- */
     /* flex-start : titre calé sur le padding-top, bulle ne cache pas les illustrations du bas */
     .about-layout { padding: 8rem var(--s8) var(--s5); justify-content: flex-start; }
+
+    /* ---- Programme : top 5.5rem pour dégager le bouton Menu (base = 5rem, flush au burger) ---- */
+    .prog2-layout { padding-top: 5.5rem; }
 
     /* ---- Banquet : rows auto (pas de 1fr qui étire) + avatars réduits ---- */
     /* banquet-header garde son padding original 5.5rem → tag aligné avec Menu */
