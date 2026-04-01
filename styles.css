@@ -1029,12 +1029,23 @@ em   { font-style: italic; }
    ============================================================ */
 #banquet { background: var(--black); }
 
-/* Conteneur principal : 3 lignes (header / cheffes / strip) */
+/* Conteneur principal : 2 rows — header / bubble */
 .banquet-wrap {
     position: absolute;
     inset: 0;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr;
+}
+
+/* Bubble rose : contient portraits + strip CTA */
+.banquet-bubble {
+    background: var(--pink);
+    border-radius: 2rem;
+    margin: 0 var(--s5) var(--s5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
 }
 
 /* ---- Ligne 1 : tag + titre ---- */
@@ -1054,37 +1065,38 @@ em   { font-style: italic; }
 .banquet-cheffes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    border-top: 1px solid rgba(245,228,192,0.12);
-    border-bottom: 1px solid rgba(245,228,192,0.12);
+    border-bottom: 1px solid rgba(17,17,17,0.12);
     overflow: hidden;
+    flex: 1;
+    min-height: 0;
 }
 .banquet-cheffe {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: var(--s4);
-    padding: var(--s6) var(--s5) var(--s4);
+    padding: var(--s6) var(--s5) var(--s5);
     background: none;
     border: none;
-    border-right: 1px solid rgba(245,228,192,0.12);
+    border-right: 1px solid rgba(17,17,17,0.12);
     cursor: pointer;
     text-align: center;
     transition: background var(--ease);
 }
 .banquet-cheffe:last-child { border-right: none; }
-.banquet-cheffe:hover { background: rgba(245,228,192,0.04); }
-.banquet-cheffe:hover .banquet-cheffe__name { color: var(--pink); }
+.banquet-cheffe:hover { background: rgba(17,17,17,0.06); }
+.banquet-cheffe:hover .banquet-cheffe__name { color: var(--black); }
 .banquet-cheffe:hover .banquet-cheffe__avatar {
     transform: scale(1.1);
-    box-shadow: 0 0 0 3px var(--pink), 0 8px 24px rgba(244,167,191,0.5);
+    box-shadow: 0 0 0 3px var(--black), 0 8px 24px rgba(17,17,17,0.25);
 }
 .banquet-cheffe__avatar {
     width: 130px;
     height: 130px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid rgba(244,167,191,0.35);
+    border: 2px solid rgba(17,17,17,0.2);
     transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
     flex-shrink: 0;
 }
@@ -1102,7 +1114,7 @@ em   { font-style: italic; }
 .banquet-cheffe__name {
     font-size: clamp(1.4rem, 1.9vw, 2.1rem);
     font-weight: 900;
-    color: var(--cream);
+    color: var(--black);
     letter-spacing: -0.02em;
     line-height: 1;
     transition: color var(--ease);
@@ -1110,19 +1122,23 @@ em   { font-style: italic; }
 .banquet-cheffe__resto {
     font-size: var(--t-xs);
     font-weight: 600;
-    color: rgba(244,167,191,0.6);
+    color: rgba(17,17,17,0.55);
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
-/* ---- Ligne 3 : bande rose grounded ---- */
+/* ---- Strip CTA (bas du bubble) ---- */
 .banquet-strip {
-    background: var(--pink);
+    background: transparent;
+    border-top: 1px solid rgba(17,17,17,0.12);
     padding: var(--s5) var(--s10);
     display: grid;
     grid-template-columns: 1fr 340px;
     gap: var(--s8);
     align-items: center;
+}
+.banquet-strip--bubble {
+    /* margin et border-radius délégués au .banquet-bubble parent */
 }
 .banquet-strip__lead-row {
     display: flex;
@@ -2033,6 +2049,7 @@ body.modal-is-open { overflow: hidden; }
     .banquet-wrap { position: static; display: flex; flex-direction: column; overflow: visible; }
     .banquet-header { padding: var(--s5) var(--s5) var(--s4); }
     .banquet-title { font-size: clamp(2rem, 8vw, 3rem); }
+    .banquet-bubble { flex: 1; display: flex; flex-direction: column; }
     .banquet-cheffes { display: none; }
     .banquet-strip {
         display: flex;
@@ -2040,6 +2057,7 @@ body.modal-is-open { overflow: hidden; }
         gap: var(--s4);
         padding: var(--s3) var(--s5) var(--s8);
         flex: 1;
+        border-top: none; /* pas de séparateur sans les portraits */
     }
     .banquet-strip__lead { font-size: var(--t-lg); white-space: normal; }
     .banquet-strip__right { display: flex; flex-direction: column; gap: var(--s4); }
@@ -2151,7 +2169,7 @@ body.modal-is-open { overflow: hidden; }
 
     /* ---- Banquet : rows auto (pas de 1fr qui étire) + avatars réduits ---- */
     /* banquet-header garde son padding original 5.5rem → tag aligné avec Menu */
-    .banquet-wrap  { grid-template-rows: auto auto auto; }
+    .banquet-wrap  { grid-template-rows: auto auto; }
     .banquet-cheffe { padding: var(--s4) var(--s4) var(--s3); gap: var(--s3); }
     .banquet-cheffe__avatar { width: 88px; height: 88px; }
 
