@@ -2008,7 +2008,6 @@ body.modal-is-open { overflow: hidden; }
     /* ---- 3. Programme — texte + CTA, sans photos ---- */
     #programme {
         height: auto;
-        min-height: 100vh;
         overflow: visible;
     }
     .prog2-layout {
@@ -2030,7 +2029,7 @@ body.modal-is-open { overflow: hidden; }
     .prog-illus { display: none; }
 
     /* ---- 4. Banquet — sans portraits, CTAs visibles ---- */
-    #banquet { height: auto; min-height: 100vh; overflow: visible; }
+    #banquet { height: auto; overflow: visible; }
     .banquet-wrap { position: static; display: flex; flex-direction: column; overflow: visible; }
     .banquet-header { padding: var(--s5) var(--s5) var(--s4); }
     .banquet-title { font-size: clamp(2rem, 8vw, 3rem); }
@@ -2048,14 +2047,13 @@ body.modal-is-open { overflow: hidden; }
     .banquet-strip__ctas .btn { width: 100%; box-sizing: border-box; justify-content: center; }
 
     /* ---- 5. Infos — sans colonne gauche ni carte ---- */
-    #infos { height: auto; min-height: 100vh; overflow: visible; }
+    #infos { height: auto; overflow: visible; }
     .split-layout { flex-direction: column; position: static; height: auto; }
     .split-left { display: none; }
     .split-right {
         flex: 1;
         width: 100%;
         height: auto;
-        min-height: 100svh;
         padding: var(--s5) var(--s5) var(--s8);
         overflow: visible;
         justify-content: flex-start;  /* override: base a justify-content:center qui crée de l'espace en haut */
