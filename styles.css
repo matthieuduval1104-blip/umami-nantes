@@ -82,7 +82,7 @@ html, body {
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     color: var(--black);
-    background: var(--pink); /* même couleur que le hero — masque le flash blanc pendant visibility:hidden */
+    background: var(--pink); /* = hero color, masque le fond pendant snap-wrapper visibility:hidden */
 }
 
 img  { display: block; max-width: 100%; }
