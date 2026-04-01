@@ -331,6 +331,25 @@
         infosObserver.observe(infosSection);
     }
 
+    /* ---- Parallax illustrations — souris (desktop uniquement) ---- */
+    var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!isTouch && !prefersReduced) {
+        var parallaxEls = document.querySelectorAll('[data-parallax]');
+        document.addEventListener('mousemove', function (e) {
+            var x = (e.clientX / window.innerWidth  - 0.5) * 2;
+            var y = (e.clientY / window.innerHeight - 0.5) * 2;
+            parallaxEls.forEach(function (el) {
+                var d = parseFloat(el.getAttribute('data-parallax'));
+                el.style.transform = 'translate(' + (x * d * 100).toFixed(1) + 'px, ' + (y * d * 100).toFixed(1) + 'px)';
+            });
+        });
+        document.addEventListener('mouseleave', function () {
+            parallaxEls.forEach(function (el) { el.style.transform = ''; });
+        });
+    }
+
     /* ---- Typewriter — titre hero lettre par lettre ---- */
     var titleLines = document.querySelectorAll('.hero-title__line');
     if (titleLines.length) {
