@@ -30,6 +30,10 @@
     updateVh();
     window.addEventListener('resize', updateVh);
 
+    /* ---- Feature detection ---- */
+    var isTouch       = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     /* ---- Références DOM ---- */
     var trigger     = document.getElementById('menu-trigger');
     var overlay     = document.getElementById('menu-overlay');
@@ -331,10 +335,27 @@
         infosObserver.observe(infosSection);
     }
 
-    /* ---- Parallax illustrations — souris (desktop uniquement) ---- */
-    var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* ---- Reveal des sections — éléments entrent en scène au snap ---- */
+    if (!prefersReduced) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.screen, #footer').forEach(function (s) {
+            revealObserver.observe(s);
+        });
+    } else {
+        /* Reduced motion : sections visibles immédiatement */
+        document.querySelectorAll('.screen, #footer').forEach(function (s) {
+            s.classList.add('section-visible');
+        });
+    }
 
+    /* ---- Parallax illustrations — souris (desktop uniquement) ---- */
     if (!isTouch && !prefersReduced) {
         var parallaxEls = document.querySelectorAll('[data-parallax]');
         document.addEventListener('mousemove', function (e) {
