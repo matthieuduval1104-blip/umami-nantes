@@ -1,5 +1,5 @@
 /* ============================================================
-   UMAMI#5 — styles.css v1.2
+   UMAMI#5 — styles.css v1.8
    ============================================================ */
 
 /* ============================================================
@@ -34,7 +34,6 @@
     --pink:      #F4A7BF;
     --pink-deep: #E8799E;
     --black:     #111111;
-    --black-2:   #1A1A1A;
     --cream:     #F5E4C0;
     --cream-bg:  #FAF4E8;
     --white:     #FFFFFF;
@@ -1137,9 +1136,7 @@ em   { font-style: italic; }
     gap: var(--s8);
     align-items: center;
 }
-.banquet-strip--bubble {
-    /* margin et border-radius délégués au .banquet-bubble parent */
-}
+
 .banquet-strip__lead-row {
     display: flex;
     align-items: baseline;
