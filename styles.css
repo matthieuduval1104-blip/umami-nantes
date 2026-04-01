@@ -952,68 +952,76 @@ body::after {
 #programme { background: var(--cream-bg); }
 
 .prog-pdf-wrap {
-    position: absolute;
-    top: calc(var(--s8) + 1.5rem);
-    right: var(--s8);
-    z-index: 10;
+    grid-area: cta;
+    position: static;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column-reverse; /* bouton en bas = aligné avec "fermentation." */
+    align-items: flex-end;
     gap: var(--s3);
+    align-self: end;
+    padding-bottom: var(--s2);
 }
 .prog-pdf__illus {
-    width: clamp(60px, 6vw, 90px);
+    width: clamp(44px, 4.5vw, 66px);
     height: auto;
     filter: drop-shadow(0 4px 12px rgba(17,17,17,0.12));
     transform: rotate(6deg);
+    align-self: center;
 }
 .prog-pdf {
-    position: static;
-    z-index: 10;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--s2);
-    text-decoration: none;
     font-family: var(--font);
-    transition: opacity var(--ease);
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-}
-.prog-pdf:hover { opacity: 0.7; }
-.prog-pdf__text {
     font-size: var(--t-sm);
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    background: var(--pink);
     color: var(--black);
+    border: 2.5px solid var(--pink);
+    border-radius: var(--r-full);
+    padding: 0.75rem 1.5rem;
+    min-height: 48px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background var(--ease), color var(--ease), border-color var(--ease),
+                transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
 }
-.prog-pdf__arrow {
-    font-size: var(--t-base);
-    color: var(--black);
-    line-height: 1;
+.prog-pdf:hover {
+    background: var(--black);
+    color: var(--cream);
+    border-color: var(--black);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(17,17,17,0.3);
 }
+.prog-pdf__text { color: inherit; }
+.prog-pdf__arrow { color: inherit; font-size: var(--t-base); line-height: 1; }
 
 .prog2-layout {
     position: absolute;
     inset: 0;
     padding: 5rem var(--s10) var(--s8) var(--s8);
-    display: flex;
-    flex-direction: column;
-    gap: var(--s5);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "header cta"
+        "grid   grid";
+    column-gap: var(--s8);
+    row-gap: var(--s5);
     overflow: hidden;
 }
 .prog2-header {
+    grid-area: header;
     display: flex;
     flex-direction: column;
     gap: var(--s2);
-    flex-shrink: 0;
+    align-self: end;
 }
 .prog2-grid {
-    flex: 1;
+    grid-area: grid;
     min-height: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1121,15 +1129,15 @@ body::after {
     z-index: 2;
 }
 .prog2-illus--1 {
-    width: clamp(55px, 5.5vw, 78px);
-    top: 3%;
-    left: 44%;
+    width: clamp(44px, 4.4vw, 62px);
+    top: 8%;
+    left: 50%;
     transform: rotate(8deg);
 }
 .prog2-illus--2 {
-    width: clamp(65px, 6.5vw, 90px);
-    top: 3%;
-    left: 62%;
+    width: clamp(68px, 7vw, 96px);
+    top: 6%;
+    left: 65%;
     transform: rotate(-5deg);
 }
 
@@ -2142,13 +2150,14 @@ body.modal-is-open { overflow: hidden; }
         flex-direction: column;
         gap: var(--s4);
     }
-    .prog2-header { gap: var(--s3); }
+    .prog2-header { gap: var(--s3); align-self: auto; }
     .prog2-grid { grid-template-columns: 1fr; grid-template-rows: unset; gap: var(--s3); }
     .prog2-bloc { flex-direction: column; }
     .prog2-bloc__num { display: none; }
     .prog2-bloc__photo { display: none; }
     .prog2-bloc__body { padding: var(--s5); border-radius: var(--r-md); }
-    .prog-pdf-wrap { position: static; display: flex; flex-direction: row; align-items: center; padding: var(--s4) var(--s5) 0; }
+    .prog-pdf-wrap { flex-direction: column; align-items: center; align-self: auto; padding: 0; width: 100%; }
+    .prog-pdf { width: 100%; }
     .prog-pdf__illus { display: none; }
     .prog-illus { display: none; }
 
@@ -2237,6 +2246,15 @@ body.modal-is-open { overflow: hidden; }
     .marche__panel { max-width: calc(100vw - 2rem); padding: 1rem var(--s5) 1.2rem; }
     .marche__title { font-size: clamp(1.4rem, 5vw, 2rem); }
     .marche__illus { display: none; }
+    /* fix : grid-row débordait des 2 côtés → colonnes fixes */
+    .marche__row { grid-template-columns: auto 1fr; gap: 0.75rem; }
+    .marche__names { font-size: var(--t-sm); }
+    /* fix : bouton fermer livret sous la safe-area iOS */
+    .livret__close {
+        top: max(1.5rem, calc(env(safe-area-inset-top) + 0.75rem)) !important;
+        width: 44px !important;
+        height: 44px !important;
+    }
 }
 
 /* ============================================================
