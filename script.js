@@ -12,12 +12,13 @@
 
     function resetScroll() {
         var wrapper = document.querySelector('.snap-wrapper');
-        if (wrapper) wrapper.scrollTop = 0;
+        if (wrapper) {
+            wrapper.scrollTop = 0;
+            wrapper.classList.add('is-ready'); /* révèle le wrapper après reset — évite flash */
+        }
         window.scrollTo(0, 0);
     }
 
-    resetScroll();
-    window.addEventListener('load', resetScroll);
     window.addEventListener('pageshow', function () {
         requestAnimationFrame(resetScroll);
     });

@@ -101,6 +101,11 @@ em   { font-style: italic; }
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scrollbar-width: none;
+    visibility: hidden;         /* caché jusqu'au reset scroll (évite flash du footer) */
+}
+.snap-wrapper.is-ready {
+    visibility: visible;
+    transition: opacity 0.15s ease;
 }
 .snap-wrapper::-webkit-scrollbar { display: none; }
 
