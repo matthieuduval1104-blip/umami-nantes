@@ -133,8 +133,9 @@ em   { font-style: italic; }
 }
 .tag--pink { background: var(--pink); color: var(--black); }
 .tag--dark { background: var(--black); color: var(--cream); }
-/* Tag affiché uniquement sur mobile — caché sur desktop (après .tag pour éviter l'écrasement) */
-.infos-tag-mobile { display: none; }
+/* Éléments affichés uniquement sur mobile — cachés sur desktop (après .tag pour éviter l'écrasement) */
+.infos-tag-mobile  { display: none; }
+.infos-title-mobile { display: none; }
 
 .big-title {
     font-size: clamp(3rem, 5.5vw, 4.5rem);
@@ -1927,6 +1928,10 @@ body.modal-is-open { overflow: hidden; }
     .menu-trigger { top: var(--s5); left: var(--s5); }
     .btn { min-height: 48px; }
 
+    /* Désactiver le snap scroll : sections height:auto ne sont pas scrollables en mandatory */
+    .snap-wrapper { scroll-snap-type: none; }
+    .screen { scroll-snap-align: none; }
+
     /* ---- 1b. Tags + titres de section centrés ---- */
     .big-title { font-size: clamp(2rem, 8vw, 3rem); text-align: center; }
     .tag { display: block; text-align: center; margin: 0 auto; }
@@ -1945,8 +1950,9 @@ body.modal-is-open { overflow: hidden; }
     .prog2-bloc__title { text-align: center; }
     .prog2-bloc__cta, .prog2-bloc__ctas { align-self: center; }
 
-    /* 5. Infos — tag mobile visible, illustrations masquées */
-    .infos-tag-mobile { display: block; margin-bottom: var(--s4); }
+    /* 5. Infos — tag + titre mobile visibles, illustrations masquées */
+    .infos-tag-mobile  { display: block; }
+    .infos-title-mobile { display: block; color: var(--black); margin-bottom: var(--s3); }
     .infos-illus-r { display: none; }
 
     /* ---- 1. Masquer tous les visuels cartoon ---- */
@@ -2026,8 +2032,8 @@ body.modal-is-open { overflow: hidden; }
     .banquet-strip {
         display: flex;
         flex-direction: column;
-        gap: var(--s5);
-        padding: var(--s6) var(--s5) var(--s8);
+        gap: var(--s4);
+        padding: var(--s3) var(--s5) var(--s8);
         flex: 1;
     }
     .banquet-strip__lead { font-size: var(--t-lg); white-space: normal; }
@@ -2046,6 +2052,7 @@ body.modal-is-open { overflow: hidden; }
         min-height: 100svh;
         padding: var(--s5) var(--s5) var(--s8);
         overflow: visible;
+        justify-content: flex-start;  /* override: base a justify-content:center qui crée de l'espace en haut */
     }
     .map-container { display: none; }
     .info-row__value { font-size: var(--t-base); }

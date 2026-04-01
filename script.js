@@ -5,6 +5,11 @@
 (function () {
     'use strict';
 
+    /* ---- Scroll restoration : forcer le retour au hero au reload ---- */
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    var snapWrapper = document.querySelector('.snap-wrapper');
+    if (snapWrapper) snapWrapper.scrollTop = 0;
+
     /* ---- Viewport height réel (iOS + navigateurs avec UI custom) ---- */
     function updateVh() {
         document.documentElement.style.setProperty('--actual-vh', window.innerHeight + 'px');
