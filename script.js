@@ -1,5 +1,5 @@
 /* ============================================================
-   UMAMI#5 — script.js v1.0
+   UMAMI#5 — script.js v1.1
    ============================================================ */
 
 (function () {
@@ -120,10 +120,38 @@
     var footer = document.getElementById('footer');
     if (footer) observer.observe(footer);
 
+    /* ---- Focus trap pour les modales ---- */
+    var FOCUSABLE_SEL = 'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])';
+
+    function trapFocus(modal) {
+        var focusable = Array.from(modal.querySelectorAll(FOCUSABLE_SEL));
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last  = focusable[focusable.length - 1];
+        modal._trapHandler = function (e) {
+            if (e.key !== 'Tab') return;
+            if (e.shiftKey) {
+                if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+            } else {
+                if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+            }
+        };
+        modal.addEventListener('keydown', modal._trapHandler);
+    }
+
+    function releaseFocus(modal) {
+        if (modal._trapHandler) {
+            modal.removeEventListener('keydown', modal._trapHandler);
+            modal._trapHandler = null;
+        }
+    }
+
     /* ---- Modales ---- */
     function closeModal(modal) {
         modal.classList.remove('is-open');
         modal.setAttribute('aria-hidden', 'true');
+        modal.removeAttribute('aria-modal');
+        releaseFocus(modal);
         document.body.classList.remove('modal-is-open');
     }
 
@@ -134,9 +162,11 @@
             if (!modal) return;
             modal.classList.add('is-open');
             modal.setAttribute('aria-hidden', 'false');
+            modal.setAttribute('aria-modal', 'true');
             document.body.classList.add('modal-is-open');
             var closeBtn = modal.querySelector('.modal__close');
             if (closeBtn) closeBtn.focus();
+            trapFocus(modal);
         });
     });
 
@@ -244,35 +274,61 @@
         }
     }
 
-    /* ---- Carte Leaflet (Infos pratiques) ---- */
-    if (typeof L !== 'undefined') {
+    /* ---- Carte Leaflet — chargée en différé quand #infos entre dans le viewport ---- */
+    var infosSection = document.getElementById('infos');
+    var leafletLoaded = false;
+
+    function initLeafletMap() {
         var mapEl = document.getElementById('map');
-        if (mapEl) {
-            var map = L.map('map', {
-                center: [47.200578632683765, -1.5643567563961212],
-                zoom: 15,
-                zoomControl: false,
-                scrollWheelZoom: false,
-                dragging: false,
-                attributionControl: false
-            });
+        if (!mapEl) return;
+        var map = L.map('map', {
+            center: [47.200578632683765, -1.5643567563961212],
+            zoom: 15,
+            zoomControl: false,
+            scrollWheelZoom: false,
+            dragging: false,
+            attributionControl: false
+        });
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18
-            }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18
+        }).addTo(map);
 
-            var pinkIcon = L.divIcon({
-                html: '<svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 0C6.268 0 0 6.268 0 14c0 9.333 14 22 14 22s14-12.667 14-22C28 6.268 21.732 0 14 0z" fill="#F4A7BF" stroke="#111111" stroke-width="1.5"/><circle cx="14" cy="14" r="5" fill="white"/></svg>',
-                className: '',
-                iconSize: [28, 36],
-                iconAnchor: [14, 36],
-                popupAnchor: [0, -36]
-            });
+        var pinkIcon = L.divIcon({
+            html: '<svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 0C6.268 0 0 6.268 0 14c0 9.333 14 22 14 22s14-12.667 14-22C28 6.268 21.732 0 14 0z" fill="#F4A7BF" stroke="#111111" stroke-width="1.5"/><circle cx="14" cy="14" r="5" fill="white"/></svg>',
+            className: '',
+            iconSize: [28, 36],
+            iconAnchor: [14, 36],
+            popupAnchor: [0, -36]
+        });
 
-            L.marker([47.200578632683765, -1.5643567563961212], { icon: pinkIcon })
-                .addTo(map)
-                .bindPopup("L'Agronaute<br>2 rue du Sénégal, Nantes");
-        }
+        L.marker([47.200578632683765, -1.5643567563961212], { icon: pinkIcon })
+            .addTo(map)
+            .bindPopup("L'Agronaute<br>2 rue du Sénégal, Nantes");
+    }
+
+    function loadLeaflet() {
+        if (leafletLoaded) return;
+        leafletLoaded = true;
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        link.crossOrigin = '';
+        document.head.appendChild(link);
+        var script = document.createElement('script');
+        script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        script.onload = initLeafletMap;
+        document.body.appendChild(script);
+    }
+
+    if (infosSection) {
+        var infosObserver = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) {
+                loadLeaflet();
+                infosObserver.disconnect();
+            }
+        }, { threshold: 0.1 });
+        infosObserver.observe(infosSection);
     }
 
     /* ---- Typewriter — titre hero lettre par lettre ---- */
