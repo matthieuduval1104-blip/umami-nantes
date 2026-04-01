@@ -6,9 +6,21 @@
     'use strict';
 
     /* ---- Scroll restoration : forcer le retour au hero au reload ---- */
+    /* Le browser restaure le scrollTop du div APRÈS l'exécution du script.
+       On l'écrase via pageshow + rAF pour s'assurer de passer après la restauration. */
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    var snapWrapper = document.querySelector('.snap-wrapper');
-    if (snapWrapper) snapWrapper.scrollTop = 0;
+
+    function resetScroll() {
+        var wrapper = document.querySelector('.snap-wrapper');
+        if (wrapper) wrapper.scrollTop = 0;
+        window.scrollTo(0, 0);
+    }
+
+    resetScroll();
+    window.addEventListener('load', resetScroll);
+    window.addEventListener('pageshow', function () {
+        requestAnimationFrame(resetScroll);
+    });
 
     /* ---- Viewport height réel (iOS + navigateurs avec UI custom) ---- */
     function updateVh() {
