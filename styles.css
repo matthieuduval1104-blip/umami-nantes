@@ -2050,6 +2050,7 @@ body.modal-is-open { overflow: hidden; }
     #infos { height: auto; overflow: visible; }
     .split-layout { flex-direction: column; position: static; height: auto; }
     .split-left { display: none; }
+    .split-right--pink { background: var(--cream-bg); } /* fond crème sur mobile — évite enchaînement rose/rose avec Banquet */
     .split-right {
         flex: 1;
         width: 100%;
