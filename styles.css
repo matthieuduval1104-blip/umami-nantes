@@ -96,8 +96,9 @@ em   { font-style: italic; }
    SNAP WRAPPER
    ============================================================ */
 .snap-wrapper {
-    height: 100vh;    /* fallback */
-    height: 100svh;   /* iOS fix : small viewport height, exclut la chrome du navigateur */
+    height: 100vh;              /* fallback navigateurs anciens */
+    height: 100svh;             /* fallback : small viewport height */
+    height: var(--actual-vh);   /* JS fix : window.innerHeight — couvre toute UI custom (Comet, etc.) */
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scrollbar-width: none;
@@ -108,8 +109,9 @@ em   { font-style: italic; }
    SCREENS
    ============================================================ */
 .screen {
-    height: 100vh;    /* fallback */
-    height: 100svh;   /* iOS fix : small viewport height, exclut la chrome du navigateur */
+    height: 100vh;              /* fallback navigateurs anciens */
+    height: 100svh;             /* fallback : small viewport height */
+    height: var(--actual-vh);   /* JS fix : window.innerHeight — couvre toute UI custom (Comet, etc.) */
     scroll-snap-align: start;
     position: relative;
     overflow: hidden;

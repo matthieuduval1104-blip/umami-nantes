@@ -5,6 +5,13 @@
 (function () {
     'use strict';
 
+    /* ---- Viewport height réel (iOS + navigateurs avec UI custom) ---- */
+    function updateVh() {
+        document.documentElement.style.setProperty('--actual-vh', window.innerHeight + 'px');
+    }
+    updateVh();
+    window.addEventListener('resize', updateVh);
+
     /* ---- Références DOM ---- */
     var trigger     = document.getElementById('menu-trigger');
     var overlay     = document.getElementById('menu-overlay');
