@@ -86,7 +86,6 @@ html, body {
 
 img  { display: block; max-width: 100%; }
 a    { color: inherit; text-decoration: none; }
-.infos-tag-mobile { display: none; }
 ul   { list-style: none; }
 em   { font-style: italic; }
 
@@ -134,6 +133,8 @@ em   { font-style: italic; }
 }
 .tag--pink { background: var(--pink); color: var(--black); }
 .tag--dark { background: var(--black); color: var(--cream); }
+/* Tag affiché uniquement sur mobile — caché sur desktop (après .tag pour éviter l'écrasement) */
+.infos-tag-mobile { display: none; }
 
 .big-title {
     font-size: clamp(3rem, 5.5vw, 4.5rem);
@@ -1933,8 +1934,8 @@ body.modal-is-open { overflow: hidden; }
     .banquet-title { text-align: center; }
     .banquet-header { text-align: center; align-items: center; display: flex; flex-direction: column; }
 
-    /* 3. Festival — tag + CTA centrés */
-    .about-tag { top: 4.5rem; left: 50%; transform: translateX(-50%); }
+    /* 3. Festival — tag aligné avec MENU (top: var(--s5)), CTA centrés */
+    .about-tag { top: var(--s5); left: 50%; transform: translateX(-50%); }
     .about-bubble { align-items: center; }
     .about-bubble .btn { align-self: center; }
 
@@ -1984,8 +1985,8 @@ body.modal-is-open { overflow: hidden; }
     }
 
     /* ---- Festival ---- */
-    .about-tag { top: 4.5rem; }
-    .about-layout { padding: 4.5rem var(--s5) var(--s8); justify-content: center; gap: var(--s4); }
+    .about-tag { top: var(--s5); }
+    .about-layout { padding: 5rem var(--s5) var(--s8); justify-content: center; gap: var(--s4); }
     .about-grid { grid-template-columns: 1fr; gap: var(--s4); }
     .about-title { font-size: clamp(2.5rem, 8vw, 3.5rem); }
     .about-bubble { padding: var(--s5) var(--s6); border-radius: 2rem 3rem 2.5rem 2rem / 2.5rem 2rem 3rem 2.5rem; }
@@ -2002,7 +2003,7 @@ body.modal-is-open { overflow: hidden; }
         position: static;
         height: auto;
         overflow: visible;
-        padding: 4.5rem var(--s5) var(--s6);
+        padding: var(--s5) var(--s5) var(--s6);
         display: flex;
         flex-direction: column;
         gap: var(--s4);
@@ -2019,7 +2020,7 @@ body.modal-is-open { overflow: hidden; }
     /* ---- 4. Banquet — sans portraits, CTAs visibles ---- */
     #banquet { height: auto; min-height: 100vh; overflow: visible; }
     .banquet-wrap { position: static; display: flex; flex-direction: column; overflow: visible; }
-    .banquet-header { padding: 4.5rem var(--s5) var(--s4); }
+    .banquet-header { padding: var(--s5) var(--s5) var(--s4); }
     .banquet-title { font-size: clamp(2rem, 8vw, 3rem); }
     .banquet-cheffes { display: none; }
     .banquet-strip {
@@ -2042,8 +2043,8 @@ body.modal-is-open { overflow: hidden; }
         flex: 1;
         width: 100%;
         height: auto;
-        min-height: 100vh;
-        padding: 5rem var(--s5) var(--s8);
+        min-height: 100svh;
+        padding: var(--s5) var(--s5) var(--s8);
         overflow: visible;
     }
     .map-container { display: none; }
