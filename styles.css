@@ -168,13 +168,13 @@ body::after {
    ============================================================ */
 .reveal {
     opacity: 0;
-    transform: translateY(50px);
+    translate: 0 50px; /* propriété standalone — n'écrase pas transform (ex: translateX(-50%)) */
     transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+                translate 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .section-visible .reveal {
     opacity: 1;
-    transform: translateY(0);
+    translate: 0 0;
 }
 .reveal--d1 { transition-delay: 0.13s; }
 .reveal--d2 { transition-delay: 0.28s; }
@@ -187,7 +187,7 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
     body::after { animation: none; }
     [data-parallax] { transition: none; }
-    .reveal { opacity: 1; transform: none; transition: none; }
+    .reveal { opacity: 1; translate: 0 0; transition: none; }
 }
 
 /* ============================================================
@@ -751,6 +751,17 @@ body::after {
     transform: rotate(10deg);
 }
 .hero-illus--2:hover { transform: rotate(5deg) scale(1.07); }
+
+/* Fromage — haut droite, grand format */
+.hero-illus--3 {
+    right: 5%;
+    top: 4%;
+    width: clamp(120px, 13vw, 190px);
+    transform: rotate(-6deg);
+    animation: float-c 4.8s ease-in-out infinite;
+    animation-delay: 1.4s;
+}
+.hero-illus--3:hover { transform: rotate(-2deg) scale(1.06); }
 
 /* ============================================================
    LAYOUT SPLIT (Festival + Infos)
