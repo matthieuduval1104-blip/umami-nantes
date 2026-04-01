@@ -336,7 +336,9 @@
     }
 
     /* ---- Reveal des sections — éléments entrent en scène au snap ---- */
-    if (!prefersReduced) {
+    /* Root = snap-wrapper (scroll container interne) — pas le viewport */
+    var snapWrapper = document.querySelector('.snap-wrapper');
+    if (!prefersReduced && snapWrapper) {
         var revealObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
@@ -344,12 +346,12 @@
                     revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.3 });
+        }, { root: snapWrapper, threshold: 0.3 });
         document.querySelectorAll('.screen, #footer').forEach(function (s) {
             revealObserver.observe(s);
         });
     } else {
-        /* Reduced motion : sections visibles immédiatement */
+        /* Reduced motion ou pas de snap-wrapper : sections visibles immédiatement */
         document.querySelectorAll('.screen, #footer').forEach(function (s) {
             s.classList.add('section-visible');
         });
