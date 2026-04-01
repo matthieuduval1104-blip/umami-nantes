@@ -2121,7 +2121,7 @@ body.modal-is-open { overflow: hidden; }
     }
 
     /* ---- Festival ---- */
-    .about-layout { padding: var(--s3) var(--s5) var(--s8); justify-content: center; gap: var(--s4); }
+    .about-layout { position: static; padding: var(--s3) var(--s5) var(--s8); justify-content: center; gap: var(--s4); }
     .about-grid { grid-template-columns: 1fr; gap: var(--s4); }
     .about-title { font-size: clamp(2.5rem, 8vw, 3.5rem); }
     .about-bubble { padding: var(--s5) var(--s6); border-radius: 2rem 3rem 2.5rem 2rem / 2.5rem 2rem 3rem 2.5rem; }
@@ -2148,7 +2148,8 @@ body.modal-is-open { overflow: hidden; }
     .prog2-bloc__num { display: none; }
     .prog2-bloc__photo { display: none; }
     .prog2-bloc__body { padding: var(--s5); border-radius: var(--r-md); }
-    .prog-pdf-wrap { display: none; }
+    .prog-pdf-wrap { position: static; display: flex; flex-direction: row; align-items: center; padding: var(--s4) var(--s5) 0; }
+    .prog-pdf__illus { display: none; }
     .prog-illus { display: none; }
 
     /* ---- 4. Banquet — sans portraits, CTAs visibles ---- */
