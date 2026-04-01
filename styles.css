@@ -2068,8 +2068,9 @@ body.modal-is-open { overflow: hidden; }
     .banquet-title { text-align: center; }
     .banquet-header { text-align: center; align-items: center; display: flex; flex-direction: column; }
 
-    /* 3. Festival — tag aligné avec MENU (top: var(--s5)), CTA centrés */
-    .about-tag { top: var(--s5); left: 50%; transform: translateX(-50%); }
+    /* 3. Festival — tag dans le flux normal (position:absolute → static), section height auto */
+    #about { height: auto; overflow: visible; display: flex; flex-direction: column; }
+    .about-tag { position: static; transform: none; left: auto; top: auto; margin: var(--s5) auto var(--s3); }
     .about-bubble { align-items: center; }
     .about-bubble .btn { align-self: center; }
 
@@ -2120,8 +2121,7 @@ body.modal-is-open { overflow: hidden; }
     }
 
     /* ---- Festival ---- */
-    .about-tag { top: var(--s5); }
-    .about-layout { padding: 5rem var(--s5) var(--s8); justify-content: center; gap: var(--s4); }
+    .about-layout { padding: var(--s3) var(--s5) var(--s8); justify-content: center; gap: var(--s4); }
     .about-grid { grid-template-columns: 1fr; gap: var(--s4); }
     .about-title { font-size: clamp(2.5rem, 8vw, 3.5rem); }
     .about-bubble { padding: var(--s5) var(--s6); border-radius: 2rem 3rem 2.5rem 2rem / 2.5rem 2rem 3rem 2.5rem; }
